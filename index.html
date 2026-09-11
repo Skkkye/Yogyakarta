@@ -1,20 +1,7 @@
 <!doctype html>
-<html lang="zh-CN">
-<head>
-<meta charset="utf-8">
+<html lang="zh-CN"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="color-scheme" content="light dark">
-<meta name="description" content="日惹 34 个景点、体验与逛街去处的核准清单：票价、交通、宰客风险与必去标记。">
-<meta name="theme-color" content="#EDEEF1" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#131419" media="(prefers-color-scheme: dark)">
-<style>
-/* 独立部署时需要自己补这层基础重置 —— Artifact 平台原本会自动加 */
-*,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0}
-img{max-width:100%}
-[hidden]{display:none!important}
-</style>
+<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>日惹景点核准清单</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -162,8 +149,10 @@ input[type="number"]{width:84px;font-family:var(--mono)}
    锁死不收缩，超出的部分交给 .sheetbody 自己滚动 */
 .sheetbody > *{flex:0 0 auto}
 @media (min-width:640px){
-  .sheet{display:flex;align-items:center;justify-content:center;padding:24px}
-  .sheet[open]{display:flex}
+  /* display 必须挂在 [open] 上：写成裸 .sheet 会盖掉浏览器默认的
+     dialog:not([open]){display:none}，关闭后对话框继续占位、且已不在 top layer，
+     被页面 z-index:20 的筛选栏压住，看起来就是「卡死」 */
+  .sheet[open]{display:flex;align-items:center;justify-content:center;padding:24px}
   .sheetbox{max-width:780px;height:auto;max-height:86vh;border-radius:14px;box-shadow:0 24px 60px -20px rgba(0,0,0,.45)}
 }
 .mapwrap{display:block}
@@ -1122,5 +1111,4 @@ render();
   if(d) openSheet(d,false);
 })();
 </script>
-</body>
-</html>
+</body></html>
