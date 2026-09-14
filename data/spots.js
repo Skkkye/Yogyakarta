@@ -17,7 +17,7 @@ const SPOTS=[
 {
  n:"婆罗浮屠（登顶）",ln:"Candi Borobudur",c:"西北线（婆罗浮屠）",t:"古迹",tags:["必去"],
  img:1,
- geo:[-7.607874,110.203751],pid:"ChIJl9anCfCMei4Ry8NNdDRD0w0",
+ gq:"Borobudur Temple",pid:"ChIJl9anCfCMei4Ry8NNdDRD0w0",cid:"996213835147625419",geo:[-7.607874,110.203751],
  g:4.7,gc:103645,
  s:{view:9,culture:10,unique:10,value:5,quiet:4},
  intro:"世界最大的佛教建筑，九层曼陀罗结构，2672 块浮雕。登顶票是唯一能踏上塔身、走进上层佛塔阵的方式，含 1.5 小时导览和保护石阶用的 Upanat 草鞋；只买园区票的话，你只能在草坪上远看。",
@@ -37,7 +37,7 @@ const SPOTS=[
 {
  n:"婆罗浮屠官方日出",ln:"Borobudur Sunrise · Manohara",c:"西北线（婆罗浮屠）",t:"体验",tags:["独特体验"],
  img:1,
- geo:[-7.609210,110.207049],pid:"ChIJtSRLeO2Mei4RMT9Yz1doDy0",
+ gq:"Manohara - BCC",pid:"ChIJtSRLeO2Mei4RMT9Yz1doDy0",cid:"3246928582707527473",geo:[-7.609210,110.207049],
  g:null,gc:null,
  s:{view:10,culture:9,unique:10,value:3,quiet:8},
  intro:"04:30 入场，摸黑登上第九层等日出，结束后在 Manohara 度假村吃早餐、正对塔身。全日惹最贵的单项体验，也是唯一能在开园前独占塔顶的方式 —— 每天只有 100 个人。",
@@ -57,7 +57,7 @@ const SPOTS=[
 {
  n:"Punthuk Setumbu 日出山丘",ln:"Punthuk Setumbu",c:"西北线（婆罗浮屠）",t:"自然",tags:[],
  img:1,
- geo:[-7.609376,110.177792],
+ gq:"Punthuk Setumbu",pid:"ChIJkdTMoQWNei4Rsc0SXjG2F2c",cid:"7428606433518865841",geo:[-7.609376,110.177792],
  g:4.6,gc:9184,
  s:{view:9,culture:3,unique:7,value:9,quiet:5},
  intro:"婆罗浮屠西侧的小山头，天气好时能看到塔尖从晨雾里浮出来、背后是默拉皮和默尔巴布双峰。几乎所有「婆罗浮屠日出」的经典照片都是在这里拍的，不是在塔上。",
@@ -75,7 +75,7 @@ const SPOTS=[
 {
  n:"Mendut 与 Pawon 双寺",ln:"Candi Mendut & Candi Pawon",c:"西北线（婆罗浮屠）",t:"古迹",tags:[],
  img:1,
- geo:[[-7.604873,110.230080],[-7.606171,110.219582]],pid:["ChIJjx6WeOmNei4RF8UydX8QcuU","ChIJwSv_xPGMei4Reyk-yMZSAYg"],
+ gq:["Mendut Temple", "Pawon Temple"],pid:["ChIJjx6WeOmNei4RF8UydX8QcuU", "ChIJwSv_xPGMei4Reyk-yMZSAYg"],cid:["16533295321643664663", "9800205277851429243"],geo:[[-7.604873,110.230080],[-7.606171,110.219582]],
  g:null,gc:null,
  s:{view:5,culture:8,unique:6,value:9,quiet:8},
  intro:"和婆罗浮屠在同一条直线上的两座小寺，Mendut 殿内有三尊近 3 米高的石雕佛像，是爪哇现存最完整的古代佛像组之一。旁边就是仍在使用的佛寺，卫塞节游行的起点。",
@@ -94,7 +94,7 @@ const SPOTS=[
 {
  n:"普兰巴南",ln:"Candi Prambanan",c:"东北线（普兰巴南）",t:"古迹",tags:["必去"],
  img:2,
- geo:[-7.752021,110.491467],
+ gq:"Prambanan Temple",pid:"ChIJ0VnY2-Naei4RLVqVJTug5xk",cid:"1866636746462419501",geo:[-7.752021,110.491467],
  g:4.7,gc:106003,
  s:{view:9,culture:9,unique:9,value:7,quiet:5},
  intro:"9 世纪印度教三神庙群，47 米高的湿婆殿是印尼最高的古代建筑，回廊刻满《罗摩衍那》浮雕。门票含 800 米外的 Sewu 佛寺 —— 同一张票里塞了印度教和佛教两套建筑语言，这是婆罗浮屠给不了的对照。",
@@ -113,7 +113,7 @@ const SPOTS=[
 {
  n:"罗摩衍那芭蕾舞剧",ln:"Ramayana Ballet Prambanan",c:"东北线（普兰巴南）",t:"体验",tags:["独特体验"],
  img:2,
- geo:[-7.753027,110.488483],
+ gq:"Ramayana Ballet Prambanan",pid:"ChIJgRAaCeNaei4RQs-4Enbl00I",cid:"4815444721872195394",geo:[-7.753027,110.488483],
  g:null,gc:null,
  s:{view:9,culture:9,unique:9,value:7,quiet:6},
  intro:"露天剧场演爪哇古典舞剧，背景是打了灯的普兰巴南塔群本体。5–10 月旱季才开露天场，你的行程正好卡在末班车上 —— 10 月之后就只剩室内的 Trimurti 剧场。",
@@ -133,7 +133,7 @@ const SPOTS=[
 {
  n:"拉图博科宫遗址日落",ln:"Kraton Ratu Boko",c:"东北线（普兰巴南）",t:"古迹",tags:[],
  img:1,
- geo:[-7.770568,110.486142],
+ gq:"Keraton Ratu Boko",pid:"ChIJRf5U05Jaei4RW_l2RPFEPxU",cid:"1531018201355712859",geo:[-7.770568,110.486142],
  g:4.7,gc:15746,
  s:{view:9,culture:7,unique:8,value:5,quiet:7},
  intro:"山顶上的 8 世纪宫殿遗址，只剩巨门、浴池和台基。官方自己把它定位成「日惹最好的日落点之一」—— 太阳落在普兰巴南方向，前景是那道著名的石门。",
@@ -151,7 +151,7 @@ const SPOTS=[
 {
  n:"伊佐寺",ln:"Candi Ijo",c:"东北线（普兰巴南）",t:"古迹",tags:[],
  img:1,
- geo:[-7.783845,110.511984],
+ gq:"Ijo Temple",pid:"ChIJpXpAMhJbei4R66paHGNQXGQ",cid:"7231743488257862379",geo:[-7.783845,110.511984],
  g:null,gc:null,
  s:{view:8,culture:6,unique:7,value:10,quiet:8},
  intro:"日惹海拔最高的寺庙（约 410 米），建在机场航道下方的山脊上，能看到飞机从头顶掠过、落进远处的平原。门票不到十块钱人民币，日落视野和 Ratu Boko 同级。",
@@ -168,13 +168,13 @@ const SPOTS=[
 {
  n:"Tebing Breksi 石灰岩崖",ln:"Tebing Breksi",c:"东北线（普兰巴南）",t:"打卡",tags:[],
  img:1,
- geo:[-7.781571,110.504583],
+ gq:"Tebing Breksi",pid:"ChIJW2a0WKRaei4Rxziu0Gr8sKQ",cid:"11867262553819068615",geo:[-7.781571,110.504583],
  g:4.5,gc:66346,
  s:{view:7,culture:4,unique:6,value:9,quiet:4},
  intro:"废弃采石场改造的雕刻崖壁，整面石墙刻着爪哇神话的龙与人物，底下是圆形露天剧场。本地夜间聚会地，营业到晚上九点。",
  price:20000,ticket:"外国人 {20000}／本地 {10000}；停车 摩托 {2000}／汽车 {5000}",src:"sec",
  book:"不需预约",hours:"周一–周五 08:00–21:00；周六日 07:00–21:00",
- dur:"45 分钟–1 小时",best:"17:00 前后金色时段",dist:"距市区 15 km",drive:40,
+ dur:"45 分钟–1 小时",best:"17:00 前后金色时段",dist:"距市区约 21 km",drive:40,
  trans:["与 Candi Ijo 相距 2 km，两者合看最省车程","Gojek 可达，回程稍等"],
  phys:"低 —— 有石阶上崖顶",weather:"中等敏感，雨天崖顶湿滑",
  scam:"低",scamNote:"崖下有付费吉普项目，非必需",
@@ -185,7 +185,7 @@ const SPOTS=[
 {
  n:"Obelix Hills 日落台",ln:"Obelix Hills",c:"东北线（普兰巴南）",t:"打卡",tags:[],
  img:1,
- geo:[-7.806897,110.521445],
+ gq:"Obelix Hills",pid:"ChIJRf7y8-tRei4REGj9haH-XrI",cid:"12852990356253141008",geo:[-7.806897,110.521445],
  g:4.6,gc:8797,
  s:{view:7,culture:1,unique:3,value:5,quiet:2},
  intro:"山顶上的付费拍照园区，三十多个布景位、玻璃栈道、鹰巢椅、秋千，配一间餐厅。纯粹为了出片和看日落而建，没有任何历史或自然属性。",
@@ -204,7 +204,7 @@ const SPOTS=[
 {
  n:"日惹王宫",ln:"Keraton Ngayogyakarta",c:"市区线",t:"古迹",tags:["必去"],
  img:1,
- geo:[-7.805370,110.364352],pid:"ChIJ78cG25ZXei4RbCcrBc9xUjk",
+ gq:"Keraton Ngayogyakarta Hadiningrat",pid:"ChIJ78cG25ZXei4RbCcrBc9xUjk",cid:"4130488942211049324",geo:[-7.805370,110.364352],
  g:4.7,gc:39269,
  s:{view:5,culture:9,unique:8,value:10,quiet:5},
  intro:"仍在运作的苏丹王宫，苏丹本人和王室至今住在里面。七进院落陈列御用器物、蜡染与宫廷服饰，门票含每天上午的宫廷艺术表演 —— 甘美兰、皮影、爪哇舞按星期轮换，不另收费。",
@@ -224,7 +224,7 @@ const SPOTS=[
 {
  n:"水城",ln:"Taman Sari Water Castle",c:"市区线",t:"古迹",tags:["必去"],
  img:2,
- geo:[-7.810055,110.359301],
+ gq:"Taman Sari Tourist Village",pid:"ChIJK8_C0JNXei4RE74coPghaic",cid:"2840119866732363283",geo:[-7.810055,110.359301],
  g:4.6,gc:45258,
  s:{view:7,culture:7,unique:9,value:10,quiet:4},
  intro:"18 世纪苏丹的水上花园，浴池、地道和 Sumur Gumuling —— 一座圆形地下清真寺，中央五道台阶交汇成一个几乎所有人都会拍的构图。周边至今是活的居民区，巷子里有人在做蜡染。",
@@ -242,7 +242,7 @@ const SPOTS=[
 {
  n:"Sonobudoyo 博物馆与皮影夜场",ln:"Museum Sonobudoyo",c:"市区线",t:"体验",tags:["独特体验"],
  img:2,
- geo:[-7.802257,110.363944],pid:"ChIJTwoHg49Xei4R7sU-xBpDEJ0",
+ gq:"Museum Sonobudoyo Unit I",pid:"ChIJTwoHg49Xei4R7sU-xBpDEJ0",cid:"11317619645822715374",geo:[-7.802257,110.363944],
  g:4.8,gc:9805,
  s:{view:4,culture:10,unique:9,value:10,quiet:8},
  intro:"日惹最好的爪哇文物馆 —— 皮影、面具、克力士剑、青铜器。真正值钱的是晚上的演出：147 座的小场子，本地剧团演爪哇古典戏，票价不到一顿饭钱，且演给本地人看，不是给游客的删节版。",
@@ -262,7 +262,7 @@ const SPOTS=[
 {
  n:"Vredeburg 城堡博物馆",ln:"Museum Benteng Vredeburg",c:"市区线",t:"古迹",tags:[],
  img:1,
- geo:[-7.800293,110.366164],
+ gq:"Vredeburg Fort Museum",pid:"ChIJz-6zwIhXei4R-J8qI-AcYbk",cid:"13357989718745849848",geo:[-7.800293,110.366164],
  g:4.7,gc:20667,
  s:{view:6,culture:8,unique:6,value:10,quiet:7},
  intro:"Malioboro 南端的荷兰殖民要塞，原名 Rustenburg。展陈从荷据、日据一路讲到独立战争。刚完成改造，加了数字售票、联合办公空间和咖啡馆 —— 现在更像一个城市客厅而不是静态展馆。",
@@ -281,7 +281,7 @@ const SPOTS=[
 {
  n:"Malioboro 街",ln:"Jalan Malioboro",c:"市区线",t:"逛街",tags:[],
  img:1,
- geo:[-7.793753,110.365708],
+ gq:"Jl. Malioboro",pid:"ChIJxQZh-iVYei4RMxHtpSHFpD4",cid:"4513949474840449331",geo:[-7.793753,110.365708],
  g:4.8,gc:8983,
  s:{view:4,culture:6,unique:5,value:9,quiet:1},
  intro:"日惹的主街，近年做了步行化改造。白天是纪念品摊和蜡染店，晚上整条街是本地人的夜生活 —— 街头艺人、露天座、灯。逛街的起点，也是全城骗局密度最高的一段路。",
@@ -298,7 +298,7 @@ const SPOTS=[
 {
  n:"Beringharjo 市场",ln:"Pasar Beringharjo",c:"市区线",t:"逛街",tags:[],
  img:1,
- geo:[-7.798840,110.365766],
+ gq:"Beringharjo Traditional Market",pid:"ChIJYTfKAv73ei4RDEEL-U286zk",cid:"4173636522765664524",geo:[-7.798840,110.365766],
  g:4.6,gc:89976,
  s:{view:4,culture:8,unique:7,value:10,quiet:2},
  intro:"日惹最大的传统市场，三层各成一个世界：一楼蜡染布匹、蔬果与香料，二楼头巾与服装，三楼旧货、干花与二手衣（thrifting）。买蜡染布料的正经地方 —— 比街边摊便宜得多，前提是你肯还价。",
@@ -317,7 +317,7 @@ const SPOTS=[
 {
  n:"Hamzah Batik（原 Mirota）",ln:"Hamzah Batik",c:"市区线",t:"逛街",tags:[],
  img:0,
- geo:[-7.799098,110.364613],
+ gq:"Hamzah Batik Malioboro",pid:"ChIJIdJh94hXei4RmNFytJr0Vm4",cid:"7950811137458753944",geo:[-7.799098,110.364613],
  g:null,gc:null,
  s:{view:5,culture:6,unique:6,value:8,quiet:4},
  intro:"Malioboro 上的三层蜡染与手信百货，1950 年代起家。布料、成衣、木雕、银饰、皮影、草药一应俱全，营业到半夜。对不想在市场里砍价的人来说，这是最省心的替代方案。",
@@ -336,7 +336,7 @@ const SPOTS=[
 {
  n:"Ngasem 市场",ln:"Pasar Ngasem",c:"市区线",t:"逛街",tags:[],
  img:1,
- geo:[-7.808128,110.360019],
+ gq:"Ngasem Traditional Market",pid:"ChIJP04vJZJXei4Rpx18oJbS-zY",cid:"3961991841581899175",geo:[-7.808128,110.360019],
  g:4.6,gc:17497,
  s:{view:4,culture:8,unique:6,value:10,quiet:6},
  intro:"就在水城旁边的社区市场，卖肉、菜、家居杂货和街头小吃，也是买 bakpia、wingko 这类日惹点心的本地价渠道。规模比 Beringharjo 小得多，人也少得多 —— 逛完水城顺手拐进去半小时。",
@@ -354,7 +354,7 @@ const SPOTS=[
 {
  n:"Prawirotaman 街区",ln:"Jalan Prawirotaman",c:"市区线",t:"逛街",tags:[],
  img:1,
- geo:[-7.819153,110.370615],
+ gq:"Jl. Prawirotaman",pid:"ChIJNRSms6NXei4RuRddycMIQXc",cid:"8593159200989583289",geo:[-7.819153,110.370615],
  g:4.7,gc:372,
  s:{view:5,culture:5,unique:5,value:8,quiet:6},
  intro:"日惹的背包客与咖啡馆街区，中价酒店、咖啡店、酒吧、买手店和换汇点扎堆，街头壁画多。被形容成「巴厘岛式的氛围」—— 西方游客的据点，节奏比 Malioboro 慢得多。",
@@ -371,7 +371,7 @@ const SPOTS=[
 {
  n:"南广场穿榕树",ln:"Alun-Alun Kidul · Masangin",c:"市区线",t:"体验",tags:["独特体验"],
  img:1,
- geo:[-7.811936,110.363194],
+ gq:"Kidul Plaza Yogyakarta",pid:"ChIJTd5eUjlXei4RNUEwaj9xWRc",cid:"1682500452978016565",geo:[-7.811878,110.363205],
  g:null,gc:null,
  s:{view:3,culture:6,unique:8,value:10,quiet:2},
  intro:"王宫南面的广场，中间两棵老榕树。本地传统是蒙眼从广场一端走到两树之间 —— 传说心正者才能穿过。晚上广场变成灯泡车（odong-odong）和小吃摊的海洋，是纯本地场景，几乎没有外国游客。",
@@ -388,7 +388,7 @@ const SPOTS=[
 {
  n:"Kotagede 银器老城",ln:"Kotagede",c:"市区线",t:"逛街",tags:["独特体验"],
  img:1,
- geo:[-7.829413,110.398308],
+ gq:"Kotagede",pid:"ChIJA01ejBRXei4RsABT43Z6AgQ",cid:"288927977143730352",geo:[-7.820529,110.400984],
  g:null,gc:null,
  s:{view:5,culture:9,unique:8,value:9,quiet:8},
  intro:"马打兰苏丹国的旧都，现在是安静的银匠区。老宅、小清真寺、王陵，和一批开着门可以看打银的作坊。不少作坊接受短时体验课，自己敲一个戒指或吊坠带走 —— 这是全清单里最适合带走「自己做的东西」的地方。",
@@ -438,13 +438,18 @@ const SPOTS=[
  scam:"中",scamNote:"运营商极多、价格与路线命名混乱；同一条线不同摊位报价能差三成。务必确认「每车价」还是「每人价」、含哪几个站点",
  pay:"现金为主，部分可转账",dress:"防尘口罩、墨镜、旧衣旧鞋；贵重电子设备做好防尘",
  pick:{h:"三种场次怎么选",t:"<b>只做一次就选日出场。</b>它把「一天里唯一能看清山顶的时段 + 全套遗迹点 + 天亮前有机会撞见的熔岩红光」打包进一趟，溢价约四到六成，换来的是白天完全不被占用 —— 放在 9/28 周一（王宫与普兰巴南主庭院都关）机会成本很低。代价是 03:00 前起床，当天下午基本报废。<br><b>日间场只在「不想凌晨起床、只想玩越野」时成立</b>，而且必须订 06:00–10:00 那一档。十点后云上来，山顶就没了；12:00 之后出发是最差选择。<br><b>山下守夜看熔岩（Bukit Klangon）不是这两者的替代品</b>，它没有任何遗迹点，只是一张 {4000} 的彩票 —— 想做就当作额外加一晚，别拿它顶掉吉普。<br><b>订之前必问三句</b>（同样叫 sunrise，报价能从 {500000} 差到 {1100000}）：从哪个基地出发（Kaliurang 还是 Kaliadem）？在哪个点看日出？这个价是每车还是每人、含不含门票？"},
+ buzz:{good:"灾区遗迹加上司机讲解很有冲击力，越野本身也好玩，日出场评价最高。",bad:[
+  ["看不到熔岩","印尼网友直说「Lava tour」只是个噱头名字。"],
+  ["山顶常被云遮","住在山下的本地人说九成时间都看不清。"],
+  ["路况","尘土大、颠簸，腰背不好的人不推荐。"],
+  ["比较","常有人拿它和 Bromo、Ijen 比，觉得那两个更值。"]]},
  avoid:"<b>这一项的风险不在钱上。</b>默拉皮目前是 Siaga 三级警戒、持续喷发中。BPPTKG 9/14 公布的危险区：西南 Boyong 河 5 km、Bedog/Krasak/Bebeng 河 7 km，东南 Woro 河 3 km、Gendol 河 5 km。吉普线走的 Kaliadem 一带就在 Gendol 河谷，运营商仍在营业，但线路贴着东南危险区的边缘 —— 你是在一座活跃警戒火山的山腰上越野。腰背不好的人另需注意，全程颠簸得厉害。出发前请复查 magma.esdm.go.id 的当日报告。",
- srcs:[["火山状态与危险区（媒体引 BPPTKG 2026-09-14）","https://infokini.id/2026/09/14/merapi-siaga-level-iii-17-kali-guguran-lava-meluncur-hingga-2-km-bpptkg-peringatkan-potensi-awan-panas/"],["火山状态（媒体引 BPPTKG 2026-09-01）","https://hariane.com/gunung-merapi-1-september-2026-guguran-lava-2-km"],["营业时间（日惹市政商户页 · 官方）","https://dodolan.jogjakota.go.id/jogja-outbound-1/deskripsi-lava-tour-merapi-lengkap-0821-1346-7472"],["各档时长与车价（二手）","https://www.jeeplavatourmerapi.id/durasi-lava-tour-merapi/"],["日出场报价与流程（二手）","https://www.merapiadventure.com/tour55-merapi-sunrise-tour-combine-lava-tour.html"],["扬尘、涉水与最佳时段（二手 2026-01）","https://www.telkomsel.com/jelajah/jelajah-nusantara/jelajah-jogja/lava-tour-jogja-2026-harga-jeep-rute-and-tips-sunrise-epik"],["2020 年升级 Siaga 时 Kaliadem 等 5 处曾关闭（二手）","https://www.gatra.com/news-494794-gaya-hidup-merapi-siaga-5-objek-wisata-ditutup-kaliurang-masih-buka.html"]]
+ srcs:[["火山状态与危险区（媒体引 BPPTKG 2026-09-14）","https://infokini.id/2026/09/14/merapi-siaga-level-iii-17-kali-guguran-lava-meluncur-hingga-2-km-bpptkg-peringatkan-potensi-awan-panas/"],["火山状态（媒体引 BPPTKG 2026-09-01）","https://hariane.com/gunung-merapi-1-september-2026-guguran-lava-2-km"],["营业时间（日惹市政商户页 · 官方）","https://dodolan.jogjakota.go.id/jogja-outbound-1/deskripsi-lava-tour-merapi-lengkap-0821-1346-7472"],["各档时长与车价（二手）","https://www.jeeplavatourmerapi.id/durasi-lava-tour-merapi/"],["日出场报价与流程（二手）","https://www.merapiadventure.com/tour55-merapi-sunrise-tour-combine-lava-tour.html"],["扬尘、涉水与最佳时段（二手 2026-01）","https://www.telkomsel.com/jelajah/jelajah-nusantara/jelajah-jogja/lava-tour-jogja-2026-harga-jeep-rute-and-tips-sunrise-epik"],["2020 年升级 Siaga 时 Kaliadem 等 5 处曾关闭（二手）","https://www.gatra.com/news-494794-gaya-hidup-merapi-siaga-5-objek-wisata-ditutup-kaliurang-masih-buka.html"],["口碑：「Lava tour 是噱头」（Reddit r/indonesia 2026-05）","https://www.reddit.com/r/indonesia/comments/1t0kmpp/"],["口碑：山顶九成时间被云遮（YouTube 本地人留言）","https://www.youtube.com/watch?v=wrJrT57qYXk"]]
 },
 {
  n:"Bukit Klangon 夜观熔岩",ln:"Bukit Klangon",c:"北线（默拉皮）",t:"自然",tags:["独特体验"],
  img:1,
- geo:[-7.576867,110.454831],
+ gq:"Bukit Klangon",pid:"ChIJXwy6auZmei4RJZqUXZEi4wM",cid:"280105609562724901",geo:[-7.576867,110.454831],
  g:null,gc:null,
  s:{view:7,culture:2,unique:9,value:9,quiet:8},
  intro:"默拉皮东南侧山腰的村营观景台，海拔约 1,100 m，离峰顶只有 4–5 km —— 是不进危险区就能离这座活火山最近的地方之一。白天看的是锥体轮廓；真正的理由在夜里：状态活跃时，熔岩崩落会在黑色山体上拉出一道红线。看不看得到全凭运气，但门票只要 4,000。",
@@ -466,7 +471,7 @@ const SPOTS=[
 {
  n:"Ullen Sentalu 博物馆",ln:"Museum Ullen Sentalu",c:"北线（默拉皮）",t:"古迹",tags:[],
  img:1,
- geo:[-7.598228,110.422825],
+ gq:"Museum Ullen Sentalu",pid:"ChIJuQp5_QJeei4RcSZ5sDVg_qM",cid:"11816988255977023089",geo:[-7.598228,110.422825],
  g:4.7,gc:11420,
  s:{view:7,culture:9,unique:8,value:8,quiet:8},
  intro:"Kaliurang 山上的私人爪哇文化馆，讲日惹与梭罗四个王室的故事 —— 公主的书信、宫廷蜡染纹样的等级制度、王室肖像。只能跟导览走，全程不许拍照，反而让人真的在看东西。",
@@ -484,7 +489,7 @@ const SPOTS=[
 {
  n:"默拉皮火山博物馆",ln:"Museum Gunung Merapi",c:"北线（默拉皮）",t:"自然",tags:[],
  img:1,
- geo:[-7.616152,110.424328],
+ gq:"Merapi Volcano Museum",pid:"ChIJQ_mKwG5eei4RBlVEFZYQQ6g",cid:"12124552858599445766",geo:[-7.616152,110.424328],
  g:4.4,gc:8745,
  s:{view:6,culture:7,unique:6,value:9,quiet:7},
  intro:"用模型、地震仪和 2010 年喷发实物讲这座火山怎么运作。去坐吉普之前先来这里，看到的东西会完全不同 —— 你会知道 Kaliadem 掩体为什么在那儿、为什么它没能救到人。",
@@ -503,7 +508,7 @@ const SPOTS=[
 {
  n:"Jomblang 洞穴天堂之光",ln:"Goa Jomblang",c:"南线（海岸与洞穴）",t:"自然",tags:["独特体验"],
  img:2,
- geo:[-8.028688,110.638338],
+ gq:"Jomblang Cave",pid:"ChIJF9c0zh-0ey4Rzly9n2_L__k",cid:"18014340714787069134",geo:[-8.028688,110.638338],
  g:4.6,gc:1371,
  s:{view:10,culture:2,unique:10,value:5,quiet:7},
  intro:"垂直塌陷洞，用绳索系统降进 60 米深的洞底原始林，走进主洞后正午的阳光会从顶上的天窗打成一道实心光柱。全日惹最难替代的一个画面，也是最挑天气的一个。",
@@ -518,13 +523,16 @@ const SPOTS=[
  weather:"极高敏感：阴天完全没有光柱，且雨季有水位风险。这是全清单里最赌天气的一项",
  scam:"中",scamNote:"运营商众多、报价差一倍；确认含不含垂降、装备、午餐、接送",
  pay:"现金（USD／IDR／EUR）、转账或 PayPal（+3%）；提前一个月以上订须付 20% 定金",dress:"提供 SRT 装备与雨靴；自带袜子、毛巾、拖鞋、换洗衣物、防水袋",
+ buzz:{good:"看到光柱的人几乎都说值，画面独一无二。PIXNET 作者提到同团有位拄拐杖的老太太也下去了。",bad:[
+  ["安全（新情况，最值得注意）","2026 年 Reddit r/indonesia 有个讨论串，好几个亲身去过的人说人工拉绳的系统完全没有备用保护，觉得不安全。当天刚去的一位网友被问值不值时回答：\"I mean views were amazing but it's your life\"。发帖人看完就把它从行程里删了。"],
+  ["其他","排队久；泥巴极多；门票贵，印尼本地人也觉得贵；一个人去价格更高。"]]},
  avoid:"恐高、心脏问题、腰膝有伤的人直接跳过 —— 垂降加泥地徒步不是轻量活动。另外它和默拉皮吉普都在「半天 + 长车程 + 看天吃饭」这一档，4 天 3 晚里通常只放得下一个，两个都排会把行程压死。",
- srcs:[["装备、时段与线路（运营商）","https://goajomblang.com/trip/jomblang-cave-tour/"],["价格区间与注意（二手）","https://visitjogjatour.com/blog-jomblang-cave-yogyakarta-ultimate-guide--tour-price--heaven-light-experience-2026-29"]]
+ srcs:[["装备、时段与线路（运营商）","https://goajomblang.com/trip/jomblang-cave-tour/"],["价格区间与注意（二手）","https://visitjogjatour.com/blog-jomblang-cave-yogyakarta-ultimate-guide--tour-price--heaven-light-experience-2026-29"],["口碑：安全争议讨论串（Reddit r/indonesia 2026-06）","https://www.reddit.com/r/indonesia/comments/1twa4g9/"],["口碑：PIXNET 阿衡野趣哪亲历（2017，Wayback 存档）","https://web.archive.org/web/2025/https://bimeci.pixnet.net/blog/post/222723702"]]
 },
 {
  n:"Goa Pindul 溶洞漂流",ln:"Cave Tubing Goa Pindul",c:"南线（海岸与洞穴）",t:"自然",tags:[],
  img:2,
- geo:[-7.930746,110.649669],pid:"ChIJCU--ikWzey4RSEgYrkbtTNU",
+ gq:"Pindul Cave",pid:"ChIJCU--ikWzey4RSEgYrkbtTNU",cid:"15369920516132980808",geo:[-7.930746,110.649669],
  g:4.5,gc:8212,
  s:{view:6,culture:2,unique:7,value:8,quiet:4},
  intro:"坐轮胎顺着地下河漂过溶洞，水流平缓、不需要会游泳。可以加 Kali Oyo 的地面段河漂。是 Jomblang 之外那条轻松得多的洞穴选项。",
@@ -542,26 +550,26 @@ const SPOTS=[
 {
  n:"Timang 海滩缆车",ln:"Pantai Timang",c:"南线（海岸与洞穴）",t:"体验",tags:["独特体验"],
  img:2,
- geo:[-8.176093,110.662477],
+ gq:"Timang Beach",pid:"ChIJ8yx4ZWKzey4RqK8oOl7L7yU",cid:"2733627104400289704",geo:[-8.176093,110.662477],
  g:4.5,gc:3509,
  s:{view:9,culture:3,unique:9,value:4,quiet:6},
  intro:"渔民用一只木筐加人力绳索，把人拉过一段翻涌的海面送到礁岛上 —— 原本是采龙虾用的，现在也载游客。旁边另有一座吊桥。画面极强，安全保障极弱。",
  price:200000,ticket:"入场 {5000}；停车 摩托 {5000}／汽车 {10000}；缆车 {200000}；吊桥 {100000}",src:"sec",
  book:"不需预约",hours:"海滩全天；缆车 08:00–17:00",
  dur:"1.5–2 小时（不含往返）",best:"上午，风浪与光线都较好",
- dist:"距市区 50 km，车程约 3 小时",drive:180,
+ dist:"距市区约 74 km，车程约 2.5 小时",drive:150,
  trans:["最后 2 km 是陡滑土路，普通轿车进不去","当地在路口有换乘吉普／摩托的服务，需另付"],
  phys:"中 —— 上下缆筐需自己抓稳",
  weather:"高敏感：雨后土路泥泞难行；风浪大时停运",
  scam:"中",scamNote:"最后一段的换乘车辆价格现场谈，容易被抬价；缆车与吊桥分开收费",
  pay:"现金",dress:"会溅到海水；防滑鞋",
- avoid:"<b>缆车与吊桥都没有保险，也没有明确的安全规程，官方口径就是「风险自负」。</b>加上单程 3 小时车程，一天基本只能干这一件事。若只是想看南岸海景，Indrayanti 一带的路况和时间成本都低得多。有评价直接说这里「相当游客化」。",
+ avoid:"<b>缆车与吊桥都没有保险，也没有明确的安全规程，官方口径就是「风险自负」。</b>加上单程约 2.5 小时车程，一天基本只能干这一件事。若只是想看南岸海景，Indrayanti 一带的路况和时间成本都低得多。有评价直接说这里「相当游客化」。",
  srcs:[["票价、路况与安全说明（二手）","https://idetrips.com/timang-beach/"],["游客化评价（二手）","https://www.seeksophie.com/magazine/a/your-cheat-sheet-to-planning-a-trip-to-yogyakarta"]]
 },
 {
  n:"Parangtritis 海滩",ln:"Pantai Parangtritis",c:"南线（海岸与洞穴）",t:"自然",tags:[],
  img:1,
- geo:[-8.024608,110.329804],
+ gq:"Parangtritis Beach",pid:"ChIJPVOsXpcAey4RNi7iUxT-GzU",cid:"3826931671641501238",geo:[-8.024608,110.329804],
  g:4.6,gc:17820,
  s:{view:6,culture:7,unique:5,value:9,quiet:3},
  intro:"离市区最近的南海岸，黑沙、马车、沙丘。在爪哇信仰里这是南海女王 Nyai Roro Kidul 的领地，与王宫有仪式联系 —— 本地人来这里的理由和游客不太一样。",
@@ -578,7 +586,7 @@ const SPOTS=[
 {
  n:"Indrayanti 与东段白沙滩",ln:"Pantai Indrayanti / Pok Tunggal",c:"南线（海岸与洞穴）",t:"自然",tags:[],
  img:1,
- geo:[[-8.150659,110.612631],[-8.155447,110.621758]],pid:["ChIJfwzL6yu6ey4RJJedHeKqTYU","ChIJIWMBIoC5ey4RAmFZe3eReYw"],
+ gq:["Indrayanti Beach", "Pok Tunggal Beach"],pid:["ChIJ92mJwCu6ey4Rahi7CSP6820", "ChIJIWMBIoC5ey4RAmFZe3eReYw"],cid:["7922951197868890218", "10122281579848491266"],geo:[[-8.150292,110.612119],[-8.155447,110.621758]],
  g:4.6,gc:6837,
  s:{view:8,culture:2,unique:5,value:8,quiet:5},
  intro:"Gunungkidul 东段的石灰岩小湾，白沙、清水、礁石夹峙。比 Parangtritis 干净漂亮得多，有海边餐厅，是南线上真正能坐下来待着的地方。",
@@ -595,7 +603,7 @@ const SPOTS=[
 {
  n:"Bukit Panguk Kediwung 云海日出",ln:"Bukit Panguk Kediwung",c:"南线（海岸与洞穴）",t:"自然",tags:[],
  img:1,
- geo:[-7.958369,110.440762],
+ gq:"Bukit Panguk Kediwung",pid:"ChIJI9CVSbKsey4RonSXXmzCrpU",cid:"10785771928298157218",geo:[-7.958369,110.440762],
  g:4.5,gc:3619,
  s:{view:8,culture:1,unique:7,value:10,quiet:6},
  intro:"Mangunan 一带山脊上的观景台，海拔 1219 米。雾气足的清晨，Oyo 河谷会被云填满，太阳从云面上升起。",
@@ -613,7 +621,7 @@ const SPOTS=[
 {
  n:"Nglanggeran 古火山",ln:"Gunung Api Purba Nglanggeran",c:"南线（海岸与洞穴）",t:"自然",tags:[],
  img:1,
- geo:[-7.842715,110.537828],pid:"ChIJbR06RuFPei4R_D2pLFi9moU",
+ gq:"Ancient Volcano Nglanggeran",pid:"ChIJm6tFyUZOei4RYa-6txQe1Uo",cid:"5392249203176681313",geo:[-7.842956,110.537942],
  g:4.8,gc:164,
  s:{view:7,culture:5,unique:7,value:8,quiet:7},
  intro:"六千万年前的死火山残骸，现在是一片巨岩迷宫，攀爬约一小时到顶。山下有巧克力村和梯田，被联合国世界旅游组织列过最佳旅游乡村。",
@@ -631,7 +639,7 @@ const SPOTS=[
 {
  n:"Kalibiru 树屋观景台",ln:"Kalibiru",c:"南线（海岸与洞穴）",t:"打卡",tags:[],
  img:1,
- geo:[-7.807422,110.129268],pid:"ChIJkQsehvfvei4RfiL0087kBFY",
+ gq:"Wisata Kalibiru",pid:"ChIJkQsehvfvei4RfiL0087kBFY",cid:"6198330564139033214",geo:[-7.807422,110.129268],
  g:null,gc:null,
  s:{view:6,culture:1,unique:4,value:6,quiet:4},
  intro:"水库上方山林里的树屋平台，早年靠一张「站在树上的悬崖照」火遍社群网络。现在多个平台分别收费，排队拍照。",
@@ -648,7 +656,7 @@ const SPOTS=[
 {
  n:"HeHa Sky View",ln:"HeHa Sky View",c:"南线（海岸与洞穴）",t:"打卡",tags:[],
  img:1,
- geo:[-7.849630,110.477938],
+ gq:"HeHa Sky View",pid:"ChIJbSTzgC1Rei4RVW8bz4CicfY",cid:"17758153479812771669",geo:[-7.849630,110.477938],
  g:4.5,gc:36103,
  s:{view:6,culture:1,unique:3,value:6,quiet:2},
  intro:"Gunungkidul 山口上的观景餐厅综合体，玻璃平台、拍照位、夜景。设施是全清单里最新最齐的 —— 干净厕所、大停车场、祈祷室、雨具租借，但内容就是「在高处吃饭看灯」。",

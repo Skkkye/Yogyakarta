@@ -242,11 +242,14 @@ dl.fields > div{display:grid;gap:2px;min-width:0}
 dd{margin:0;font-size:13.5px;color:var(--ink);overflow-wrap:anywhere}
 dd .geo{font-family:var(--mono);font-size:12px;color:var(--ink-3)}   /* 留档坐标，只作参考 */
 
-/* 提示块：默认＝决策（该怎么选）；.soga＝什么人会觉得踩雷 */
+/* 提示块：默认＝决策（该怎么选）；.buzz＝口碑：赞与吐槽；.soga＝什么人会觉得踩雷 */
 .callout{background:var(--indigo-soft);border-radius:var(--radius);padding:11px 13px;font-size:13.5px;color:var(--ink);line-height:1.65}
 .callout .h{display:block;font-weight:700;font-size:12.5px;letter-spacing:.02em;margin-bottom:3px;color:var(--indigo)}
 .callout.soga{background:var(--soga-soft)}
 .callout.soga .h{color:var(--soga)}
+.callout.buzz ul{margin:0;padding-left:1.2em}
+.callout.buzz li+li{margin-top:5px}
+.callout.buzz ul ul{margin-top:3px;list-style:circle}
 
 .linkrow{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:12.5px;align-items:center}
 

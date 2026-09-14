@@ -40,19 +40,22 @@ const rich=s=>esc(s).replace(/\{(\d+)\}/g,(_,n)=>moneyHTML(+n))
    securitypolicyviolation，届时换成「在地图中打开」按钮；GitHub Pages / 本地文件没有这层 CSP
    定位要落在景点的介绍卡（名称 / 评分 / 评论），不是光秃秃的坐标针：
    · 链接：query 用谷歌 POI 名 gq，再带 query_place_id=pid 钉死那一条
-   · 嵌入图：按 gq 搜索（嵌入图认不了 place_id；按坐标搜只会出一根针，没有介绍卡）
+   · 嵌入图：用 cid 钉死那一条（嵌入图认不了 place_id；按名字搜遇到同名 POI 会出列表、没有卡；按坐标搜只出一根针）
+     没有 cid 才按 gq 搜索
    · geo 只作留档，显示在「位置与车程」里，不参与定位
    都没填就退回「ln + Yogyakarta」泛搜索。
-   两处的景点 gq/pid/geo 写成数组，顺序对应 ln 里用「 & 」或「 / 」隔开的名字；嵌入图只放第一处，按钮每处一个 */
+   两处的景点 gq/pid/cid/geo 写成数组，顺序对应 ln 里用「 & 」或「 / 」隔开的名字；嵌入图只放第一处，按钮每处一个
+   cid 必须写成字符串：多数超过 JS 能精确表示的整数范围 */
 const placesOf=d=>{
-  const multi=Array.isArray(d.pid)||Array.isArray(d.gq)||(Array.isArray(d.geo)&&Array.isArray(d.geo[0]));
+  const multi=[d.pid,d.gq,d.cid].some(Array.isArray)||(Array.isArray(d.geo)&&Array.isArray(d.geo[0]));
   const list=v=>v==null?[]:multi?v:[v];
-  const geos=list(d.geo), pids=list(d.pid), gqs=list(d.gq), names=multi?d.ln.split(/\s+[&/]\s+/):[d.ln];
-  return Array.from({length:Math.max(1,geos.length,pids.length,gqs.length)},(_,i)=>({name:names[i]||d.ln,geo:geos[i],pid:pids[i],gq:gqs[i]}));
+  const geos=list(d.geo), pids=list(d.pid), gqs=list(d.gq), cids=list(d.cid), names=multi?d.ln.split(/\s+[&/]\s+/):[d.ln];
+  return Array.from({length:Math.max(1,geos.length,pids.length,gqs.length,cids.length)},
+    (_,i)=>({name:names[i]||d.ln,geo:geos[i],pid:pids[i],gq:gqs[i],cid:cids[i]}));
 };
 const mapQuery=p=>p.gq||p.name+" Yogyakarta";
 const mapUrl=p=>"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(mapQuery(p))+(p.pid?"&query_place_id="+p.pid:"");
-const mapEmbed=p=>"https://maps.google.com/maps?q="+encodeURIComponent(mapQuery(p))+"&z=14&output=embed";
+const mapEmbed=p=>"https://maps.google.com/maps?"+(p.cid?"cid="+p.cid:"q="+encodeURIComponent(mapQuery(p)))+"&z=14&output=embed";
 const geoText=d=>{
   const ps=placesOf(d).filter(p=>p.geo);
   return ps.map(p=>(ps.length>1?esc(p.name)+" ":"")+p.geo.map(v=>v.toFixed(6)).join(", ")).join(" ｜ ");
@@ -124,6 +127,12 @@ const UI={
     return `<div class="media${n<2?" single":""}"><div class="shots">${shots}</div><div class="mapwrap">${frame}${btn}</div></div>`;
   },
 
+  /* 口碑块：good 一段文字，bad 是 [小标题, 文字] 数组 */
+  buzz:b=>`<div class="callout buzz"><b class="h">口碑：赞与吐槽</b><ul>
+      <li><b>赞：</b>${rich(b.good)}</li>
+      <li><b>吐槽：</b><ul>${b.bad.map(([k,v])=>`<li><b>${esc(k)}：</b>${rich(v)}</li>`).join("")}</ul></li>
+    </ul></div>`,
+
   detail:d=>{
     const bars=SCORE_KEYS.map(([k,l])=>`<div class="bar"><div class="lbl"><span>${l}</span><b>${d.s[k]}</b></div><div class="track"><div class="fill" style="width:${d.s[k]*10}%"></div></div></div>`).join("");
     const fields=[
@@ -145,6 +154,7 @@ const UI={
       <div class="bars">${bars}</div>
       <dl class="fields">${fields}</dl>
       ${d.pick?`<div class="callout"><b class="h">${esc(d.pick.h)}</b>${rich(d.pick.t)}</div>`:""}
+      ${d.buzz?UI.buzz(d.buzz):""}
       <div class="callout soga"><b class="h">什么人会觉得踩雷</b>${rich(d.avoid)}</div>
       <div class="linkrow"><span class="label">来源</span>${d.srcs.map(([t,u])=>`<a href="${esc(u)}" target="_blank" rel="noopener">${esc(t)}</a>`).join("")}</div>`;
   }
