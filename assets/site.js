@@ -37,15 +37,32 @@ const rich=s=>esc(s).replace(/\{(\d+)\}/g,(_,n)=>moneyHTML(+n))
 
 /* ---------- 地图 ----------
    先放 iframe。Artifact 沙箱的 CSP 会拦第三方 frame，拦到时浏览器抛
-   securitypolicyviolation，届时换成「在地图中打开」按钮；GitHub Pages / 本地文件没有这层 CSP */
-const mapUrl=d=>"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(d.ln+" Yogyakarta");
-const mapEmbed=d=>"https://maps.google.com/maps?q="+encodeURIComponent(d.ln+" Yogyakarta")+"&z=12&output=embed";
+   securitypolicyviolation，届时换成「在地图中打开」按钮；GitHub Pages / 本地文件没有这层 CSP
+   定位要落在景点的介绍卡（名称 / 评分 / 评论），不是光秃秃的坐标针：
+   · 链接：query 用谷歌 POI 名 gq，再带 query_place_id=pid 钉死那一条
+   · 嵌入图：按 gq 搜索（嵌入图认不了 place_id；按坐标搜只会出一根针，没有介绍卡）
+   · geo 只作留档，显示在「位置与车程」里，不参与定位
+   都没填就退回「ln + Yogyakarta」泛搜索。
+   两处的景点 gq/pid/geo 写成数组，顺序对应 ln 里用「 & 」或「 / 」隔开的名字；嵌入图只放第一处，按钮每处一个 */
+const placesOf=d=>{
+  const multi=Array.isArray(d.pid)||Array.isArray(d.gq)||(Array.isArray(d.geo)&&Array.isArray(d.geo[0]));
+  const list=v=>v==null?[]:multi?v:[v];
+  const geos=list(d.geo), pids=list(d.pid), gqs=list(d.gq), names=multi?d.ln.split(/\s+[&/]\s+/):[d.ln];
+  return Array.from({length:Math.max(1,geos.length,pids.length,gqs.length)},(_,i)=>({name:names[i]||d.ln,geo:geos[i],pid:pids[i],gq:gqs[i]}));
+};
+const mapQuery=p=>p.gq||p.name+" Yogyakarta";
+const mapUrl=p=>"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(mapQuery(p))+(p.pid?"&query_place_id="+p.pid:"");
+const mapEmbed=p=>"https://maps.google.com/maps?q="+encodeURIComponent(mapQuery(p))+"&z=14&output=embed";
+const geoText=d=>{
+  const ps=placesOf(d).filter(p=>p.geo);
+  return ps.map(p=>(ps.length>1?esc(p.name)+" ":"")+p.geo.map(v=>v.toFixed(6)).join(", ")).join(" ｜ ");
+};
 let mapBlocked=false;
 function fallbackMaps(){
   mapBlocked=true;
   document.querySelectorAll(".mapwrap").forEach(w=>{
     const f=w.querySelector(".mapframe"); if(f) f.remove();
-    const b=w.querySelector(".mapbtn"); if(b) b.hidden=false;
+    w.querySelectorAll(".mapbtn").forEach(b=>{b.hidden=false;});
   });
 }
 document.addEventListener("securitypolicyviolation",e=>{
@@ -98,11 +115,12 @@ const UI={
     const shots=n
       ? Array.from({length:n},(_,i)=>`<figure class="shot"><img src="${photoSrc(d,i+1)}" alt="${esc(d.n)} 实景 ${i+1}" decoding="async"></figure>`).join("")
       : '<div class="shot nophoto">两个图库都没有这处的开放授权照片</div>';
-    const btn=`<a class="mapbtn" href="${mapUrl(d)}" target="_blank" rel="noopener"${mapBlocked?"":" hidden"}>
+    const places=placesOf(d), multi=places.length>1;
+    const btn=places.map(p=>`<a class="mapbtn" href="${mapUrl(p)}" target="_blank" rel="noopener"${mapBlocked?"":" hidden"}>
         <span class="mapbtn-i" aria-hidden="true">◎</span>
-        <span><b>在地图中打开</b><small>${esc(d.dist)} · 单程约 ${d.drive} 分钟</small></span>
-      </a>`;
-    const frame=mapBlocked?"":`<iframe class="mapframe" src="${mapEmbed(d)}" title="${esc(d.n)} 位置" referrerpolicy="no-referrer-when-downgrade"></iframe>`;
+        <span><b>在地图中打开${multi?" · "+esc(p.name):""}</b><small>${esc(d.dist)} · 单程约 ${d.drive} 分钟</small></span>
+      </a>`).join("");
+    const frame=mapBlocked?"":`<iframe class="mapframe" src="${mapEmbed(places[0])}" title="${esc(d.n)} 位置" referrerpolicy="no-referrer-when-downgrade"></iframe>`;
     return `<div class="media${n<2?" single":""}"><div class="shots">${shots}</div><div class="mapwrap">${frame}${btn}</div></div>`;
   },
 
@@ -114,7 +132,7 @@ const UI={
       ["开放时间",esc(d.hours)],
       ["建议停留",esc(d.dur)],
       ["最佳时段",esc(d.best)],
-      ["位置与车程",`${esc(d.dist)} · 单程约 ${d.drive} 分钟`],
+      ["位置与车程",`${esc(d.dist)} · 单程约 ${d.drive} 分钟`+(geoText(d)?`<br><small class="geo">坐标 ${geoText(d)}</small>`:"")],
       ["交通方式",d.trans.map(rich).join("<br>")],
       ["体力强度",esc(d.phys)],
       ["天气敏感度",rich(d.weather)],
