@@ -1,0 +1,359 @@
+/* =============================================================
+   site.css —— 全站唯一的样式表（index / spot / plan 共用）
+
+   规矩（改之前先看）：
+   1. 颜色、圆角、字体只在 §1 的 :root 里定义；其他地方一律 var()，不写色值。
+   2. 页面里不写 <style>，也不写 style=""。缺样式就在这里加 class。
+      唯一例外：评分条的宽度由数据决定，由 site.js 写 style="width:…"。
+   3. §3 是跨页组件。新页面先用现有组件拼，拼不出来再加，加在 §3 并注明用途。
+   4. §4 只放某一页独有的布局，按页分段；第二个页面也要用时，挪到 §3。
+   5. 变体名 = token 名：.pill.good 用 --good，.callout.soga 用 --soga。
+   6. 只做暗色，不跟随系统、没有主题切换。color-scheme:dark 必须留 ——
+      少了它 <select> 和数字输入框会用系统亮色控件。
+   ============================================================= */
+
+/* ---------- §1 tokens ---------- */
+:root{
+  /* 视觉方向：Binance DESIGN.md（awesome-design-md，MIT）。
+     取的是配色与形状口径，不是品牌 —— 页面没有任何 Binance 标识。 */
+  color-scheme:dark;
+  --ground:#0B0E11; --surface:#1E2329; --surface-2:#2B3139;
+  --line:#2B3139; --line-soft:#2B3139;
+  --ink:#EAECEF; --ink-2:#929AA5; --ink-3:#707A8A;
+  --indigo:#EAECEF; --indigo-soft:#2B3139;
+  --soga:#2DBDB6; --soga-soft:#12292A;
+  --good:#0ECB81; --good-soft:#12261F;
+  --warn:#F0B90B; --warn-soft:#2B2410;
+  --risk:#F6465D; --risk-soft:#2B1A1E;
+  /* Binance Yellow：CTA 色，填充用、字压黑。只准出现在：
+     必去（卡片左条与角标）、选中的筛选 chip、推荐方案、订票步骤序号 */
+  --pick:#181A20; --pick-soft:#FCD535;
+  --lift:0 1px 2px rgba(0,0,0,.5);
+  --surf-low:#1E2329; --surf:#2B3139; --surf-high:#333A44;
+  /* state layer：rgba(var(--ink-rgb), .05 hover / .06 / .09 active / .10) */
+  --ink-rgb:234,236,239;
+  --alert-bg:#2B3139;
+  /* 行程图按天分色：红留给风险，不进这一组 */
+  --d1:#2DBDB6; --d2:#F0B90B; --d3:#0ECB81; --d4:#707A8A;
+  /* 圆角上限 12px（Binance 口径），卡片与面板一律 --radius */
+  --radius:8px; --r-sm:6px; --r-xs:4px;
+  --mono:"IBM Plex Mono","SFMono-Regular",Menlo,Consolas,monospace;
+  --sans:"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+  /* Binance 体系没有衬线角色：--serif 指向无衬线，标题靠 700 重量与 -.02em 字距 */
+  --serif:var(--sans);
+}
+
+/* ---------- §2 base ---------- */
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
+img{max-width:100%}
+[hidden]{display:none!important}
+p{margin:0}
+a{color:var(--indigo);text-decoration:underline;text-underline-offset:2px;text-decoration-color:rgba(var(--ink-rgb),.4)}
+a:hover{text-decoration-color:currentColor}
+:focus-visible{outline:2px solid var(--indigo);outline-offset:2px;border-radius:var(--r-xs)}
+h1,h2,h3{font-family:var(--serif);font-weight:700;margin:0;text-wrap:balance}
+h1{font-size:clamp(28px,5vw,40px);line-height:1.15;letter-spacing:-.02em}
+h2{font-size:clamp(19px,4.4vw,23px);line-height:1.3}
+h3{font-size:16px;font-weight:600;line-height:1.4}
+code{font-family:var(--mono);font-size:.9em}
+/* 数字一律等宽 + 定宽数字，金额才能成列对齐 */
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.wrap{max-width:980px;margin:0 auto;padding-inline:16px;padding-block:0 56px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* ---------- §3 组件 ---------- */
+
+/* 站内导航 —— 内容由 site.js 的 PARTS.nav 生成；min-height 预留高度，免得渲染时跳动 */
+.topnav{display:flex;flex-wrap:wrap;align-items:center;gap:4px 18px;min-height:58px;padding-block:12px;margin-bottom:14px}
+.topnav .brand{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-right:auto}
+.topnav a{font-size:13.5px;font-weight:500;color:var(--ink-2);text-decoration:none;padding-block:4px;border-bottom:2px solid transparent}
+.topnav a:hover{color:var(--ink)}
+.topnav a[aria-current]{color:var(--ink);border-bottom-color:var(--ink)}
+
+/* 页首：eyebrow + h1 + lede + facts，三个页面同一套 */
+.pagehead{display:flex;flex-direction:column;gap:10px;padding-bottom:22px;margin-bottom:22px;border-bottom:1px solid var(--line)}
+.eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.eyebrow a{color:inherit}
+.lede{color:var(--ink-2);max-width:62ch}
+.facts{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:4px 0 0;padding:0}
+.facts li{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:12px;color:var(--ink-2);
+  background:var(--surf);border:1px solid var(--line-soft);border-radius:var(--r-sm);padding:3px 9px}
+
+/* 段落：eyebrow + h2 */
+.section{margin-top:38px}
+.sechead{display:flex;flex-direction:column;gap:4px;margin-bottom:14px}
+
+/* 小标签：筛选行标题、字段名、来源行 */
+.label,dt{font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3)}
+
+/* 面板：所有「一块东西」的底 —— 卡片、方案、订票步骤、表格外框 */
+.panel{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--radius)}
+
+/* pill：默认等宽（多数装的是数字）；.txt 放文字；.tag 是必去／独特体验／推荐这类角标 */
+.pill{font-family:var(--mono);font-size:11.5px;line-height:1.5;padding:2px 7px;border-radius:var(--r-sm);
+  background:rgba(var(--ink-rgb),.06);color:var(--ink-2);white-space:nowrap}
+.pill.txt{font-family:var(--sans);font-size:12px}
+.pill.tag{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.02em}
+.pill.ink{background:var(--indigo-soft);color:var(--indigo)}
+.pill.good{background:var(--good-soft);color:var(--good)}
+.pill.warn{background:var(--warn-soft);color:var(--warn)}
+.pill.risk{background:var(--risk-soft);color:var(--risk)}
+.pill.soga{background:var(--soga-soft);color:var(--soga)}
+.pill.pick{background:var(--pick-soft);color:var(--pick)}
+.pill .sgd{color:inherit}
+
+/* 来源角标：绿＝官方，灰＝二手 */
+.srcmark{font-family:var(--mono);font-size:10.5px;padding:1px 5px;border-radius:var(--r-xs);margin-left:5px;vertical-align:1px;white-space:nowrap}
+.srcmark.off{background:var(--good-soft);color:var(--good)}
+.srcmark.sec{background:var(--surface-2);color:var(--ink-3);border:1px solid var(--line-soft)}
+
+/* 金额：由 site.js 的 moneyHTML 生成，改汇率时只刷新 .sgd */
+.money{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.sgd{color:var(--ink-3)}
+
+/* 警示条：灰底 + 左侧色条分级。<div> 直接展开；<details> 可折叠，summary 里带 .tag */
+.alerts{display:grid;gap:10px}
+.alert{background:var(--alert-bg);border:1px solid var(--line-soft);border-left:3px solid var(--ink-3);border-radius:var(--radius);padding:13px 15px}
+.alert.risk{border-left-color:var(--risk)}
+.alert.warn{border-left-color:var(--warn)}
+.alert.note{border-left-color:var(--indigo)}
+.alert h3{font-family:var(--sans);font-size:14px;font-weight:700;line-height:1.5}
+.alert p{font-size:13.5px;color:var(--ink-2)}
+.alert h3 + p{margin-top:4px}
+.alert a{color:inherit}
+.alert .num{color:var(--ink);font-weight:500}
+.alert .tag{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);padding-top:3px;white-space:nowrap}
+.alert.risk .tag{color:var(--risk)}
+.alert.warn .tag{color:var(--warn)}
+.alert.note .tag{color:var(--indigo)}
+details.alert > summary{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:start;cursor:pointer;list-style:none}
+details.alert > summary::-webkit-details-marker{display:none}
+details.alert > summary::after{content:"▾";color:var(--ink-3);font-size:12px;transition:transform .18s;padding-top:2px}
+details.alert[open] > summary::after{transform:rotate(180deg)}
+details.alert > p{margin-top:8px;padding-left:calc(2.6em + 12px)}
+@media (max-width:520px){ details.alert > p{padding-left:0} }
+
+/* chip：未选中＝描边透明底；选中＝黄底 + 前置对勾（双通道，不只靠颜色）。
+   对勾是常驻 DOM 的 .ck（site.js 的 CHECK），手写的静态 chip 要自己带上 */
+.chip{font:inherit;font-size:13px;cursor:pointer;background:transparent;color:var(--ink-2);border:1px solid var(--line);border-radius:var(--r-sm);
+  padding:6px 12px;display:inline-flex;align-items:center;gap:6px;transition:background .12s,color .12s,border-color .12s}
+.chip:hover{background:rgba(var(--ink-rgb),.06);color:var(--ink)}
+.chip:active{background:rgba(var(--ink-rgb),.10)}
+.chip[aria-pressed="true"]{background:var(--pick-soft);border-color:transparent;color:var(--pick);font-weight:600;padding-left:8px}
+.chip .ck{width:15px;height:15px;flex:none;display:none}
+.chip[aria-pressed="true"] .ck{display:block}
+.rowline{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.rowline.tight{gap:6px}
+
+/* 表单控件 */
+select,input[type="search"],input[type="number"]{font:inherit;font-size:13px;background:var(--surface);color:var(--ink);
+  border:1px solid var(--line);border-radius:var(--r-sm);padding:6px 10px}
+input[type="number"]{width:84px;font-family:var(--mono)}
+
+/* 景点卡片（UI.card）：清单页的列表、详情页的「同线路」都用它。
+   一律同一个底，必去只多一根黄色左条，其余标记交给角标 */
+.list{display:flex;flex-direction:column;gap:10px;list-style:none;padding:0;margin:0}
+.card{box-shadow:var(--lift);overflow:hidden}
+.card.must{border-left:3px solid var(--pick-soft)}
+.card .head{display:grid;grid-template-columns:auto 1fr auto;gap:10px 14px;align-items:center;padding:12px 14px;color:inherit;text-decoration:none}
+.card .head:hover{background:rgba(var(--ink-rgb),.05)}
+.card .head:active{background:rgba(var(--ink-rgb),.09)}
+/* 卡片 overflow:hidden，外扩的焦点框会被裁掉，改成内收 */
+.card .head:focus-visible{outline-offset:-2px}
+.thumb{width:74px;height:74px;border-radius:var(--radius);object-fit:cover;display:block;background:var(--surface-2);flex:none}
+.thumb.noimg{display:flex;align-items:center;justify-content:center;color:var(--ink-3);font-family:var(--mono);font-size:18px}
+.headmain{min-width:0}
+.titleline{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px}
+.card .name{font-size:17.5px;font-weight:600;letter-spacing:.01em;line-height:1.35}
+.local{font-family:var(--mono);font-size:11.5px;color:var(--ink-3)}
+.metaline{display:flex;flex-wrap:wrap;gap:6px}
+.card .metaline{margin-top:7px}
+
+/* 评分块（UI.score）：谷歌评分 + 我的总分 */
+.score{display:flex;align-items:center;gap:14px}
+.score .g{text-align:right;line-height:1.25}
+.score .gr{font-family:var(--mono);font-size:15px;font-weight:500;font-variant-numeric:tabular-nums;color:var(--ink)}
+.score .gc{display:block;font-family:var(--mono);font-size:10.5px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.score .none{font-family:var(--mono);font-size:10.5px;color:var(--ink-3)}
+.score .tot{display:flex;align-items:baseline;gap:5px}
+.score .n{font-family:var(--mono);font-size:26px;font-weight:500;line-height:1;font-variant-numeric:tabular-nums}
+.score .d{font-family:var(--mono);font-size:11px;color:var(--ink-3)}
+
+@media (max-width:560px){
+  .card .head{grid-template-columns:64px 1fr;gap:8px 10px;align-items:start}
+  .card .thumb{width:64px;height:64px}
+  .card .metaline{gap:5px;margin-top:6px}
+  .card .pill{font-size:11px;padding:2px 6px}
+  .card .name{font-size:16px}
+  .card .score{grid-column:2;justify-content:flex-start;gap:12px}
+  .score .g{text-align:left}
+  .score .n{font-size:22px}
+}
+
+/* 景点详情（UI.detail） */
+.detail{display:flex;flex-direction:column;gap:22px}
+
+/* 照片 + 地图 */
+.media{display:grid;gap:10px}
+.shots{display:grid;gap:10px}
+.shot{margin:0;border-radius:var(--radius);overflow:hidden;background:var(--surface-2);aspect-ratio:4/3}
+.shot img{width:100%;height:100%;object-fit:cover;display:block}
+.nophoto{display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;font-size:12.5px;color:var(--ink-3);line-height:1.5}
+.mapwrap{display:flex;flex-direction:column}
+.mapframe{width:100%;aspect-ratio:16/9;border:1px solid var(--line-soft);border-radius:var(--radius);display:block;background:var(--surface-2)}
+.mapbtn{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink);
+  background:var(--surface-2);border:1px solid var(--line);border-radius:var(--radius);padding:11px 14px}
+.mapbtn:hover{border-color:var(--indigo)}
+.mapbtn-i{font-size:19px;color:var(--indigo);line-height:1}
+.mapbtn b{display:block;font-size:14px;font-weight:700}
+.mapbtn small{display:block;font-size:12px;color:var(--ink-3);margin-top:1px}
+@media (min-width:640px){
+  /* 宽屏：照片和地图排进同一张两列网格。.shots 用 display:contents 把照片直接交给 .media */
+  .media{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .shots{display:contents}
+  /* 一张照片（或无图）：地图占右半格，高度跟照片走 */
+  .media.single .mapframe{aspect-ratio:auto;height:100%;min-height:240px}
+  /* 两张照片：地图另起一整行 */
+  .media:not(.single) .mapwrap{grid-column:1/-1}
+  .media:not(.single) .mapframe{aspect-ratio:21/9}
+}
+@media (max-width:639px){
+  /* 手机：照片横向滑动。用 grid 横滚、不用 flex：flex 行的交叉轴尺寸和 aspect-ratio
+     互相依赖，容器高度会解析成 0。高度写死、不靠 aspect-ratio 往上推（踩过两次） */
+  .shots{grid-auto-flow:column;grid-auto-columns:88%;overflow-x:auto;scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;gap:8px;padding-bottom:2px;height:calc((100vw - 32px) * 0.88 * 0.667 + 2px)}
+  .media.single .shots{grid-auto-columns:100%;height:calc((100vw - 32px) * 0.667 + 2px)}
+  .shots .shot{scroll-snap-align:start;aspect-ratio:auto;height:100%}
+}
+
+/* 五维评分条 */
+.bars{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:9px}
+.bar{display:grid;gap:4px}
+.bar .lbl{display:flex;gap:6px;font-size:11.5px;color:var(--ink-3)}
+.bar .lbl b{font-family:var(--mono);font-weight:500;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.track{height:4px;background:var(--line-soft);border-radius:var(--r-xs);overflow:hidden}
+.fill{height:100%;background:var(--indigo);border-radius:var(--r-xs)}
+
+/* 核准字段 */
+dl.fields{margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:13px 22px}
+dl.fields > div{display:grid;gap:2px;min-width:0}
+dd{margin:0;font-size:13.5px;color:var(--ink);overflow-wrap:anywhere}
+
+/* 提示块：默认＝决策（该怎么选）；.soga＝什么人会觉得踩雷 */
+.callout{background:var(--indigo-soft);border-radius:var(--radius);padding:11px 13px;font-size:13.5px;color:var(--ink);line-height:1.65}
+.callout .h{display:block;font-weight:700;font-size:12.5px;letter-spacing:.02em;margin-bottom:3px;color:var(--indigo)}
+.callout.soga{background:var(--soga-soft)}
+.callout.soga .h{color:var(--soga)}
+
+.linkrow{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:12.5px;align-items:center}
+
+/* 页脚 */
+.pagefoot{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-3);display:grid;gap:10px}
+.pagefoot b{color:var(--ink-2)}
+.empty{padding:40px 0;text-align:center;color:var(--ink-3);font-size:14px}
+
+/* ---------- §4 页面布局 ---------- */
+
+/* §4.1 清单页 index.html */
+.controls{position:sticky;top:0;z-index:20;background:var(--ground);padding-block:10px;margin-top:20px;margin-bottom:4px;border-bottom:1px solid var(--line-soft)}
+.ctrlbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ctrlbar input[type="search"]{min-width:130px;flex:1 1 150px;max-width:250px}
+.ctrlpanel{display:grid;gap:9px;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)}
+.toggler{font-weight:500}
+.toggler[aria-expanded="true"]{border-color:var(--indigo);color:var(--indigo)}
+.toggler .badge{font-family:var(--mono);font-size:11px;margin-left:5px;opacity:.85}
+.count{font-family:var(--mono);font-size:12px;color:var(--ink-3);margin-left:auto;white-space:nowrap}
+
+/* §4.2 详情页 spot.html */
+.spottitle{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:10px 24px}
+.spottitle .local{font-size:12.5px}
+
+/* §4.3 行程方案页 plan.html */
+.plan{padding:18px;display:flex;flex-direction:column;gap:16px;margin-top:14px}
+.plan.rec{border-color:var(--pick-soft);box-shadow:var(--lift)}
+.planhead{display:flex;flex-direction:column;gap:6px}
+.tagrow{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.claim{color:var(--ink-2);font-size:14px;max-width:60ch}
+
+/* 行程示意图 */
+.mapfig{margin:0;display:flex;flex-direction:column;gap:10px}
+.mapscroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.map{display:block;width:100%;max-width:100%;height:auto;background:var(--ground);border:1px solid var(--line);border-radius:var(--radius);padding:6px}
+.map .edge{fill:none;stroke-width:2.5;stroke-linecap:round}
+.map .dash{stroke-dasharray:7 6}
+.map .e1{stroke:var(--d1)}.map .e2{stroke:var(--d2)}.map .e3{stroke:var(--d3)}.map .e4{stroke:var(--d4)}
+.map .node{fill:var(--ground);stroke-width:2.5}
+.map .n1{stroke:var(--d1)}.map .n2{stroke:var(--d2)}.map .n3{stroke:var(--d3)}.map .nx{stroke:var(--ink-3)}
+.map .num{font-family:var(--mono);font-size:12px;font-weight:500;text-anchor:middle}
+.map .num1{fill:var(--d1)}.map .num2{fill:var(--d2)}.map .num3{fill:var(--d3)}
+.map .hubdot{fill:var(--ink)}
+.map .skipdot{fill:var(--surf-high)}
+.map .lbl{font-family:var(--sans);font-size:13px;font-weight:500;fill:var(--ink)}
+.map .sub{font-family:var(--mono);font-size:11px;fill:var(--ink-3)}
+.map .skiplbl{font-family:var(--sans);font-size:11.5px;fill:var(--ink-3)}
+.rbtns{display:flex;flex-wrap:wrap;gap:6px}
+.rbtn{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:500;text-decoration:none;
+  padding:5px 11px;border-radius:var(--r-sm);border:1px solid var(--line);background:var(--surface);color:var(--ink-2)}
+.rbtn:hover{background:var(--surf-high);border-color:var(--ink-3)}
+.rbtn .dot{width:8px;height:8px;border-radius:50%;flex:0 0 auto}
+.r1 .dot{background:var(--d1)}.r2 .dot{background:var(--d2)}.r3 .dot{background:var(--d3)}.r4 .dot{background:var(--d4)}
+.mapfig figcaption{font-size:12.5px;color:var(--ink-3);line-height:1.6}
+
+/* 时刻表 */
+.day{display:flex;flex-direction:column;gap:2px}
+.daylabel{display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;margin-bottom:6px}
+.daylabel .d{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:12.5px;font-weight:500;
+  color:var(--ink);background:var(--surf-high);border-radius:var(--r-sm);padding:2px 8px}
+.daylabel .note{font-size:12.5px;color:var(--ink-3)}
+.tl{display:grid;grid-template-columns:86px 1fr;gap:0 12px}
+.tl > .t{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:12.5px;color:var(--ink-3);
+  padding:7px 0;border-top:1px solid var(--line-soft);white-space:nowrap}
+.tl > .e{padding:7px 0;border-top:1px solid var(--line-soft);font-size:14px}
+.tl > .t:first-of-type,.tl > .e:first-of-type{border-top:0}
+.tl .sub{display:block;font-size:12.5px;color:var(--ink-2);line-height:1.55;margin-top:2px}
+.tl em{font-style:normal;color:var(--risk);font-weight:500}
+
+/* 取舍 */
+.ledger{display:grid;gap:10px;grid-template-columns:1fr 1fr}
+.col{background:var(--surf-low);border-radius:var(--r-sm);padding:11px 13px}
+.plan.rec .col{background:rgba(var(--ink-rgb),.05)}
+.col h3{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin-bottom:5px}
+.col ul{margin:0;padding-left:16px;font-size:13.5px;line-height:1.62}
+.col.get h3{color:var(--good)}
+.col.cut li{color:var(--ink-2)}
+.cost{font-size:13.5px;color:var(--ink-2);line-height:1.6}
+.cost b{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:500;color:var(--ink)}
+.scroll + .cost{margin-top:10px}
+.verdict{border-left:3px solid var(--line);padding:2px 0 2px 13px;font-size:13.5px;color:var(--ink-2)}
+.plan.rec .verdict{border-left-color:var(--pick-soft)}
+
+/* 对照表 */
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:13.5px}
+th,td{text-align:left;padding:10px 13px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+thead th{background:var(--surf-high);font-size:12px;font-weight:700;white-space:nowrap;position:sticky;top:0}
+tbody th{font-weight:500;color:var(--ink-2);white-space:nowrap}
+tbody tr:last-child th,tbody tr:last-child td{border-bottom:0}
+td.n{font-family:var(--mono);font-variant-numeric:tabular-nums}
+th.rec{color:var(--pick-soft)}
+
+/* 订票清单 */
+.steps{display:flex;flex-direction:column;gap:10px;counter-reset:s}
+.step{padding:13px 15px;display:grid;grid-template-columns:26px 1fr;gap:0 12px;align-items:start}
+.step::before{counter-increment:s;content:counter(s);font-family:var(--mono);font-size:12px;font-weight:500;
+  color:var(--pick);background:var(--pick-soft);border-radius:50%;width:24px;height:24px;display:grid;place-items:center;margin-top:1px}
+.step h3{font-family:var(--sans);font-size:14px;font-weight:700}
+.step p{font-size:13.5px;color:var(--ink-2);margin-top:3px}
+.step .leadin{font-weight:500;color:var(--ink);margin-top:6px}
+.step .q{margin:6px 0 0;padding-left:16px;font-size:13px;color:var(--ink-2);line-height:1.6}
+
+@media (max-width:600px){
+  .tl{grid-template-columns:74px 1fr;gap:0 10px}
+  .tl > .t{font-size:12px}
+  .ledger{grid-template-columns:1fr}
+  .plan{padding:15px}
+  .map{min-width:520px}
+  .map .lbl{font-size:15px}.map .sub{font-size:13px}.map .skiplbl{font-size:13px}.map .num{font-size:14px}
+}

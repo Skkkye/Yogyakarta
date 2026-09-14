@@ -1,158 +1,22 @@
 <!doctype html>
 <html lang="zh-CN"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>日惹行程三方案</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700&family=Noto+Sans+SC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<style>
-:root{
-  /* 与「日惹景点核准清单」同一套：Binance DESIGN.md（awesome-design-md，MIT），
-     只做暗色，不跟随系统、不设主题切换。改色只改这里。
-     color-scheme:dark 必须留 —— 少了它原生控件会是亮色。 */
-  color-scheme:dark;
-  --ground:#0B0E11; --surface:#1E2329; --surface-2:#2B3139;
-  --line:#2B3139; --line-soft:#2B3139;
-  --ink:#EAECEF; --ink-2:#929AA5; --ink-3:#707A8A;
-  --indigo:#EAECEF; --indigo-soft:#2B3139;
-  --soga:#2DBDB6; --soga-soft:#12292A;
-  --good:#0ECB81; --good-soft:#12261F;
-  --warn:#F0B90B; --warn-soft:#2B2410;
-  --risk:#F6465D; --risk-soft:#2B1A1E;
-  /* Binance Yellow：填充色，字压黑。全页只给「推荐方案」和订票步骤序号 */
-  --pick:#181A20; --pick-soft:#FCD535;
-  --shadow:0 1px 2px rgba(0,0,0,.5),0 8px 22px -14px rgba(0,0,0,.8);
-  --lift:0 1px 2px rgba(0,0,0,.5);
-  --surf-low:#1E2329; --surf:#2B3139; --surf-high:#333A44;
-  --ink-rgb:234,236,239;
-  --alert-bg:#2B3139;
-  --radius:8px; --r-sm:6px;
-  --mono:"IBM Plex Mono","SFMono-Regular",Menlo,Consolas,monospace;
-  --sans:"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
-  /* Binance 体系没有衬线角色 */
-  --serif:"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
-}
-*,*::before,*::after{box-sizing:border-box}
-body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);
-  font-size:15px;line-height:1.68;-webkit-text-size-adjust:100%}
-.wrap{max-width:920px;margin:0 auto;padding-inline:18px;padding-block:28px 56px}
-a{color:var(--indigo);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--indigo) 40%,transparent)}
-a:hover{border-bottom-color:var(--indigo)}
-a:focus-visible{outline:2px solid var(--indigo);outline-offset:2px;border-radius:2px}
-h1,h2,h3{font-family:var(--serif);font-weight:700;text-wrap:balance;margin:0}
-h1{font-size:clamp(28px,6vw,40px);line-height:1.15;letter-spacing:-.02em}
-h2{font-size:clamp(19px,4.4vw,23px);line-height:1.3}
-h3{font-size:16px;font-weight:600;line-height:1.4}
-p{margin:0}
-.eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
-.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
 
-/* 页首 */
-.hero{display:flex;flex-direction:column;gap:10px;padding-bottom:22px;border-bottom:1px solid var(--line)}
-.lede{color:var(--ink-2);max-width:62ch}
-.facts{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:4px 0 0;padding:0}
-.facts li{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:12px;color:var(--ink-2);
-  background:var(--surf);border:1px solid var(--line-soft);border-radius:var(--r-sm);padding:3px 9px}
-
-/* 段落 */
-section{margin-top:38px}
-.sechead{display:flex;flex-direction:column;gap:4px;margin-bottom:14px}
-
-/* 硬约束 */
-.alerts{display:grid;gap:10px}
-.alert{background:var(--alert-bg);border-left:3px solid var(--line);border-radius:var(--radius);
-  padding:13px 15px;display:flex;flex-direction:column;gap:4px}
-.alert h3{font-family:var(--sans);font-size:13.5px;font-weight:700;letter-spacing:.01em}
-.alert p{font-size:13.5px;line-height:1.6}
-.alert p{color:var(--ink-2)}
-.alert.vol{border-left-color:var(--risk)}
-.alert.quota{border-left-color:var(--warn)}
-.alert.mon{border-left-color:var(--ink-3)}
-.alert a{color:inherit;border-bottom-color:currentColor}
-
-/* 对照表 */
-.scroll{overflow-x:auto;border:1px solid var(--line-soft);border-radius:var(--radius);background:var(--surface)}
-table{border-collapse:collapse;width:100%;min-width:560px;font-size:13.5px}
-th,td{text-align:left;padding:10px 13px;border-bottom:1px solid var(--line-soft);vertical-align:top}
-thead th{background:var(--surf-high);font-size:12px;font-weight:700;white-space:nowrap;position:sticky;top:0}
-tbody th{font-weight:500;color:var(--ink-2);white-space:nowrap}
-tbody tr:last-child th,tbody tr:last-child td{border-bottom:0}
-td.n{font-family:var(--mono);font-variant-numeric:tabular-nums}
-th.rec{color:var(--pick-soft)}
-
-/* 方案 */
-.plan{border:1px solid var(--line-soft);border-radius:var(--radius);background:var(--surface);
-  padding:18px;display:flex;flex-direction:column;gap:16px;margin-top:14px}
-.plan.rec{border-color:var(--pick-soft);box-shadow:var(--lift)}
-.planhead{display:flex;flex-direction:column;gap:6px}
-.tagrow{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
-.pill{font-size:11.5px;font-weight:700;letter-spacing:.02em;padding:2px 8px;border-radius:var(--r-sm);
-  background:var(--surf-high);color:var(--ink-2)}
-.pill.rec{background:var(--pick-soft);color:var(--pick)}
-.pill.src{font-family:var(--mono);font-weight:400;letter-spacing:0}
-.claim{color:var(--ink-2);font-size:14px;max-width:60ch}
-
-/* 时刻表 */
-.day{display:flex;flex-direction:column;gap:2px}
-.daylabel{display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;margin-bottom:6px}
-.daylabel .d{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:12.5px;font-weight:500;
-  color:var(--ink);background:var(--surf-high);border-radius:var(--r-sm);padding:2px 8px}
-.daylabel .note{font-size:12.5px;color:var(--ink-3)}
-.tl{display:grid;grid-template-columns:86px 1fr;gap:0 12px}
-.tl>.t{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:12.5px;color:var(--ink-3);
-  padding:7px 0 7px 0;border-top:1px solid var(--line-soft);white-space:nowrap}
-.tl>.e{padding:7px 0;border-top:1px solid var(--line-soft);font-size:14px}
-.tl>.t:first-of-type,.tl>.e:first-of-type{border-top:0}
-.e .sub{display:block;font-size:12.5px;color:var(--ink-2);line-height:1.55;margin-top:2px}
-.e .sub em{font-style:normal;color:var(--risk);font-weight:500}
-
-/* 取舍 */
-.ledger{display:grid;gap:10px;grid-template-columns:1fr 1fr}
-.col{background:var(--surf-low);border-radius:var(--r-sm);padding:11px 13px}
-.plan.rec .col{background:rgba(var(--ink-rgb),.05)}
-.col h3{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
-  color:var(--ink-3);margin-bottom:5px}
-.col ul{margin:0;padding-left:16px;font-size:13.5px;line-height:1.62}
-.col.get h3{color:var(--good)}
-.col.cut h3{color:var(--ink-3)}
-.col.cut li{color:var(--ink-2)}
-.cost{font-size:13.5px;color:var(--ink-2);line-height:1.6}
-.cost b{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:500;color:var(--ink)}
-
-/* 结语条 */
-.verdict{border-left:3px solid var(--line);padding:2px 0 2px 13px;font-size:13.5px;color:var(--ink-2)}
-.plan.rec .verdict{border-left-color:var(--pick-soft)}
-
-/* 订票清单 */
-.steps{display:flex;flex-direction:column;gap:10px;counter-reset:s}
-.step{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--radius);
-  padding:13px 15px;display:grid;grid-template-columns:26px 1fr;gap:0 12px;align-items:start}
-.step::before{counter-increment:s;content:counter(s);font-family:var(--mono);font-size:12px;font-weight:500;
-  color:var(--pick);background:var(--pick-soft);border-radius:50%;width:24px;height:24px;
-  display:grid;place-items:center;margin-top:1px}
-.step h3{font-family:var(--sans);font-size:14px;font-weight:700}
-.step p{font-size:13.5px;color:var(--ink-2);margin-top:3px}
-.step .q{margin:6px 0 0;padding-left:16px;font-size:13px;color:var(--ink-2);line-height:1.6}
-
-footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
-  font-size:12.5px;color:var(--ink-3);display:flex;flex-direction:column;gap:5px}
-
-@media (max-width:600px){
-  .wrap{padding-inline:16px}
-  .tl{grid-template-columns:74px 1fr;gap:0 10px}
-  .tl>.t{font-size:12px}
-  .ledger{grid-template-columns:1fr}
-  .plan{padding:15px}
-}
-@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
-</style>
 <div class="wrap">
 
-<header class="hero">
+<nav class="topnav" data-part="nav" data-current="plan" aria-label="站内导航"></nav>
+
+<header class="pagehead">
   <p class="eyebrow">2026-09-27 日 → 09-30 三 · 4 天 3 晚</p>
   <h1>日惹行程三方案</h1>
-  <p class="lede">同一批景点、同一组硬约束，三种排法。差别只在两件事：<b>熬几次凌晨</b>，以及 <b>D2 那个唯一的自由整天给谁</b>。三个方案都写全 D1–D4，挑定哪个就整段照着走，不用来回翻。点任一景点名，直接打开「日惹景点核准清单」里那张卡片的浮窗 —— 票价、开放时间、踩雷提示、逐条来源都在那里。</p>
+  <p class="lede">同一批景点、同一组硬约束，三种排法。差别只在两件事：<b>熬几次凌晨</b>，以及 <b>D2 那个唯一的自由整天给谁</b>。三个方案都写全 D1–D4，挑定哪个就整段照着走，不用来回翻。点任一景点名，打开它在「日惹景点核准清单」里的详情页 —— 票价、开放时间、踩雷提示、逐条来源都在那里。</p>
   <ul class="facts">
     <li>D1 落地 13:55</li>
     <li>D4 起飞 10:30</li>
@@ -162,37 +26,94 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
   </ul>
 </header>
 
-<section>
+<section class="section">
   <div class="sechead">
     <p class="eyebrow">先看这三条</p>
     <h2>三个方案都绕不开的硬约束</h2>
   </div>
   <div class="alerts">
-    <div class="alert vol">
+    <div class="alert risk">
       <h3>默拉皮仍是 Siaga 三级警戒，持续喷发中</h3>
-      <p>危险扇区 Boyong 河 5 km、Bedog／Krasak／Bebeng 河 7 km。吉普线走的 Kaliadem 与 Bukit Klangon 都不在点名扇区内，但都在活跃警戒火山的山腰上。<b>出发前与当天都要复查 <a href="https://magma.esdm.go.id/" target="_blank" rel="noopener">magma.esdm.go.id</a></b> —— 2020 年 11 月警戒紧张时 Klangon 曾整片封山。<span class="pill src">官方</span></p>
+      <p>危险扇区 Boyong 河 5 km、Bedog／Krasak／Bebeng 河 7 km。吉普线走的 Kaliadem 与 Bukit Klangon 都不在点名扇区内，但都在活跃警戒火山的山腰上。<b>出发前与当天都要复查 <a href="https://magma.esdm.go.id/" target="_blank" rel="noopener">magma.esdm.go.id</a></b> —— 2020 年 11 月警戒紧张时 Klangon 曾整片封山。<span class="srcmark off">官方</span></p>
     </div>
-    <div class="alert quota">
+    <div class="alert warn">
       <h3>婆罗浮屠官方日出每日限 100 人，且只有 9/29 周二能做</h3>
-      <p>须官网预约、<b>前一日 15:00 前订妥并提交护照复印件</b>，唯一入口 <a href="https://ticket.borobudurpark.com/en/" target="_blank" rel="noopener">ticket.borobudurpark.com</a>。票面含登塔、共享导游、Upanat 草鞋与 Manohara 早餐 —— 不必另买 IDR 455,000 的登顶票。9/28 周一登顶结构维护关闭，所以日出只能排周二。<span class="pill src">官方限额 · 票面内容为二手</span></p>
+      <p>须官网预约、<b>前一日 15:00 前订妥并提交护照复印件</b>，唯一入口 <a href="https://ticket.borobudurpark.com/en/" target="_blank" rel="noopener">ticket.borobudurpark.com</a>。票面含登塔、共享导游、Upanat 草鞋与 Manohara 早餐 —— 不必另买 IDR 455,000 的登顶票。9/28 周一登顶结构维护关闭，所以日出只能排周二。<span class="srcmark off">官方限额</span><span class="srcmark sec">票面内容为二手</span></p>
     </div>
-    <div class="alert mon">
+    <div class="alert note">
       <h3>9/28 是周一：两个 UNESCO 都关</h3>
-      <p>婆罗浮屠登顶结构、普兰巴南主庭院、Sonobudoyo、默拉皮博物馆、Ullen Sentalu 全部闭馆或受限。所以<b>普兰巴南只能排 9/29 周二</b>，而周二上半天已经被日出占掉 —— 这是三个方案分岔的真正原因。<span class="pill src">二手</span></p>
+      <p>婆罗浮屠登顶结构、普兰巴南主庭院、Sonobudoyo、默拉皮博物馆、Ullen Sentalu 全部闭馆或受限。所以<b>普兰巴南只能排 9/29 周二</b>，而周二上半天已经被日出占掉 —— 这是三个方案分岔的真正原因。<span class="srcmark sec">二手</span></p>
     </div>
   </div>
 </section>
 
-<section>
+<section class="section">
   <div class="sechead">
     <p class="eyebrow">方案 1 · 上一轮的 A</p>
     <h2>双日出：吉普与婆罗浮屠都要</h2>
   </div>
-  <div class="plan">
+  <div class="panel plan">
     <div class="planhead">
-      <div class="tagrow"><span class="pill">两次凌晨</span><span class="pill">两天都要午睡</span><span class="pill">拿到 3 个 P1</span></div>
+      <div class="tagrow"><span class="pill tag">两次凌晨</span><span class="pill tag">两天都要午睡</span><span class="pill tag">拿到 3 个 P1</span></div>
       <p class="claim">唯一能同时拿到默拉皮日出吉普和婆罗浮屠日出的排法。代价是连着两天 02:30 起床，两个下午都必须回酒店补觉 —— 你已经说了不想这样，这个方案放在这里做对照。</p>
     </div>
+
+    <figure class="mapfig">
+      <div class="mapscroll"><svg class="map" viewBox="0 0 726 430" role="img" aria-label="方案 1 的行程示意图：以酒店为基点，按天标出当天要去的方向与车程">
+<line class="edge e1" x1="68" y1="300" x2="340" y2="208"/>
+<line class="edge e1" x1="340" y1="208" x2="316" y2="264"/>
+<line class="edge e2" x1="340" y1="208" x2="336" y2="96"/>
+<line class="edge e2" x1="340" y1="208" x2="268" y2="316"/>
+<line class="edge e2" x1="268" y1="316" x2="222" y2="352"/>
+<line class="edge e2" x1="340" y1="208" x2="462" y2="64"/>
+<line class="edge e3" x1="340" y1="208" x2="96" y2="110"/>
+<line class="edge e3" x1="340" y1="208" x2="566" y2="214"/>
+<line class="edge e4 dash" x1="338" y1="202" x2="66" y2="294"/>
+<circle class="hubdot" cx="340" cy="208" r="7"/>
+<text class="lbl" x="357" y="207" text-anchor="start">酒店 Marriott</text>
+<text class="sub" x="357" y="222" text-anchor="start">北环路</text>
+<circle class="node n1" cx="316" cy="264" r="11"/>
+<text class="num num1" x="316" y="268">1</text>
+<text class="lbl" x="299" y="260" text-anchor="end">Malioboro</text>
+<text class="sub" x="299" y="275" text-anchor="end">5 分钟</text>
+<circle class="node n2" cx="268" cy="316" r="11"/>
+<text class="num num2" x="268" y="320">2</text>
+<text class="lbl" x="251" y="312" text-anchor="end">王宫</text>
+<text class="sub" x="251" y="327" text-anchor="end">10 分钟</text>
+<circle class="node n2" cx="222" cy="352" r="11"/>
+<text class="num num2" x="222" y="356">3</text>
+<text class="lbl" x="205" y="348" text-anchor="end">水城</text>
+<text class="sub" x="205" y="363" text-anchor="end">12 分钟</text>
+<circle class="skipdot" cx="388" cy="320" r="4"/>
+<text class="skiplbl" x="405" y="324" text-anchor="start">Kotagede</text>
+<circle class="node n3" cx="96" cy="110" r="11"/>
+<text class="num num3" x="96" y="114">1</text>
+<text class="lbl" x="80" y="76" text-anchor="start">婆罗浮屠</text>
+<text class="sub" x="80" y="91" text-anchor="start">41 km · 70 分钟</text>
+<circle class="node n2" cx="336" cy="96" r="11"/>
+<text class="num num2" x="336" y="100">1</text>
+<text class="lbl" x="319" y="92" text-anchor="end">默拉皮吉普</text>
+<text class="sub" x="319" y="107" text-anchor="end">25 km · 50 分钟</text>
+<circle class="node n2" cx="462" cy="64" r="11"/>
+<text class="num num2" x="462" y="68">4</text>
+<text class="lbl" x="479" y="60" text-anchor="start">Bukit Klangon</text>
+<text class="sub" x="479" y="75" text-anchor="start">32 km · 60 分钟</text>
+<circle class="node n3" cx="566" cy="214" r="11"/>
+<text class="num num3" x="566" y="218">2</text>
+<text class="lbl" x="583" y="210" text-anchor="start">普兰巴南</text>
+<text class="sub" x="583" y="225" text-anchor="start">17 km · 40 分钟</text>
+<circle class="skipdot" cx="548" cy="388" r="4"/>
+<text class="skiplbl" x="531" y="384" text-anchor="end">Jomblang</text>
+<circle class="node nx" cx="68" cy="300" r="8"/>
+<text class="lbl" x="85" y="296" text-anchor="start">YIA 机场</text>
+<text class="sub" x="85" y="311" text-anchor="start">机场火车 40 分钟</text>
+</svg></div>
+      <div class="rbtns"><a class="rbtn r1" href="https://www.google.com/maps/dir/?api=1&origin=Yogyakarta%20International%20Airport&destination=Jalan%20Malioboro%20Yogyakarta&waypoints=Yogyakarta%20Marriott%20Hotel&travelmode=driving" target="_blank" rel="noopener"><span class="dot"></span>D1 路线</a>
+<a class="rbtn r2" href="https://www.google.com/maps/dir/?api=1&origin=Yogyakarta%20Marriott%20Hotel&destination=Bukit%20Klangon&waypoints=Kaliurang%20Sleman%7CKeraton%20Ngayogyakarta%7CTaman%20Sari%20Water%20Castle&travelmode=driving" target="_blank" rel="noopener"><span class="dot"></span>D2 路线</a>
+<a class="rbtn r3" href="https://www.google.com/maps/dir/?api=1&origin=Yogyakarta%20Marriott%20Hotel&destination=Candi%20Prambanan&waypoints=Candi%20Borobudur&travelmode=driving" target="_blank" rel="noopener"><span class="dot"></span>D3 路线</a>
+<a class="rbtn r4" href="https://www.google.com/maps/dir/?api=1&origin=Yogyakarta%20Marriott%20Hotel&destination=Yogyakarta%20International%20Airport&travelmode=driving" target="_blank" rel="noopener"><span class="dot"></span>D4 路线</a></div>
+      <figcaption>方案 1：D2 一整天挂在北线（凌晨吉普、夜里 Klangon），D3 西北与东北各跑一趟。方位按真实方向画，距离做了压缩；灰点是这个方案没排的地方。车程取自景点清单，点「路线」用 Google 地图看真实路况。</figcaption>
+    </figure>
 
     <div class="day">
       <div class="daylabel"><span class="d">D1 · 9/27 周日</span><span class="note">落地下午，古迹都已关门</span></div>
@@ -200,7 +121,7 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
         <div class="t">13:55</div><div class="e">YIA 落地</div>
         <div class="t">14:40</div><div class="e">机场火车进市区<span class="sub">IDR 20,000（快车 55,000），40 分钟。DAMRI 80,000 要 1.5–2 小时，Grab 250,000 起。</span></div>
         <div class="t">16:00</div><div class="e">入住酒店</div>
-        <div class="t">17:30</div><div class="e"><a href="index.html#jalan-malioboro" target="_blank" rel="noopener">Malioboro</a> 晚餐、逛街<span class="sub">王宫 12:30 关、水城 15:00 关，这个下午排不进任何古迹。<em>Malioboro 是蜡染画廊骗局高发区。</em></span></div>
+        <div class="t">17:30</div><div class="e"><a href="spot.html?id=jalan-malioboro">Malioboro</a> 晚餐、逛街<span class="sub">王宫 12:30 关、水城 15:00 关，这个下午排不进任何古迹。<em>Malioboro 是蜡染画廊骗局高发区。</em></span></div>
         <div class="t">20:30</div><div class="e">回酒店，<em>务必早睡 —— 明早 02:30 起</em><span class="sub">今晚先把吉普要用的东西备好：旧衣旧鞋、整套换洗、防尘口罩、墨镜、薄外套。</span></div>
       </div>
     </div>
@@ -209,14 +130,14 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
       <div class="daylabel"><span class="d">D2 · 9/28 周一</span><span class="note">默拉皮一整天：凌晨上山、傍晚再上山</span></div>
       <div class="tl">
         <div class="t">02:30</div><div class="e">起床</div>
-        <div class="t">03:30</div><div class="e"><a href="index.html#merapi-jeep-lava-tour" target="_blank" rel="noopener">默拉皮吉普</a>日出场集合<span class="sub">Kaliurang 基地，04:30 出发。站点：Museum Sisa Hartaku、Batu Alien、Bunker Kaliadem、Petilasan Mbah Maridjan、Kali Kuning 涉水，加 Puncak Kaliadem 看日出。<em>一定湿身，带整套换洗；扬尘极大，防尘口罩必备。</em></span></div>
+        <div class="t">03:30</div><div class="e"><a href="spot.html?id=merapi-jeep-lava-tour">默拉皮吉普</a>日出场集合<span class="sub">Kaliurang 基地，04:30 出发。站点：Museum Sisa Hartaku、Batu Alien、Bunker Kaliadem、Petilasan Mbah Maridjan、Kali Kuning 涉水，加 Puncak Kaliadem 看日出。<em>一定湿身，带整套换洗；扬尘极大，防尘口罩必备。</em></span></div>
         <div class="t">08:30</div><div class="e">吉普结束 → 回酒店冲澡<span class="sub">Marriott 在北环路上，从 Kaliurang 回来顺路，约 09:30 到。</span></div>
-        <div class="t">10:45</div><div class="e"><a href="index.html#keraton-ngayogyakarta" target="_blank" rel="noopener">日惹王宫</a><span class="sub">周一开 08:30–12:30，门票含宫廷艺术表演（周一是爪哇舞）。禁短裤、迷你裙、帽子、墨镜。</span></div>
-        <div class="t">12:15</div><div class="e"><a href="index.html#taman-sari-water-castle" target="_blank" rel="noopener">水城</a><span class="sub">从王宫步行 15 分钟。开到 15:00。<em>蜡染画廊骗局核心区 —— 主动搭讪说「展览只有今天」的一律不跟。</em></span></div>
+        <div class="t">10:45</div><div class="e"><a href="spot.html?id=keraton-ngayogyakarta">日惹王宫</a><span class="sub">周一开 08:30–12:30，门票含宫廷艺术表演（周一是爪哇舞）。禁短裤、迷你裙、帽子、墨镜。</span></div>
+        <div class="t">12:15</div><div class="e"><a href="spot.html?id=taman-sari-water-castle">水城</a><span class="sub">从王宫步行 15 分钟。开到 15:00。<em>蜡染画廊骗局核心区 —— 主动搭讪说「展览只有今天」的一律不跟。</em></span></div>
         <div class="t">14:00</div><div class="e">午餐</div>
         <div class="t">14:30</div><div class="e">回酒店睡到 18:00</div>
         <div class="t">19:00</div><div class="e">晚餐</div>
-        <div class="t">20:00</div><div class="e"><a href="index.html#bukit-klangon" target="_blank" rel="noopener">Bukit Klangon</a> 夜观熔岩（可选）<span class="sub">门票 IDR 5,000，当天 18:00 按两条硬标准决定：火山报告未升级且未封山、当晚云量低。缺一条就取消。夜温 18–20°C，司机必须在观景台等候。</span></div>
+        <div class="t">20:00</div><div class="e"><a href="spot.html?id=bukit-klangon">Bukit Klangon</a> 夜观熔岩（可选）<span class="sub">门票 IDR 5,000，当天 18:00 按两条硬标准决定：火山报告未升级且未封山、当晚云量低。缺一条就取消。夜温 18–20°C，司机必须在观景台等候。</span></div>
         <div class="t">23:30</div><div class="e">回酒店</div>
       </div>
     </div>
@@ -225,10 +146,10 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
       <div class="daylabel"><span class="d">D3 · 9/29 周二</span><span class="note">婆罗浮屠日出 + 午睡 + 普兰巴南日落</span></div>
       <div class="tl">
         <div class="t">02:30</div><div class="e">起床，03:00 出发（41 km，约 70 分钟）</div>
-        <div class="t">04:10</div><div class="e"><a href="index.html#borobudur-sunrise-manohara" target="_blank" rel="noopener">婆罗浮屠官方日出</a>登记<span class="sub">04:30 登塔 → 05:35 日出 → 06:30–08:00 Manohara 早餐。凌晨山区凉，带薄外套；须换 Upanat 草鞋。</span></div>
+        <div class="t">04:10</div><div class="e"><a href="spot.html?id=borobudur-sunrise-manohara">婆罗浮屠官方日出</a>登记<span class="sub">04:30 登塔 → 05:35 日出 → 06:30–08:00 Manohara 早餐。凌晨山区凉，带薄外套；须换 Upanat 草鞋。</span></div>
         <div class="t">09:30</div><div class="e">回酒店</div>
         <div class="t">11:00</div><div class="e">补睡到 14:30</div>
-        <div class="t">15:30</div><div class="e"><a href="index.html#candi-prambanan" target="_blank" rel="noopener">普兰巴南</a><span class="sub">最后售票 16:30，开到 18:00。日落光线好但团客多。园方免费借沙笼。</span></div>
+        <div class="t">15:30</div><div class="e"><a href="spot.html?id=candi-prambanan">普兰巴南</a><span class="sub">最后售票 16:30，开到 18:00。日落光线好但团客多。园方免费借沙笼。</span></div>
         <div class="t">19:00</div><div class="e">晚餐</div>
         <div class="t">21:00</div><div class="e">收行李，早睡</div>
       </div>
@@ -253,16 +174,73 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
   </div>
 </section>
 
-<section>
+<section class="section">
   <div class="sechead">
     <p class="eyebrow">方案 2 · 本轮的 A2</p>
     <h2>一次日出：普兰巴南放在下午</h2>
   </div>
-  <div class="plan rec">
+  <div class="panel plan rec">
     <div class="planhead">
-      <div class="tagrow"><span class="pill rec">推荐</span><span class="pill">一次凌晨</span><span class="pill">不补觉</span><span class="pill">拿到 4 项</span></div>
+      <div class="tagrow"><span class="pill tag pick">推荐</span><span class="pill tag">一次凌晨</span><span class="pill tag">不补觉</span><span class="pill tag">拿到 4 项</span></div>
       <p class="claim">日出名额只给婆罗浮屠，默拉皮吉普出局。D2 变成一个作息正常的整天，D3 的普兰巴南放在光线最好的下午 —— 代价是当天拖到 21:00 才收工，第二天 06:00 起。</p>
     </div>
+
+    <figure class="mapfig">
+      <div class="mapscroll"><svg class="map" viewBox="0 0 726 430" role="img" aria-label="方案 2 的行程示意图：以酒店为基点，按天标出当天要去的方向与车程">
+<line class="edge e1" x1="68" y1="300" x2="340" y2="208"/>
+<line class="edge e1" x1="340" y1="208" x2="316" y2="264"/>
+<line class="edge e2" x1="340" y1="208" x2="268" y2="316"/>
+<line class="edge e2" x1="268" y1="316" x2="222" y2="352"/>
+<line class="edge e2" x1="222" y1="352" x2="388" y2="320"/>
+<line class="edge e2" x1="340" y1="208" x2="462" y2="64"/>
+<line class="edge e3" x1="340" y1="208" x2="96" y2="110"/>
+<line class="edge e3" x1="340" y1="208" x2="566" y2="214"/>
+<line class="edge e4 dash" x1="338" y1="202" x2="66" y2="294"/>
+<circle class="hubdot" cx="340" cy="208" r="7"/>
+<text class="lbl" x="357" y="207" text-anchor="start">酒店 Marriott</text>
+<text class="sub" x="357" y="222" text-anchor="start">北环路</text>
+<circle class="node n1" cx="316" cy="264" r="11"/>
+<text class="num num1" x="316" y="268">1</text>
+<text class="lbl" x="299" y="260" text-anchor="end">Malioboro</text>
+<text class="sub" x="299" y="275" text-anchor="end">5 分钟</text>
+<circle class="node n2" cx="268" cy="316" r="11"/>
+<text class="num num2" x="268" y="320">1</text>
+<text class="lbl" x="251" y="312" text-anchor="end">王宫</text>
+<text class="sub" x="251" y="327" text-anchor="end">10 分钟</text>
+<circle class="node n2" cx="222" cy="352" r="11"/>
+<text class="num num2" x="222" y="356">2</text>
+<text class="lbl" x="205" y="348" text-anchor="end">水城</text>
+<text class="sub" x="205" y="363" text-anchor="end">12 分钟</text>
+<circle class="node n2" cx="388" cy="320" r="11"/>
+<text class="num num2" x="388" y="324">3</text>
+<text class="lbl" x="405" y="324" text-anchor="start">Kotagede</text>
+<text class="sub" x="405" y="339" text-anchor="start">20 分钟</text>
+<circle class="node n3" cx="96" cy="110" r="11"/>
+<text class="num num3" x="96" y="114">1</text>
+<text class="lbl" x="80" y="76" text-anchor="start">婆罗浮屠</text>
+<text class="sub" x="80" y="91" text-anchor="start">41 km · 70 分钟</text>
+<circle class="skipdot" cx="336" cy="96" r="4"/>
+<text class="skiplbl" x="319" y="92" text-anchor="end">默拉皮吉普</text>
+<circle class="node n2" cx="462" cy="64" r="11"/>
+<text class="num num2" x="462" y="68">4</text>
+<text class="lbl" x="479" y="60" text-anchor="start">Bukit Klangon</text>
+<text class="sub" x="479" y="75" text-anchor="start">32 km · 60 分钟</text>
+<circle class="node n3" cx="566" cy="214" r="11"/>
+<text class="num num3" x="566" y="218">2</text>
+<text class="lbl" x="583" y="210" text-anchor="start">普兰巴南</text>
+<text class="sub" x="583" y="225" text-anchor="start">17 km · 40 分钟</text>
+<circle class="skipdot" cx="548" cy="388" r="4"/>
+<text class="skiplbl" x="531" y="384" text-anchor="end">Jomblang</text>
+<circle class="node nx" cx="68" cy="300" r="8"/>
+<text class="lbl" x="85" y="296" text-anchor="start">YIA 机场</text>
+<text class="sub" x="85" y="311" text-anchor="start">机场火车 40 分钟</text>
+</svg></div>
+      <div class="rbtns"><a class="rbtn r1" href="https://www.google.com/maps/dir/?api=1&origin=Yogyakarta%20International%20Airport&destination=Jalan%20Malioboro%20Yogyakarta&waypoints=Yogyakarta%20Marriott%20Hotel&travelmode=driving" target="_blank" rel="noopener"><span class="dot"></span>D1 路线</a>
+<a class="rbtn r2" href="https://www.google.com/maps/dir/?api=1&origin=Yogyakarta%20Marriott%20Hotel&destination=Bukit%20Klangon&waypoints=Keraton%20Ngayogyakarta%7CTaman%20Sari%20Water%20Castle%7CKotagede&travelmode=driving" target="_blank" rel="noopener"><span class="dot"></span>D2 路线</a>
+<a class="rbtn r3" href="https://www.google.com/maps/dir/?api=1&origin=Yogyakarta%20Marriott%20Hotel&destination=Candi%20Prambanan&waypoints=Candi%20Borobudur&travelmode=driving" target="_blank" rel="noopener"><span class="dot"></span>D3 路线</a>
+<a class="rbtn r4" href="https://www.google.com/maps/dir/?api=1&origin=Yogyakarta%20Marriott%20Hotel&destination=Yogyakarta%20International%20Airport&travelmode=driving" target="_blank" rel="noopener"><span class="dot"></span>D4 路线</a></div>
+      <figcaption>方案 2：D2 全在市区打转，只有夜里那趟 Klangon 出城；D3 才是西北加东北的长车程日。方位按真实方向画，距离做了压缩；灰点是这个方案没排的地方。车程取自景点清单，点「路线」用 Google 地图看真实路况。</figcaption>
+    </figure>
 
     <div class="day">
       <div class="daylabel"><span class="d">D1 · 9/27 周日</span><span class="note">落地下午，古迹都已关门</span></div>
@@ -270,7 +248,7 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
         <div class="t">13:55</div><div class="e">YIA 落地</div>
         <div class="t">14:40</div><div class="e">机场火车进市区<span class="sub">IDR 20,000（快车 55,000），40 分钟。DAMRI 80,000 要 1.5–2 小时，Grab 250,000 起。</span></div>
         <div class="t">16:00</div><div class="e">入住酒店</div>
-        <div class="t">17:30</div><div class="e"><a href="index.html#jalan-malioboro" target="_blank" rel="noopener">Malioboro</a> 晚餐、逛街<span class="sub">王宫 12:30 关、水城 15:00 关，这个下午排不进任何古迹。<em>Malioboro 是蜡染画廊骗局高发区。</em></span></div>
+        <div class="t">17:30</div><div class="e"><a href="spot.html?id=jalan-malioboro">Malioboro</a> 晚餐、逛街<span class="sub">王宫 12:30 关、水城 15:00 关，这个下午排不进任何古迹。<em>Malioboro 是蜡染画廊骗局高发区。</em></span></div>
         <div class="t">21:00</div><div class="e">回酒店<span class="sub">明天可以睡到自然醒，这一晚是三个方案里唯一能放松的 —— 但要熬的是后天凌晨，别把时差和作息推太晚。</span></div>
       </div>
     </div>
@@ -278,12 +256,12 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
     <div class="day">
       <div class="daylabel"><span class="d">D2 · 9/28 周一</span><span class="note">睡到自然醒的市区日</span></div>
       <div class="tl">
-        <div class="t">08:45</div><div class="e"><a href="index.html#keraton-ngayogyakarta" target="_blank" rel="noopener">日惹王宫</a><span class="sub">开门即到，门票 IDR 25,000 含宫廷艺术表演（周一爪哇舞）。09:00–11:00 正好是表演时段。禁短裤、迷你裙、帽子、墨镜。</span></div>
-        <div class="t">10:45</div><div class="e"><a href="index.html#taman-sari-water-castle" target="_blank" rel="noopener">水城</a><span class="sub">步行 15 分钟到。Sumur Gumuling 的台阶点越晚人越多。<em>这一带是蜡染画廊骗局核心区。</em></span></div>
+        <div class="t">08:45</div><div class="e"><a href="spot.html?id=keraton-ngayogyakarta">日惹王宫</a><span class="sub">开门即到，门票 IDR 25,000 含宫廷艺术表演（周一爪哇舞）。09:00–11:00 正好是表演时段。禁短裤、迷你裙、帽子、墨镜。</span></div>
+        <div class="t">10:45</div><div class="e"><a href="spot.html?id=taman-sari-water-castle">水城</a><span class="sub">步行 15 分钟到。Sumur Gumuling 的台阶点越晚人越多。<em>这一带是蜡染画廊骗局核心区。</em></span></div>
         <div class="t">12:30</div><div class="e">午餐</div>
-        <div class="t">14:00</div><div class="e"><a href="index.html#kotagede" target="_blank" rel="noopener">Kotagede 银器老城</a><span class="sub">街区免费，作坊 09:00–17:00 正在开工。银器按克计价，比 Malioboro 规范得多。想动手的话体验课 IDR 100,000–300,000，要先联系店家。</span></div>
+        <div class="t">14:00</div><div class="e"><a href="spot.html?id=kotagede">Kotagede 银器老城</a><span class="sub">街区免费，作坊 09:00–17:00 正在开工。银器按克计价，比 Malioboro 规范得多。想动手的话体验课 IDR 100,000–300,000，要先联系店家。</span></div>
         <div class="t">18:00</div><div class="e">晚餐</div>
-        <div class="t">20:00</div><div class="e"><a href="index.html#bukit-klangon" target="_blank" rel="noopener">Bukit Klangon</a> 夜观熔岩（可选）<span class="sub">这是三个方案里 Klangon 状态最好的一次 —— 睡饱、白天不累、当天 18:00 从容决定。门票 IDR 5,000，不去也不亏。回到酒店约 23:30，明早 02:30 起，所以这一晚是「去了就基本不睡」，要先想清楚。</span></div>
+        <div class="t">20:00</div><div class="e"><a href="spot.html?id=bukit-klangon">Bukit Klangon</a> 夜观熔岩（可选）<span class="sub">这是三个方案里 Klangon 状态最好的一次 —— 睡饱、白天不累、当天 18:00 从容决定。门票 IDR 5,000，不去也不亏。回到酒店约 23:30，明早 02:30 起，所以这一晚是「去了就基本不睡」，要先想清楚。</span></div>
       </div>
     </div>
 
@@ -291,10 +269,10 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
       <div class="daylabel"><span class="d">D3 · 9/29 周二</span><span class="note">日出 → 冲澡歇脚（不睡）→ 普兰巴南日落</span></div>
       <div class="tl">
         <div class="t">02:30</div><div class="e">起床，03:00 出发</div>
-        <div class="t">04:10</div><div class="e"><a href="index.html#borobudur-sunrise-manohara" target="_blank" rel="noopener">婆罗浮屠官方日出</a>登记<span class="sub">04:30 登塔 → 05:35 日出 → 06:30–08:00 早餐。<em>阴天就是花 S$80 看灰色天空，且无退款机制。</em>9 月是旱季尾，概率站在你这边。</span></div>
+        <div class="t">04:10</div><div class="e"><a href="spot.html?id=borobudur-sunrise-manohara">婆罗浮屠官方日出</a>登记<span class="sub">04:30 登塔 → 05:35 日出 → 06:30–08:00 早餐。<em>阴天就是花 S$80 看灰色天空，且无退款机制。</em>9 月是旱季尾，概率站在你这边。</span></div>
         <div class="t">09:45</div><div class="e">回酒店冲澡歇脚<span class="sub">不睡 —— 躺下会更难起。洗个澡、换衣服、把行李先收一半。</span></div>
         <div class="t">12:00</div><div class="e">午餐</div>
-        <div class="t">15:30</div><div class="e"><a href="index.html#candi-prambanan" target="_blank" rel="noopener">普兰巴南</a><span class="sub">从 Marriott 走北环路东行约 30 分钟。最后售票 16:30，开到 18:00 —— 日落时分的神庙群是这个点最出片的时段，也比正午凉得多。含 Sewu 走完要 2–3 小时。<em>雷雨时会因落雷风险清场。</em></span></div>
+        <div class="t">15:30</div><div class="e"><a href="spot.html?id=candi-prambanan">普兰巴南</a><span class="sub">从 Marriott 走北环路东行约 30 分钟。最后售票 16:30，开到 18:00 —— 日落时分的神庙群是这个点最出片的时段，也比正午凉得多。含 Sewu 走完要 2–3 小时。<em>雷雨时会因落雷风险清场。</em></span></div>
         <div class="t">18:15</div><div class="e">离园 → 19:00 晚餐</div>
         <div class="t">21:00</div><div class="e">收行李，早睡</div>
       </div>
@@ -319,16 +297,67 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
   </div>
 </section>
 
-<section>
+<section class="section">
   <div class="sechead">
     <p class="eyebrow">方案 3 · 本轮的 B</p>
     <h2>Jomblang：用普兰巴南换天堂之光</h2>
   </div>
-  <div class="plan">
+  <div class="panel plan">
     <div class="planhead">
-      <div class="tagrow"><span class="pill">一次凌晨</span><span class="pill">两天都下午收工</span><span class="pill">两个硬赌注</span></div>
+      <div class="tagrow"><span class="pill tag">一次凌晨</span><span class="pill tag">两天都下午收工</span><span class="pill tag">两个硬赌注</span></div>
       <p class="claim">普兰巴南只有周二能进，而周二上半天被日出占了 —— 想要 Jomblang，就得把普兰巴南整个让出来。换来的是三个方案里最宽松的作息：两天都在下午收工。</p>
     </div>
+
+    <figure class="mapfig">
+      <div class="mapscroll"><svg class="map" viewBox="0 0 726 430" role="img" aria-label="方案 3 的行程示意图：以酒店为基点，按天标出当天要去的方向与车程">
+<line class="edge e1" x1="68" y1="300" x2="340" y2="208"/>
+<line class="edge e1" x1="340" y1="208" x2="316" y2="264"/>
+<line class="edge e2" x1="340" y1="208" x2="548" y2="388"/>
+<line class="edge e3" x1="340" y1="208" x2="96" y2="110"/>
+<line class="edge e3" x1="340" y1="208" x2="268" y2="316"/>
+<line class="edge e3" x1="268" y1="316" x2="222" y2="352"/>
+<line class="edge e4 dash" x1="338" y1="202" x2="66" y2="294"/>
+<circle class="hubdot" cx="340" cy="208" r="7"/>
+<text class="lbl" x="357" y="207" text-anchor="start">酒店 Marriott</text>
+<text class="sub" x="357" y="222" text-anchor="start">北环路</text>
+<circle class="node n1" cx="316" cy="264" r="11"/>
+<text class="num num1" x="316" y="268">1</text>
+<text class="lbl" x="299" y="260" text-anchor="end">Malioboro</text>
+<text class="sub" x="299" y="275" text-anchor="end">5 分钟</text>
+<circle class="node n3" cx="268" cy="316" r="11"/>
+<text class="num num3" x="268" y="320">2</text>
+<text class="lbl" x="251" y="312" text-anchor="end">王宫</text>
+<text class="sub" x="251" y="327" text-anchor="end">10 分钟</text>
+<circle class="node n3" cx="222" cy="352" r="11"/>
+<text class="num num3" x="222" y="356">3</text>
+<text class="lbl" x="205" y="348" text-anchor="end">水城</text>
+<text class="sub" x="205" y="363" text-anchor="end">12 分钟</text>
+<circle class="skipdot" cx="388" cy="320" r="4"/>
+<text class="skiplbl" x="405" y="324" text-anchor="start">Kotagede</text>
+<circle class="node n3" cx="96" cy="110" r="11"/>
+<text class="num num3" x="96" y="114">1</text>
+<text class="lbl" x="80" y="76" text-anchor="start">婆罗浮屠</text>
+<text class="sub" x="80" y="91" text-anchor="start">41 km · 70 分钟</text>
+<circle class="skipdot" cx="336" cy="96" r="4"/>
+<text class="skiplbl" x="319" y="92" text-anchor="end">默拉皮吉普</text>
+<circle class="skipdot" cx="462" cy="64" r="4"/>
+<text class="skiplbl" x="479" y="60" text-anchor="start">Bukit Klangon</text>
+<circle class="skipdot" cx="566" cy="214" r="4"/>
+<text class="skiplbl" x="583" y="210" text-anchor="start">普兰巴南</text>
+<circle class="node n2" cx="548" cy="388" r="11"/>
+<text class="num num2" x="548" y="392">1</text>
+<text class="lbl" x="531" y="384" text-anchor="end">Jomblang</text>
+<text class="sub" x="531" y="399" text-anchor="end">50 km · 80 分钟</text>
+<circle class="node nx" cx="68" cy="300" r="8"/>
+<text class="lbl" x="85" y="296" text-anchor="start">YIA 机场</text>
+<text class="sub" x="85" y="311" text-anchor="start">机场火车 40 分钟</text>
+</svg></div>
+      <div class="rbtns"><a class="rbtn r1" href="https://www.google.com/maps/dir/?api=1&origin=Yogyakarta%20International%20Airport&destination=Jalan%20Malioboro%20Yogyakarta&waypoints=Yogyakarta%20Marriott%20Hotel&travelmode=driving" target="_blank" rel="noopener"><span class="dot"></span>D1 路线</a>
+<a class="rbtn r2" href="https://www.google.com/maps/dir/?api=1&origin=Yogyakarta%20Marriott%20Hotel&destination=Yogyakarta%20Marriott%20Hotel&waypoints=Goa%20Jomblang&travelmode=driving" target="_blank" rel="noopener"><span class="dot"></span>D2 路线</a>
+<a class="rbtn r3" href="https://www.google.com/maps/dir/?api=1&origin=Yogyakarta%20Marriott%20Hotel&destination=Taman%20Sari%20Water%20Castle&waypoints=Candi%20Borobudur%7CKeraton%20Ngayogyakarta&travelmode=driving" target="_blank" rel="noopener"><span class="dot"></span>D3 路线</a>
+<a class="rbtn r4" href="https://www.google.com/maps/dir/?api=1&origin=Yogyakarta%20Marriott%20Hotel&destination=Yogyakarta%20International%20Airport&travelmode=driving" target="_blank" rel="noopener"><span class="dot"></span>D4 路线</a></div>
+      <figcaption>方案 3：D2 整天在南线的 Jomblang，D3 西北跑一趟再回市区 —— 东边的普兰巴南整个空着。方位按真实方向画，距离做了压缩；灰点是这个方案没排的地方。车程取自景点清单，点「路线」用 Google 地图看真实路况。</figcaption>
+    </figure>
 
     <div class="day">
       <div class="daylabel"><span class="d">D1 · 9/27 周日</span><span class="note">落地下午，古迹都已关门</span></div>
@@ -336,7 +365,7 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
         <div class="t">13:55</div><div class="e">YIA 落地</div>
         <div class="t">14:40</div><div class="e">机场火车进市区<span class="sub">IDR 20,000（快车 55,000），40 分钟。DAMRI 80,000 要 1.5–2 小时，Grab 250,000 起。</span></div>
         <div class="t">16:00</div><div class="e">入住酒店</div>
-        <div class="t">17:30</div><div class="e"><a href="index.html#jalan-malioboro" target="_blank" rel="noopener">Malioboro</a> 晚餐、逛街<span class="sub">王宫 12:30 关、水城 15:00 关，这个下午排不进任何古迹。<em>Malioboro 是蜡染画廊骗局高发区。</em></span></div>
+        <div class="t">17:30</div><div class="e"><a href="spot.html?id=jalan-malioboro">Malioboro</a> 晚餐、逛街<span class="sub">王宫 12:30 关、水城 15:00 关，这个下午排不进任何古迹。<em>Malioboro 是蜡染画廊骗局高发区。</em></span></div>
         <div class="t">21:00</div><div class="e">回酒店早睡 —— 明早 05:30 起<span class="sub">今晚备好 Jomblang 要用的：袜子、毛巾、拖鞋、整套换洗、防水袋。装备和雨靴运营商提供。</span></div>
       </div>
     </div>
@@ -345,7 +374,7 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
       <div class="daylabel"><span class="d">D2 · 9/28 周一</span><span class="note">Jomblang 整天，05:30 起（不算熬夜）</span></div>
       <div class="tl">
         <div class="t">05:30</div><div class="e">起床</div>
-        <div class="t">06:00</div><div class="e"><a href="index.html#goa-jomblang" target="_blank" rel="noopener">Jomblang 洞穴</a>酒店接<span class="sub">距市区约 50 km、单程 80 分钟。必须提前预约，有生态容量限制：<a href="https://goajomblang.com/trip/jomblang-cave-tour/" target="_blank" rel="noopener">goajomblang.com</a>，或 Klook 私人团 ≈ S$52／人含接送、装备、门票、午餐。</span></div>
+        <div class="t">06:00</div><div class="e"><a href="spot.html?id=goa-jomblang">Jomblang 洞穴</a>酒店接<span class="sub">距市区约 50 km、单程 80 分钟。必须提前预约，有生态容量限制：<a href="https://goajomblang.com/trip/jomblang-cave-tour/" target="_blank" rel="noopener">goajomblang.com</a>，或 Klook 私人团 ≈ S$52／人含接送、装备、门票、午餐。</span></div>
         <div class="t">10:00</div><div class="e">光柱窗口 10:00–12:00<span class="sub"><em>错过这两小时就没有光；阴天完全没有光柱。</em>垂降 60 米，洞底泥泞湿滑。恐高、心脏问题、腰膝有伤直接跳过。</span></div>
         <div class="t">15:30</div><div class="e">行程结束 → 16:30 回酒店冲澡</div>
         <div class="t">18:00</div><div class="e">晚餐 → 21:00 睡<span class="sub">这晚不建议再上 Klangon —— 刚从泥洞里出来，北线还要来回 2 小时，而且明早 02:30 起。</span></div>
@@ -356,10 +385,10 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
       <div class="daylabel"><span class="d">D3 · 9/29 周二</span><span class="note">日出 + 市区两处，14:30 全部结束</span></div>
       <div class="tl">
         <div class="t">02:30</div><div class="e">起床，03:00 出发</div>
-        <div class="t">04:10</div><div class="e"><a href="index.html#borobudur-sunrise-manohara" target="_blank" rel="noopener">婆罗浮屠官方日出</a>登记<span class="sub">04:30 登塔 → 05:35 日出 → 06:30–08:00 早餐。凌晨山区凉，带薄外套。</span></div>
+        <div class="t">04:10</div><div class="e"><a href="spot.html?id=borobudur-sunrise-manohara">婆罗浮屠官方日出</a>登记<span class="sub">04:30 登塔 → 05:35 日出 → 06:30–08:00 早餐。凌晨山区凉，带薄外套。</span></div>
         <div class="t">09:30</div><div class="e">回市区</div>
-        <div class="t">10:00</div><div class="e"><a href="index.html#keraton-ngayogyakarta" target="_blank" rel="noopener">日惹王宫</a><span class="sub">周二开 08:30–12:30。禁短裤、迷你裙、帽子、墨镜。</span></div>
-        <div class="t">11:45</div><div class="e"><a href="index.html#taman-sari-water-castle" target="_blank" rel="noopener">水城</a><span class="sub">步行 15 分钟到，开到 15:00。<em>蜡染画廊骗局核心区。</em></span></div>
+        <div class="t">10:00</div><div class="e"><a href="spot.html?id=keraton-ngayogyakarta">日惹王宫</a><span class="sub">周二开 08:30–12:30。禁短裤、迷你裙、帽子、墨镜。</span></div>
+        <div class="t">11:45</div><div class="e"><a href="spot.html?id=taman-sari-water-castle">水城</a><span class="sub">步行 15 分钟到，开到 15:00。<em>蜡染画廊骗局核心区。</em></span></div>
         <div class="t">13:30</div><div class="e">午餐</div>
         <div class="t">14:30</div><div class="e">回酒店休息 + 收行李<span class="sub">整个下午和晚上都是空的，三个方案里唯一能在天亮着的时候就收工的一天。</span></div>
       </div>
@@ -384,12 +413,12 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
   </div>
 </section>
 
-<section>
+<section class="section">
   <div class="sechead">
     <p class="eyebrow">三个都看完了再比</p>
     <h2>三方案对照</h2>
   </div>
-  <div class="scroll">
+  <div class="panel scroll">
     <table>
       <thead>
         <tr><th scope="col"></th><th scope="col">方案 1 · 双日出</th><th scope="col" class="rec">方案 2 · 一次日出</th><th scope="col">方案 3 · Jomblang</th></tr>
@@ -407,36 +436,36 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
       </tbody>
     </table>
   </div>
-  <p class="cost" style="margin-top:10px">门票价除 Klangon 为官方口径外均为二手来源，核实于 2026-09-10／11；吉普为<b>每车</b>价（≤4 人），不是每人。D1 与 D4 三个方案完全相同，不在此表里。</p>
+  <p class="cost">门票价除 Klangon 为官方口径外均为二手来源，核实于 2026-09-10／11；吉普为<b>每车</b>价（≤4 人），不是每人。D1 与 D4 三个方案完全相同，不在此表里。</p>
 </section>
 
-<section>
+<section class="section">
   <div class="sechead">
     <p class="eyebrow">不管选哪个方案</p>
     <h2>现在就要动的四件事</h2>
   </div>
   <div class="steps">
-    <div class="step">
+    <div class="panel step">
       <div>
         <h3>查 9/29 周二的婆罗浮屠日出还有没有名额</h3>
         <p>三个方案的共同前提。每日限 100 人，须前一日 15:00 前订妥并交护照复印件，唯一入口 <a href="https://ticket.borobudurpark.com/en/" target="_blank" rel="noopener">ticket.borobudurpark.com</a>。顺便跟官方确认两件事：日出场周二确实开、票面确实含登塔（我查到的两个来源都说含，但都是二手）。<b>如果 9/29 已满，三个方案全部要重排。</b></p>
       </div>
     </div>
-    <div class="step">
+    <div class="panel step">
       <div>
         <h3>订普兰巴南（方案 1、2）</h3>
         <p>同一个官网入口，建议线上订，现场也可购。外国人成人 IDR 400,000。</p>
       </div>
     </div>
-    <div class="step">
+    <div class="panel step">
       <div>
         <h3>订 D2 的大项目</h3>
         <p>方案 1 的吉普日出场属加开场次、必须预约；方案 3 的 Jomblang 有容量限制、必须提前订。</p>
-        <p style="font-weight:500;color:var(--ink);margin-top:6px">订吉普之前问死这三句（同样叫 sunrise，报价能从 500,000 差到 1,100,000）：</p>
+        <p class="leadin">订吉普之前问死这三句（同样叫 sunrise，报价能从 500,000 差到 1,100,000）：</p>
         <ol class="q"><li>从哪个基地出发 —— Kaliurang 还是 Kaliadem？</li><li>在哪个点看日出？</li><li>这个价是每车还是每人、含不含门票？</li></ol>
       </div>
     </div>
-    <div class="step">
+    <div class="panel step">
       <div>
         <h3>谈包车</h3>
         <p>凌晨 03:00 出发、以及 Klangon 要司机在山上等 2 小时，这两件事都超出 Klook 标准套餐的形状（超时 IDR 75,000／小时）。当地包车 Avanza 约 IDR 400,000／12 小时含油含司机，比平台便宜六到八成，但要 WhatsApp 谈、现金付，并自己确认含不含停车与司机餐。</p>
@@ -445,11 +474,12 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
   </div>
 </section>
 
-<footer>
-  <p>景点名链接到「日惹景点核准清单」里对应卡片的浮窗（清单本身支持 <code>#slug</code> 深链）。完整核准字段、五维评分、踩雷提示与逐条来源都在那份清单里，这一页只放排程用得到的部分。</p>
+<footer class="pagefoot">
+  <p>景点名链接到对应的景点详情页（<code>spot.html?id=&lt;slug&gt;</code>）。完整核准字段、五维评分、踩雷提示与逐条来源都在那份清单里，这一页只放排程用得到的部分。</p>
   <p>时效信息核实于 2026-09-10／09-11。默拉皮状态、婆罗浮屠票务与限额、周一闭馆名单、汇率出发前都要重新看一遍。汇率按 1 SGD = 12,500 IDR 粗算。</p>
 </footer>
 
 </div>
 
+<script src="assets/site.js"></script>
 </body></html>
