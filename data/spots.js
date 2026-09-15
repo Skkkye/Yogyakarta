@@ -388,8 +388,8 @@ const SPOTS=[
 {
  n:"Kotagede 银器老城",ln:"Kotagede",c:"市区线",t:"逛街",tags:["独特体验"],
  img:1,
- gq:"Kotagede",pid:"ChIJA01ejBRXei4RsABT43Z6AgQ",cid:"288927977143730352",geo:[-7.820529,110.400984],
- g:null,gc:null,
+ gq:"Kotagede Traditional Market",pid:"ChIJ91ts-xhXei4Rd0ZCh55R6os",cid:"10081960457138226807",geo:[-7.828331,110.399795],
+ g:4.6,gc:17536,
  s:{view:5,culture:9,unique:8,value:9,quiet:8},
  intro:"马打兰苏丹国的旧都，现在是安静的银匠区。老宅、小清真寺、王陵，和一批开着门可以看打银的作坊。不少作坊接受短时体验课，自己敲一个戒指或吊坠带走 —— 这是全清单里最适合带走「自己做的东西」的地方。",
  price:0,ticket:"街区免费；作坊体验课约 {100000}–{300000}（视时长与材料）",src:"sec",
