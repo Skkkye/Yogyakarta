@@ -1,5 +1,5 @@
 /* =============================================================
-   site.css —— 全站唯一的样式表（index / spot / food / eat / plan 共用）
+   site.css —— 全站唯一的样式表（index / spot / food / eat / plan / info 共用）
 
    规矩（改之前先看）：
    1. 颜色、圆角、字体只在 §1 的 :root 里定义；其他地方一律 var()，不写色值。
@@ -387,3 +387,43 @@ th.rec{color:var(--pick-soft)}
 }
 /* 照片版权说明 */
 .photocredit{font-size:11.5px;color:var(--ink-3)}
+
+/* §4.5 实用信息 info.html
+   步骤、表格、字段、提示块都复用 §3 与 §4.3；这里只补计算器、说明面板和小卡片网格 */
+.subhead{margin:22px 0 10px}
+.sechead.subsec{margin-top:30px}
+.hint{font-size:12.5px;color:var(--ink-3);line-height:1.6}
+.hint b{color:var(--ink-2)}
+
+/* 汇率计算器 */
+.fxcalc{padding:16px;display:grid;gap:14px}
+.fxfields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.fxfield{display:grid;gap:4px;min-width:0}
+.fxin{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:18px;width:100%;min-width:0;
+  background:var(--surface-2);color:var(--ink);border:1px solid var(--line);border-radius:var(--r-sm);padding:8px 10px}
+.fxin:focus{border-color:var(--ink-3);outline:none}
+.fxin::placeholder{color:var(--ink-3);font-size:14px}
+.fxrates{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center}
+.fxrates input[type="number"]{width:96px}
+.fxcalc table{min-width:0}
+.fxcalc td.n,.fxcalc th.n{white-space:nowrap}
+@media (max-width:560px){ .fxfields{grid-template-columns:1fr} }
+
+/* 说明面板：段落 + 列表 */
+.guide{padding:15px 17px;display:grid;gap:10px;font-size:13.5px;line-height:1.65}
+.guide h3{font-family:var(--sans);font-size:14px;font-weight:700;margin-top:4px}
+.guide ol,.guide ul{margin:0;padding-left:1.25em}
+.guide li+li{margin-top:5px}
+.guide .callout{margin-block:2px}
+
+/* 火车时刻：一行一串时间，允许折行 */
+table.tt{min-width:0}
+table.tt td{white-space:normal;word-spacing:.2em;line-height:1.8}
+
+/* 其他：小卡片网格 */
+.infogrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px}
+.infocard{padding:13px 15px;display:grid;gap:5px;align-content:start}
+.infocard h3{font-family:var(--sans);font-size:14px;font-weight:700}
+.infocard p{font-size:13.5px;color:var(--ink-2);line-height:1.65}
+.infocard .num{color:var(--ink)}
+.section > .linkrow{margin-top:12px}

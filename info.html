@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>日惹实用信息</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="topnav" data-part="nav" data-current="info" aria-label="站内导航"></nav>
+
+  <header class="pagehead">
+    <p class="eyebrow">2026-09-27 日 → 09-30 三 · 出发前与落地后</p>
+    <h1>日惹实用信息</h1>
+    <p class="lede">怎么换钱、怎么付钱，车怎么叫，入境要办什么。按<b>中国护照</b>、新加坡和大陆<b>两套银行卡与支付 app</b>、<b>MAXX 漫游上网</b>写。</p>
+    <ul class="facts">
+      <li>中国护照：要办 e-VOA</li>
+      <li>当地时间比新加坡慢 1 小时</li>
+      <li>插头 C/F 型 · 230V</li>
+      <li>9 月印尼没有公共假期</li>
+      <li>资料核实 2026-09-15</li>
+    </ul>
+    <div class="linkrow"><span class="label">跳到</span><a href="#todo">出发前</a><a href="#money">货币</a><a href="#atm">ATM</a><a href="#transport">交通</a><a href="#visa">签证与入境</a><a href="#more">其他</a></div>
+  </header>
+
+  <!-- ============ 出发前 ============ -->
+  <section class="section" id="todo">
+    <div class="sechead">
+      <p class="eyebrow">9/20 前办完</p>
+      <h2>出发前要办的五件事</h2>
+    </div>
+    <div class="steps">
+      <div class="panel step">
+        <div>
+          <h3>申请 e-VOA 电子落地签</h3>
+          <p>只在官网 <a href="https://evisa.imigrasi.go.id/" target="_blank" rel="noopener">evisa.imigrasi.go.id</a> 办，每人 <span data-money="500000"></span>。官方要求至少提前 48 小时，常见几分钟就批，高峰期要几天，<b>建议 9/20 前办完</b>。详细材料见下面「签证与入境」。<span class="srcmark sec">二手</span></p>
+        </div>
+      </div>
+      <div class="panel step">
+        <div>
+          <h3>填 All Indonesia 入境卡：9/24 09:30 以后才能填</h3>
+          <p>只能在落地前 72 小时内填。9/27 09:30 落地，最早 <b>9/24 09:30（当地时间，新加坡 10:30）</b>。官网 <a href="https://allindonesia.imigrasi.go.id/" target="_blank" rel="noopener">allindonesia.imigrasi.go.id</a> 或 All Indonesia app，免费。填完生成的二维码截图存好。<span class="srcmark sec">二手</span></p>
+        </div>
+      </div>
+      <div class="panel step">
+        <div>
+          <h3>确认手机里的 app 能扫 QRIS</h3>
+          <p>印尼的统一收款码叫 QRIS。能扫的 app：新加坡 <b>DBS PayLah!、OCBC、UOB</b>，大陆 <b>支付宝、云闪付</b> 和工农中建交招等银行 app。名单里没有微信支付。<span class="srcmark sec">二手</span></p>
+        </div>
+      </div>
+      <div class="panel step">
+        <div>
+          <h3>买转换插头</h3>
+          <p>印尼插座是两根圆脚（C/F 型）。新加坡的三方脚（G 型）和大陆的扁脚都插不进。</p>
+        </div>
+      </div>
+      <div class="panel step">
+        <div>
+          <h3>在新加坡先把 Grab 登录好、绑好卡</h3>
+          <p>同一个 Grab 账号到印尼直接能用，币种自动换成 IDR。Gojek 注册通常要印尼手机号收验证码，用 MAXX 漫游的话 Grab 更省事。<span class="srcmark sec">二手</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 货币 ============ -->
+  <section class="section" id="money">
+    <div class="sechead">
+      <p class="eyebrow">货币</p>
+      <h2>汇率计算器</h2>
+    </div>
+    <div class="panel fxcalc">
+      <div class="fxfields">
+        <label class="fxfield"><span class="label">印尼盾 IDR</span>
+          <input class="fxin" id="inIdr" type="text" inputmode="decimal" autocomplete="off" placeholder="例如 50rb、1,2jt"></label>
+        <label class="fxfield"><span class="label">新元 SGD</span>
+          <input class="fxin" id="inSgd" type="text" inputmode="decimal" autocomplete="off"></label>
+        <label class="fxfield"><span class="label">人民币 CNY</span>
+          <input class="fxin" id="inCny" type="text" inputmode="decimal" autocomplete="off"></label>
+      </div>
+      <div class="rowline tight" id="quick" aria-label="常用金额"></div>
+      <p class="hint">印尼写价钱爱省零：<b>rb</b>（ribu）＝千，<b>jt</b>（juta）＝百万。菜单上的「25rb」就是 IDR 25,000，「1,2jt」就是 IDR 1,200,000。这两种写法可以直接输进上面的框。</p>
+      <div class="fxrates">
+        <label class="rowline tight"><span class="label">1 SGD =</span><input id="rateSgd" type="number" min="1" step="50"><span class="label">IDR</span></label>
+        <label class="rowline tight"><span class="label">1 CNY =</span><input id="rateCny" type="number" min="1" step="10"><span class="label">IDR</span></label>
+        <button class="chip" id="useRef" type="button">用 9/15 实时汇率</button>
+      </div>
+      <p class="hint">9/15 实时报价：1 SGD ≈ 13,900 IDR，1 CNY ≈ 2,635 IDR（Alpha Vantage）。全站预设的 12,500 是早先的粗算值，比现在低了约 10%。<b>这里改的新元汇率全站通用</b>，景点和美食页上的 S$ 换算会跟着变。</p>
+      <div class="scroll">
+        <table class="notes">
+          <thead><tr><th scope="col">面额</th><th scope="col">≈ 新元</th><th scope="col">≈ 人民币</th><th scope="col">印尼写法</th></tr></thead>
+          <tbody id="notes"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <h3 class="subhead">怎么付钱</h3>
+    <div class="panel scroll">
+      <table>
+        <thead><tr><th scope="col">方式</th><th scope="col">用在哪</th><th scope="col">你手上能用的</th><th scope="col">注意</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">现金</th><td>路边摊、angkringan、市场；包车与吉普的超时费付给司机</td><td>在 ATM 取印尼盾</td><td>美食清单里多数小摊只收现金。Traveloka 包车的超时费写明直接付司机。<span class="srcmark sec">二手</span></td></tr>
+          <tr><th scope="row">QRIS 扫码</th><td>门口贴 QRIS 码的商户</td><td>新加坡：DBS PayLah!、OCBC、UOB<br>大陆：支付宝、云闪付，工行、农行、中行、建行、交行、招行等银行 app</td><td>单笔上限 <span data-money="10000000"></span>。名单里没有微信支付。<span class="srcmark sec">二手</span></td></tr>
+          <tr><th scope="row">刷卡</th><td>酒店、商场、连锁餐厅、官方订票网站</td><td>新加坡卡、大陆的 Visa／Mastercard／银联卡</td><td>机器问用 SGD 还是 IDR 结算，<b>选 IDR</b>。选 SGD 是 DCC（动态货币转换），汇率差还多收钱。<span class="srcmark sec">二手</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="linkrow"><span class="label">来源</span><a href="https://qrisantarnegara.com/en/" target="_blank" rel="noopener">QRIS Cross-border 支持 app 名单</a><a href="https://www.you.co/sg/blog/indonesia-atm-withdrawal-guide/" target="_blank" rel="noopener">YouTrip：印尼 ATM 指南（2026-03-30）</a><a href="https://www.traveloka.com/id-id/activities/indonesia/product/rent-a-car-city-tour-yogyakarta-12-hours-5088691784433" target="_blank" rel="noopener">Traveloka 包车条款</a></div>
+  </section>
+
+  <!-- ============ ATM ============ -->
+  <section class="section" id="atm">
+    <div class="sechead">
+      <p class="eyebrow">货币</p>
+      <h2>ATM：用哪家、在哪取</h2>
+    </div>
+
+    <div class="callout"><b class="h">落地先在机场取一次</b>D1 是周日，一落地就包车进城逛王宫和水城，路上没空找 ATM。YIA 到达后先在机场 ATM Center 用 <b>BCA 或 BNI</b> 取当天要用的现金。</div>
+
+    <h3 class="subhead">用哪家银行</h3>
+    <div class="panel scroll">
+      <table>
+        <thead><tr><th scope="col">银行</th><th scope="col">ATM 对外卡收费</th><th scope="col">单笔上限</th><th scope="col">结论</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">BCA</th><td>常被列为不收外卡取现费</td><td class="n">2,500,000</td><td><span class="pill good">首选</span></td></tr>
+          <tr><th scope="row">BNI</th><td>常被列为不收外卡取现费</td><td class="n">约 2,000,000</td><td><span class="pill good">首选</span></td></tr>
+          <tr><th scope="row">Mandiri</th><td>2026-02-22 起，Visa／Mastercard 外卡每笔 <span data-money="50000"></span>。Mandiri 官网资费表里没查到这一条，银联卡收不收也没查到</td><td class="n">—</td><td><span class="pill warn">能避就避</span></td></tr>
+          <tr><th scope="row">BRI</th><td>部分机器收 3%</td><td class="n">—</td><td><span class="pill risk">避开</span></td></tr>
+          <tr><th scope="row">CIMB Niaga</th><td>2.5%</td><td class="n">—</td><td><span class="pill risk">避开</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="cost">以上都是二手资料<span class="srcmark sec">二手</span>，收费以 ATM 屏幕提示为准。<b>发卡行另外收费</b>：大陆银联借记卡的境外取现费看各行政策，不少行有减免；新加坡的卡看各行条款。屏幕问要不要按 SGD 结算时<b>选 IDR</b>。尽量用银行网点和商场里的 ATM，街边独立的 ATM 手续费更高。</p>
+
+    <h3 class="subhead">在哪取</h3>
+    <div class="panel scroll">
+      <table>
+        <thead><tr><th scope="col">片区</th><th scope="col">ATM</th><th scope="col">位置</th><th scope="col">地图</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">酒店旁</th><td>ATM BCA Hartono Mall</td><td>酒店隔壁商场（谷歌上商场叫 Pakuwon Mall Jogja，ATM 仍叫 Hartono Mall）· 离 Marriott 直线约 150 m</td><td><a href="https://www.google.com/maps/search/?api=1&query=ATM%20BCA%20Hartono%20Mall&query_place_id=ChIJGxpVpaNZei4RiJpqF0nN0UA" target="_blank" rel="noopener">打开</a></td></tr>
+          <tr><th scope="row">酒店旁</th><td>ATM Galeri Hartono Mall Jogja</td><td>同一商场 LG 层，多家银行的 ATM 在一起 · 约 240 m</td><td><a href="https://www.google.com/maps/search/?api=1&query=ATM%20Galeri%20Hartono%20Mall%20Jogja&query_place_id=ChIJT2B8S6JZei4R-7XqI6T0bbU" target="_blank" rel="noopener">打开</a></td></tr>
+          <tr><th scope="row">酒店旁</th><td>ATM BNI</td><td>Ruko Ringroad Square，北环路上 · 约 400 m</td><td><a href="https://www.google.com/maps/search/?api=1&query=ATM%20Bank%20Negara%20Indonesia%20Ringroad%20Square&query_place_id=ChIJ3btlgqFZei4RiqpWj-xInFk" target="_blank" rel="noopener">打开</a></td></tr>
+          <tr><th scope="row">机场</th><td>ATM Center, YIA</td><td>YIA 机场内的 ATM 集中点</td><td><a href="https://www.google.com/maps/search/?api=1&query=ATM%20Center%20YIA&query_place_id=ChIJX2fvtSvjei4RfkpsazTo4Ng" target="_blank" rel="noopener">打开</a></td></tr>
+          <tr><th scope="row">Malioboro</th><td>ATM BNI Malioboro Mall 1</td><td>Malioboro Mall 里</td><td><a href="https://www.google.com/maps/search/?api=1&query=ATM%20BNI%20Malioboro%20Mall%201&query_place_id=ChIJkRRYIiZYei4RKCr8TJK3nHA" target="_blank" rel="noopener">打开</a></td></tr>
+          <tr><th scope="row">王宫北</th><td>BNI 日惹分行（KCU Yogyakarta）</td><td>零公里点旁，去王宫顺路</td><td><a href="https://www.google.com/maps/search/?api=1&query=ATM%20BNI%20KCU%20Yogyakarta&query_place_id=ChIJbXXyO49Xei4RV9UR08AimUQ" target="_blank" rel="noopener">打开</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="cost">位置取自谷歌地图，2026-09-15 查询；距离是直线距离。商场里的 ATM 跟着商场营业时间开放。</p>
+
+    <h3 class="subhead">要换现钞的话</h3>
+    <div class="panel guide">
+      <p>去持牌的 <b>Mulia Money Changer</b>（PT Mulia Bumi Arta）。日惹有四家：<b>Plaza Malioboro 商场 LG 层</b>（周日 10:00–17:00，国定假日休息）、Grand Inna Malioboro 酒店、Jl. Margo Utomo 53 号总店、Ambarrukmo Plaza（Amplaz）LG 层。<span class="srcmark sec">二手</span></p>
+      <p>Mulia 自称可换 24 种外币，但收不收新元和人民币现钞没核实到，去之前先打电话 (0274) 453220 问。不在街边换钱，当面点清再离开柜台。</p>
+    </div>
+    <div class="linkrow"><span class="label">来源</span><a href="https://www.you.co/sg/blog/indonesia-atm-withdrawal-guide/" target="_blank" rel="noopener">YouTrip：Mandiri 外卡收费</a><a href="https://nobleasiaid.com/insights/country-updates/use-foreign-card-in-indonesia/" target="_blank" rel="noopener">Noble Asia：外卡在印尼</a><a href="https://www.bankmandiri.co.id/en/tarif-layanan" target="_blank" rel="noopener">Mandiri 资费表</a><a href="https://m.unionpayintl.com/cardholderServ/globalCard/cn/global_3/10060191?type=3" target="_blank" rel="noopener">银联国际：印度尼西亚</a><a href="https://plazamalioboro.com/brand-tenant/mulia-money-changer/" target="_blank" rel="noopener">Plaza Malioboro：Mulia</a><a href="https://muliamoneychanger.co.id/" target="_blank" rel="noopener">Mulia Money Changer</a></div>
+  </section>
+
+  <!-- ============ 交通 ============ -->
+  <section class="section" id="transport">
+    <div class="sechead">
+      <p class="eyebrow">交通</p>
+      <h2>机场和市区之间怎么走</h2>
+    </div>
+    <div class="panel scroll">
+      <table>
+        <thead><tr><th scope="col">方式</th><th scope="col">价格</th><th scope="col">时间</th><th scope="col">怎么订</th><th scope="col">适合</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">包车</th><td>见行程页「谈包车」</td><td>约 1 小时</td><td>提前谈好</td><td>行程方案的默认做法：D1 带着行李直接进王宫</td></tr>
+          <tr><th scope="row">Grab</th><td>市区和机场之间平均 <span data-money="180000"></span>–<span data-money="250000"></span><span class="srcmark off">官方</span>，高峰更贵<span class="srcmark sec">二手</span></td><td>75–90 分钟</td><td>到达大厅有 Grab 柜台，按 app 指引走到上车点。选 <b>GrabCar Airport</b></td><td>到了临时改计划、D4 去机场</td></tr>
+          <tr><th scope="row">机场火车</th><td>普通车 <span data-money="10000"></span><br>Xpress <span data-money="40000"></span> 起，高峰加价</td><td>Tugu 站到机场约 40 分钟</td><td>Access by KAI 或 KA Bandara Mobile app、车站售票机、railink.co.id</td><td>行李少、从市中心出发。Tugu 站离酒店还有一段车程</td></tr>
+          <tr><th scope="row">机场出租车</th><td>按目的地定价，不打表。二手资料：到 Malioboro <span data-money="240000"></span></td><td>约 1 小时</td><td>到达层 JAS／Rajawali 柜台买票，要收据</td><td>Grab 叫不到时的备用</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="subhead">机场火车 9 月时刻（普通车）</h3>
+    <div class="panel scroll">
+      <table class="tt">
+        <tbody>
+          <tr><th scope="row">机场 → Tugu</th><td class="n">05:16　06:20　07:46　09:53　11:35　13:25　14:56　15:20　17:00　17:34　19:46　20:55</td></tr>
+          <tr><th scope="row">Tugu → 机场</th><td class="n">04:20　05:10　06:30　08:33　08:55　12:00　12:35　14:13　15:49　16:07　18:25　19:16</td></tr>
+          <tr><th scope="row">Tugu → 机场 Xpress</th><td class="n">06:00　07:40　07:57　09:28　09:51　11:03　13:28　15:02　15:30　16:48　17:15　18:50　20:12</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="cost">D4 是 10:30 的国际航班，坐火车最晚赶 Tugu 06:30 的普通车，或 06:00 的 Xpress（约 40 分钟到机场）。07:40 的 Xpress 要 08:20 左右才到，对国际航班太紧。时刻来自 Harian Jogja 2026-09-10 的报道<span class="srcmark sec">二手</span>，出发前在 Access by KAI 里再核一次。</p>
+
+    <div class="sechead subsec">
+      <p class="eyebrow">交通</p>
+      <h2>Grab 怎么订</h2>
+    </div>
+    <div class="panel guide">
+      <ol>
+        <li><b>账号</b>：直接用新加坡那个账号。落地开定位，价格自动显示 IDR。验证码发到新加坡号，MAXX 漫游收得到。</li>
+        <li><b>选车型</b>：普通用车选 <b>GrabCar</b>（最多 4 人）；机场接送选 <b>GrabCar Airport</b>，行李上限 60 kg；GrabBike 是摩的，只坐一人，机场不能叫。<span class="srcmark off">官方</span></li>
+        <li><b>付款</b>：绑好的卡、现金都行。Grab 官网列出的付款方式里有支付宝和微信支付。价格下单时就定了，不打表。<span class="srcmark off">官方</span></li>
+        <li><b>上车</b>：先核车牌和司机照片。可以用 GrabChat 发消息，会自动翻译；行程可以实时分享给同伴。<span class="srcmark off">官方</span></li>
+        <li><b>要包几个小时</b>：选 <b>GrabCar Rental</b>，带司机 4–12 小时。<span class="srcmark off">官方</span></li>
+      </ol>
+      <h3>注意事项</h3>
+      <ul>
+        <li><b>火车站接不了客</b>：Tugu 站（Stasiun Yogyakarta）是网约车「红区」（zona merah），Grab 和 Gojek 只能送到站、不能在站内接人。要走到约 140 m 外的 NEO Malioboro 酒店门口再叫。这是网约车和站前传统摩的的约定，资料偏旧，以现场为准。<span class="srcmark sec">二手</span></li>
+        <li><b>郊区景点回程很难叫到车</b>：行程页里的 Jomblang、Bukit Klangon、婆罗浮屠日出都安排了司机原地等，别指望回程现叫 Grab。婆罗浮屠和普兰巴南有没有明文禁止网约车接人，没查到。</li>
+        <li><b>机场只认官方渠道</b>：出了到达口只找 Grab 柜台或出租车柜台，别跟主动搭话的司机走。</li>
+      </ul>
+    </div>
+
+    <div class="sechead subsec">
+      <p class="eyebrow">交通</p>
+      <h2>Traveloka 包车怎么订</h2>
+    </div>
+    <div class="panel guide">
+      <p><b>在哪订</b>：Traveloka app → 景点与活动（Xperience）→ 搜「Sewa Mobil City Tour Jogja 12 Jam」；或者首页「租车」→「带司机」→ 选日惹。<span class="srcmark sec">二手</span></p>
+      <p><b>这款 12 小时套餐的条款</b>（9/15 查的时候显示售罄）<span class="srcmark off">官方</span>：</p>
+      <ul>
+        <li>起价 <span data-money="1000000"></span>，含车、司机、12 小时的油费</li>
+        <li>不含门票和停车费。<b>司机餐费两处写法打架</b>：详情页写不含，列表摘要写含，下单前问清楚</li>
+        <li>超过 12 小时、或过了当天 23:59 就算超时，超时费<b>现金直接付给司机</b>，页面没写每小时多少</li>
+        <li>出城和去 Gunungkidul 另外加钱：<b>Jomblang 在 Gunungkidul，婆罗浮屠在中爪哇的 Magelang，两个都算</b></li>
+        <li>服务时间 04:00–23:00；司机会在接人前 12 小时联系你</li>
+      </ul>
+      <div class="callout soga"><b class="h">和行程对不上的地方</b>D3（9/29）要 <b>03:00 出发</b>去婆罗浮屠看日出，比 04:00 的服务开始时间还早；而且从 03:00 到 22:30 下山，远超 12 小时。所以 Traveloka 的标准套餐包不了 D3，行程页「谈包车」那一步还是得做。D1 机场接人进城这种短途，套餐可以用。</div>
+      <h3>订之前一定问司机</h3>
+      <ol>
+        <li>12 小时从几点算到几点？超时每小时多少钱？</li>
+        <li>去婆罗浮屠、Gunungkidul 的出城费各多少？</li>
+        <li>停车费、门票、司机餐费谁付？</li>
+        <li>车型几座？后面放得下行李吗？</li>
+        <li>夜里在 Klangon 等 2 小时，怎么算钱？</li>
+      </ol>
+      <p>谈好的条件用 WhatsApp 发文字确认，别只口头说定。</p>
+    </div>
+    <div class="linkrow"><span class="label">来源</span><a href="https://www.grab.com/global/airport-rides/yogyakarta-international-airport/" target="_blank" rel="noopener">Grab：YIA 机场接送</a><a href="https://jogjapolitan.harianjogja.com/r-1270589/jadwal-tarif-ka-bandara-yia-september-2026-mulai-rp10000-saja" target="_blank" rel="noopener">Harian Jogja：机场火车 9 月时刻（2026-09-10）</a><a href="https://www.yogyes.com/id/yogyakarta-transportation/yogyakarta-international-airport-transfer/" target="_blank" rel="noopener">YogYes：YIA 交通</a><a href="https://www.yogyes.com/id/yogyakarta-transportation/yogyakarta-railway-station-transfer/" target="_blank" rel="noopener">YogYes：Tugu 站红区</a><a href="https://www.traveloka.com/id-id/activities/indonesia/product/rent-a-car-city-tour-yogyakarta-12-hours-5088691784433" target="_blank" rel="noopener">Traveloka：City Tour Jogja 12 Jam</a><a href="https://guideyourtravel.com/grab-gojek-bali/" target="_blank" rel="noopener">Grab 与 Gojek 注册（游客）</a></div>
+  </section>
+
+  <!-- ============ 签证与入境 ============ -->
+  <section class="section" id="visa">
+    <div class="sechead">
+      <p class="eyebrow">中国护照</p>
+      <h2>签证与入境</h2>
+    </div>
+    <div class="panel guide">
+      <dl class="fields">
+        <div><dt>要不要签证</dt><dd><b>要</b>。东盟国家护照免签，中国护照不在其中，要办 e-VOA（电子落地签）。<span class="srcmark sec">二手</span></dd></div>
+        <div><dt>在哪办</dt><dd>只认 <a href="https://evisa.imigrasi.go.id/" target="_blank" rel="noopener">evisa.imigrasi.go.id</a>。搜 “Indonesia e-VOA” 出来的同名网站很多是加价代办</dd></div>
+        <div><dt>费用</dt><dd><span data-money="500000"></span>／人，网上刷 Visa／Mastercard／JCB</dd></div>
+        <div><dt>能待多久</dt><dd>30 天，可以网上延一次，再加 30 天</dd></div>
+        <div><dt>材料</dt><dd>护照首页扫描件、白底证件照、回程机票</dd></div>
+        <div><dt>护照有效期</dt><dd>入境当天起算还剩 ≥ 6 个月，也就是到 <b>2027-03-27</b> 之后才过期</dd></div>
+        <div><dt>多久批</dt><dd>官方要求至少提前 48 小时；常见几分钟批下，高峰要几天。批下来后 PDF 和二维码发到邮箱</dd></div>
+        <div><dt>入境</dt><dd>有 e-VOA 加电子护照，可以走自动通道。二手资料说的是大机场，YIA 有没有自动通道没核实到</dd></div>
+      </dl>
+    </div>
+
+    <h3 class="subhead">All Indonesia 入境卡</h3>
+    <div class="panel guide">
+      <ul>
+        <li>所有入境旅客都要填，<b>免费</b>。原来分开填的海关申报（e-CD）和 SATUSEHAT 健康申报都并进这一张了</li>
+        <li>2025-10-01 起全国所有国际机场强制</li>
+        <li><b>只能在落地前 72 小时内填</b>：9/24 09:30（当地时间）以后</li>
+        <li>入口：<a href="https://allindonesia.imigrasi.go.id/" target="_blank" rel="noopener">allindonesia.imigrasi.go.id</a> 或 All Indonesia app。收费的第三方网站都不用理</li>
+      </ul>
+    </div>
+
+    <h3 class="subhead">海关限额</h3>
+    <div class="panel scroll">
+      <table>
+        <tbody>
+          <tr><th scope="row">现金</th><td>超过 <span data-money="100000000"></span>，或等值超过 USD 10,000，要申报</td></tr>
+          <tr><th scope="row">酒</th><td>免税 1 升</td></tr>
+          <tr><th scope="row">烟</th><td>香烟 200 支、雪茄 50 支，或烟丝 100 g</td></tr>
+          <tr><th scope="row">无人机</th><td>要事先申请许可</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="cost">签证、入境卡、海关限额都来自二手整理<span class="srcmark sec">二手</span>，官网是 JS 页面，这次没能直接读取。<b>回新加坡</b>按你的新加坡身份入境；要不要填 SG Arrival Card、要不要签证，取决于你持哪种准证，这次没核实，请查 ICA 官网。</p>
+    <div class="linkrow"><span class="label">来源</span><a href="https://www.komodoresort.com/blog/indonesia-visa-guide/" target="_blank" rel="noopener">Indonesia Visa Guide 2026</a><a href="https://indonesianvisas.com/visa-indonesia-for-chinese" target="_blank" rel="noopener">中国公民赴印尼签证 2026</a><a href="https://backpackmoments.com/indonesia-evoa/" target="_blank" rel="noopener">e-VOA 申请与延期</a><a href="https://blog.wego.com/all-indonesia-arrival-card/" target="_blank" rel="noopener">Wego：All Indonesia 入境卡</a><a href="https://en.wikipedia.org/wiki/All_Indonesia_Arrival_Card" target="_blank" rel="noopener">Wikipedia：All Indonesia Arrival Card</a><a href="https://www.hinterlandtravel.com/indonesia/customs" target="_blank" rel="noopener">印尼海关限额 2026</a><a href="https://www.ica.gov.sg/enter-transit-depart/entering-singapore/sg-arrival-card" target="_blank" rel="noopener">ICA：SG Arrival Card</a></div>
+  </section>
+
+  <!-- ============ 其他 ============ -->
+  <section class="section" id="more">
+    <div class="sechead">
+      <p class="eyebrow">你可能没想到的</p>
+      <h2>其他</h2>
+    </div>
+    <div class="infogrid">
+      <div class="panel infocard">
+        <h3>时差：比新加坡慢 1 小时</h3>
+        <p>日惹用西印尼时间 WIB（UTC+7）。机票上的时间都是当地时间：9/30 10:30 起飞＝新加坡 11:30。约车、订日出场次、填入境卡的 72 小时窗口，都按当地时间算。</p>
+      </div>
+      <div class="panel infocard">
+        <h3>插头与电压</h3>
+        <p>C／F 型两根圆脚，230V、50Hz。电压和新加坡、大陆一样，手机电脑的充电器直接用，只需要转换插头。</p>
+      </div>
+      <div class="panel infocard">
+        <h3>天气：很干，晒和扬尘才是问题</h3>
+        <p>BMKG 预测日惹 9 月下旬每旬降雨 0–20 mm，比常年少；旱季要到 11 月上中旬才结束，9 月上旬全省发了气象干旱「Awas」级预警。备好防晒和帽子；坐吉普的那天带口罩。<span class="srcmark sec">二手</span></p>
+      </div>
+      <div class="panel infocard">
+        <h3>假期：9 月没有公共假期</h3>
+        <p>2026 年 9 月印尼没有全国假日，也没有联休；上一个是 8/25 的 Maulid Nabi（先知诞辰），下一个是 12/25。9/27 是周日，景点照常有周末人流。<span class="srcmark sec">二手</span></p>
+      </div>
+      <div class="panel infocard">
+        <h3>上网：MAXX 漫游就够</h3>
+        <p>600G 够用。印尼的 IMEI 登记只管插印尼 SIM 卡、待满 90 天的手机，漫游不涉及。去 Jomblang、默拉皮这些郊区前，先下载 Google 地图的日惹离线地图和 Google 翻译的印尼语离线包。<span class="srcmark sec">二手</span></p>
+      </div>
+      <div class="panel infocard">
+        <h3>紧急电话</h3>
+        <p><b class="num">112</b> 综合求助　<b class="num">110</b> 警察　<b class="num">119</b> 救护　<b class="num">113</b> 火警<span class="srcmark sec">二手</span></p>
+      </div>
+      <div class="panel infocard">
+        <h3>最近的医院：RS JIH</h3>
+        <p>Jl. Ring Road Utara No.160，和酒店同一条北环路，离 Marriott 直线约 700 m。电话 <span class="num">+62 274 4463535</span>。<span class="srcmark sec">二手</span> <a href="https://www.google.com/maps/search/?api=1&query=RS%20JIH%20Yogyakarta" target="_blank" rel="noopener">地图</a></p>
+      </div>
+      <div class="panel infocard">
+        <h3>领事保护：日惹归泗水总领馆管</h3>
+        <p>驻泗水总领馆应急电话 <b class="num">+62-31-5678284</b>（印尼境内拨 031-5678284）。打不通就打外交部 24 小时热线 <b class="num">+86-10-12308</b>。日惹特区不归雅加达的大使馆管。<span class="srcmark off">官方</span></p>
+      </div>
+      <div class="panel infocard">
+        <h3>装好这几个 app</h3>
+        <p>Grab · Access by KAI（机场火车）· Traveloka · All Indonesia · DBS PayLah! 或支付宝 · WhatsApp（很多商家和景点只用 WhatsApp，比如 Klangon）· Google 翻译</p>
+      </div>
+    </div>
+    <div class="linkrow"><span class="label">来源</span><a href="https://id.china-embassy.gov.cn/lsfw/fynxz/202605/t20260509_11907517.htm" target="_blank" rel="noopener">中国驻印尼使馆：领事服务联系方式</a><a href="https://travel.kompas.com/read/2026/08/31/102427827/daftar-tanggal-merah-september-2026-ada-libur-nasional-dan-cuti-bersama" target="_blank" rel="noopener">Kompas：2026 年 9 月假日</a><a href="https://staklim-yogya.bmkg.go.id/category/iklim/prakiraan-iklim/prakiraan-musim-hujan/" target="_blank" rel="noopener">BMKG 日惹气候站</a><a href="https://rri.co.id/yogyakarta/regional/2702208/bmkg-prediksi-diy-nyaris-tanpa-hujan-hingga-november" target="_blank" rel="noopener">RRI：DIY 到 11 月几乎无雨</a><a href="https://www.backindo.com/indonesia-sim-cards/" target="_blank" rel="noopener">印尼 SIM 与 IMEI 规定</a><a href="https://jakartaglobe.id/lifestyle/indonesia-emergency-numbers-police-ambulance-fire-and-more" target="_blank" rel="noopener">Jakarta Globe：紧急电话</a><a href="https://hellosehat.com/care/rumah-sakit/jogja-international-hospital-487/" target="_blank" rel="noopener">RS JIH</a><a href="https://www.iec.ch/world-plugs/indonesia" target="_blank" rel="noopener">IEC：印尼插头</a></div>
+  </section>
+
+  <footer class="pagefoot">
+    <p data-part="srclegend"></p>
+    <p>资料核实于 2026-09-15。汇率是当天的实时报价；ATM 位置取自谷歌地图；ATM 收费、签证和入境规定都会变，出发前一周再看一遍官网。</p>
+  </footer>
+
+</div>
+<script src="assets/site.js"></script>
+<script src="assets/info.js"></script>
+</body></html>

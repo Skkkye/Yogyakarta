@@ -161,9 +161,9 @@ const UI={
 };
 
 /* ---------- PARTS：<x data-part="名字"> 自动填充 ---------- */
-const NAV=[["list","景点清单","index.html"],["food","美食清单","food.html"],["plan","行程方案","plan.html"]];
+const NAV=[["list","景点清单","index.html"],["food","美食清单","food.html"],["plan","行程方案","plan.html"],["info","实用信息","info.html"]];
 const PARTS={
-  /* <nav class="topnav" data-part="nav" data-current="list|food|plan"> */
+  /* <nav class="topnav" data-part="nav" data-current="list|food|plan|info"> */
   nav:el=>'<span class="brand">日惹 · 9/27–9/30</span>'+
     NAV.map(([k,t,h])=>`<a href="${h}"${k===el.dataset.current?' aria-current="true"':""}>${t}</a>`).join(""),
   srclegend:()=>'<b>来源标注</b>　<span class="srcmark off">官方</span> 景区官网 / 政府机构 / 官方票务平台。'+
