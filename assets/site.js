@@ -164,8 +164,7 @@ const UI={
 const NAV=[["list","景点清单","index.html"],["food","美食清单","food.html"],["plan","行程方案","plan.html"],["info","实用信息","info.html"]];
 const PARTS={
   /* <nav class="topnav" data-part="nav" data-current="list|food|plan|info"> */
-  nav:el=>'<span class="brand">日惹 · 9/27–9/30</span>'+
-    NAV.map(([k,t,h])=>`<a href="${h}"${k===el.dataset.current?' aria-current="true"':""}>${t}</a>`).join(""),
+  nav:el=>NAV.map(([k,t,h])=>`<a href="${h}"${k===el.dataset.current?' aria-current="true"':""}>${t}</a>`).join(""),
   srclegend:()=>'<b>来源标注</b>　<span class="srcmark off">官方</span> 景区官网 / 政府机构 / 官方票务平台。'+
     '<span class="srcmark sec">二手</span> 旅行社、攻略站、媒体报道、网友分享 —— 价格与开放时间可能已变，到场前请复核。',
   /* 汇率框：改一次，各页通用 */

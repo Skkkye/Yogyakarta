@@ -26,7 +26,7 @@
   --warn:#F0B90B; --warn-soft:#2B2410;
   --risk:#F6465D; --risk-soft:#2B1A1E;
   /* Binance Yellow：CTA 色，填充用、字压黑。只准出现在：
-     必去／必吃（卡片左条与角标，必吃是美食清单里的同一个角色）、选中的筛选 chip、推荐方案、订票步骤序号 */
+     必去／必吃（卡片左条与角标，必吃是美食清单里的同一个角色）、选中的筛选 chip、导航当前页、推荐方案、订票步骤序号 */
   --pick:#181A20; --pick-soft:#FCD535;
   --lift:0 1px 2px rgba(0,0,0,.5);
   --surf-low:#1E2329; --surf:#2B3139; --surf-high:#333A44;
@@ -67,10 +67,10 @@ code{font-family:var(--mono);font-size:.9em}
 
 /* 站内导航 —— 内容由 site.js 的 PARTS.nav 生成；min-height 预留高度，免得渲染时跳动 */
 .topnav{display:flex;flex-wrap:wrap;align-items:center;gap:4px 18px;min-height:58px;padding-block:12px;margin-bottom:14px}
-.topnav .brand{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-right:auto}
 .topnav a{font-size:13.5px;font-weight:500;color:var(--ink-2);text-decoration:none;padding-block:4px;border-bottom:2px solid transparent}
 .topnav a:hover{color:var(--ink)}
-.topnav a[aria-current]{color:var(--ink);border-bottom-color:var(--ink)}
+/* 当前页：黄字 + 黄下划线，和选中的 chip 同一个「选中」角色 */
+.topnav a[aria-current]{color:var(--pick-soft);border-bottom-color:var(--pick-soft);font-weight:700}
 
 /* 页首：eyebrow + h1 + lede + facts，三个页面同一套 */
 .pagehead{display:flex;flex-direction:column;gap:10px;padding-bottom:22px;margin-bottom:22px;border-bottom:1px solid var(--line)}
