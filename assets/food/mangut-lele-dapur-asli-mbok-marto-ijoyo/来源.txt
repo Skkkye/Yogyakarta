@@ -1,0 +1,6 @@
+Google 地图用户上传照片，经 Wanderlog 地点页转存；版权归原拍摄者，未获开放授权。
+1.jpg	https://itin-dev.wanderlogstatic.com/freeImage/Ek3HA1nFIVdaYAJAEuEBmKwisQR0Ibpk
+2.jpg	https://itin-dev.wanderlogstatic.com/freeImage/s67ME2TPkrt33SUQvyLXmXtk5yqwP574
+3.jpg	https://itin-dev.wanderlogstatic.com/freeImage/S5sddJirUMsRk5faqQljki6VXsCQSmvj
+4.jpg	https://itin-dev.wanderlogstatic.com/freeImage/xHiaY3VPiWzSSws5GhaDdkgfYfk3FtAx
+5.jpg	https://itin-dev.wanderlogstatic.com/freeImage/ReMB68hJ8kMR3uklrcQOwGXrWP9GmUVu

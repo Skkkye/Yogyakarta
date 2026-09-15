@@ -1,5 +1,5 @@
 /* =============================================================
-   site.css —— 全站唯一的样式表（index / spot / plan 共用）
+   site.css —— 全站唯一的样式表（index / spot / food / eat / plan 共用）
 
    规矩（改之前先看）：
    1. 颜色、圆角、字体只在 §1 的 :root 里定义；其他地方一律 var()，不写色值。
@@ -26,7 +26,7 @@
   --warn:#F0B90B; --warn-soft:#2B2410;
   --risk:#F6465D; --risk-soft:#2B1A1E;
   /* Binance Yellow：CTA 色，填充用、字压黑。只准出现在：
-     必去（卡片左条与角标）、选中的筛选 chip、推荐方案、订票步骤序号 */
+     必去／必吃（卡片左条与角标，必吃是美食清单里的同一个角色）、选中的筛选 chip、推荐方案、订票步骤序号 */
   --pick:#181A20; --pick-soft:#FCD535;
   --lift:0 1px 2px rgba(0,0,0,.5);
   --surf-low:#1E2329; --surf:#2B3139; --surf-high:#333A44;
@@ -376,3 +376,14 @@ th.rec{color:var(--pick-soft)}
   .ledger{grid-template-columns:1fr}
   .plan{padding:15px}
 }
+
+/* §4.4 美食清单 food.html 与详情 eat.html
+   卡片、筛选、详情字段全部复用 §3；这里只补美食多出来的两处 */
+/* 评分块里第二行 TA 评分 */
+.score .gc + .gc{margin-top:1px}
+/* 照片 3 张或 5 张时，宽屏首图横跨两列，避免网格留洞 */
+@media (min-width:640px){
+  .media.odd .shot:first-child{grid-column:1/-1;aspect-ratio:16/9}
+}
+/* 照片版权说明 */
+.photocredit{font-size:11.5px;color:var(--ink-3)}

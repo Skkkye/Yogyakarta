@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>日惹美食清单</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="topnav" data-part="nav" data-current="food" aria-label="站内导航"></nav>
+
+  <header class="pagehead">
+    <p class="eyebrow">2026-09-27 日 → 09-30 三 · 4 天 3 晚</p>
+    <h1>日惹美食清单</h1>
+    <p class="lede">从 Google 地图和 TripAdvisor 的高评论量店家里挑出 <span id="total"></span> 家本地吃食，按早餐、正餐、小吃、夜宵和位置筛。每家都写了人均、营业时间、口碑和踩雷点，另附 2–5 张实拍照片。</p>
+    <ul class="facts">
+      <li>评分抓取 2026-09-15</li>
+      <li>评论取 Wanderlog 收录的 Google 评论</li>
+      <li>价格多为 2025 年二手资料</li>
+    </ul>
+  </header>
+
+  <section class="alerts" aria-label="吃之前要知道的事">
+    <details class="alert warn">
+      <summary><span class="tag">休息日</span>
+        <h3>四天里有三天各有一家名店不开</h3></summary>
+      <p><b>9/27 周日</b> Sate Ratu 休息；<b>9/28 周一</b> Bu Sukardi 姜汤豆花、Warung Bu Ageng 休息；<b>9/29 周二</b> Kesuma 休息。Gudeg Sagan 的营业日各来源矛盾，出发前复核。</p>
+    </details>
+    <details class="alert note">
+      <summary><span class="tag">时间</span>
+        <h3>名店大多卖完就收，旧攻略的时间常常不准</h3></summary>
+      <p>Gudeg Pawon 已从深夜 21:30 改成 17:30 开门，两三个小时就卖完；Mbok Lindu 12 点收摊、06:00 前就在排队。Pak Pong、Pak Pele 等单锅现做的店，高峰要等一小时以上。</p>
+    </details>
+    <details class="alert risk">
+      <summary><span class="tag">肠胃</span>
+        <h3>路边摊的「环境卫生」分数普遍只有 3–5</h3></summary>
+      <p>angkringan、市场摊和柴灶厨房没有洗手处，冰块来源也不明。行程紧的那几天，把「环境卫生」排序打开，或只看有空调的餐厅。多数小摊只收现金。</p>
+    </details>
+  </section>
+
+  <div class="controls">
+    <div class="ctrlbar">
+      <button class="chip toggler" id="filterToggle" type="button" aria-expanded="false" aria-controls="ctrlpanel">筛选<span class="badge" id="filterCount"></span></button>
+      <select id="sortSel" aria-label="排序方式">
+        <option value="total">我的总分（高→低）</option>
+        <option value="taste">味道</option>
+        <option value="local">地道</option>
+        <option value="value">性价比</option>
+        <option value="clean">环境卫生</option>
+        <option value="google">谷歌评分（高→低）</option>
+        <option value="gcount">谷歌评论数（多→少）</option>
+        <option value="ta">TripAdvisor 评分</option>
+        <option value="price">人均（低→高）</option>
+        <option value="drive">车程（近→远）</option>
+        <option value="open">开门时间（早→晚）</option>
+      </select>
+      <input type="search" id="q" placeholder="搜店名 / 菜名" aria-label="搜索">
+      <span class="count" id="count"></span>
+    </div>
+    <div class="ctrlpanel" id="ctrlpanel" hidden>
+      <div class="rowline">
+        <span class="label">餐段</span>
+        <div id="mealFilters" class="rowline tight"></div>
+      </div>
+      <div class="rowline">
+        <span class="label">位置</span>
+        <div id="areaFilters" class="rowline tight"></div>
+      </div>
+      <div class="rowline">
+        <span class="label">品类</span>
+        <div id="kindFilters" class="rowline tight"></div>
+      </div>
+      <div class="rowline">
+        <span class="label">标记</span>
+        <div id="tagFilters" class="rowline tight"></div>
+      </div>
+      <div class="rowline">
+        <span class="label">条件</span>
+        <div id="flagFilters" class="rowline tight"></div>
+      </div>
+      <div class="rowline">
+        <button class="chip" id="clearAll" type="button">清空筛选</button>
+      </div>
+      <div class="rowline" data-part="fx"></div>
+    </div>
+  </div>
+
+  <!-- 卡片由 assets/foodlist.js 用 FUI.card 生成，点卡片进 eat.html?id=<slug> -->
+  <ul class="list" id="list"></ul>
+  <p class="empty" id="empty" hidden>没有符合条件的店，放宽筛选试试。</p>
+
+  <footer class="pagefoot">
+    <p data-part="srclegend"></p>
+    <p><b>评分口径</b>　五项各 1–10：味道、地道（离开日惹吃不到的程度）、性价比、环境卫生、好不好去（排队 + 交通 + 营业时段）。总分取平均，只用来排序。<b>必吃</b> = 日惹招牌菜且口碑稳定；<b>独特体验</b> = 吃的方式别处复制不了。</p>
+    <p><b>照片</b>　Google 地图用户上传、经 Wanderlog 转存，版权归原拍摄者，只作行程参考。</p>
+  </footer>
+
+</div>
+<script src="data/foods.js"></script>
+<script src="assets/site.js"></script>
+<script src="assets/food.js"></script>
+<script src="assets/foodlist.js"></script>
+</body></html>

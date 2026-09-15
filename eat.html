@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>美食详情 · 日惹美食清单</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="topnav" data-part="nav" data-current="food" aria-label="站内导航"></nav>
+
+  <!-- 内容由 assets/eat.js 按 ?id=<slug> 生成 -->
+  <main id="eat">
+    <noscript><p class="empty">这一页需要启用 JavaScript。</p></noscript>
+  </main>
+
+  <footer class="pagefoot">
+    <p data-part="srclegend"></p>
+    <div class="rowline" data-part="fx"></div>
+  </footer>
+
+</div>
+<!-- spots.js 只用来把「顺路景点」显示成链接 -->
+<script src="data/spots.js"></script>
+<script src="data/foods.js"></script>
+<script src="assets/site.js"></script>
+<script src="assets/food.js"></script>
+<script src="assets/eat.js"></script>
+</body></html>
