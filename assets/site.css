@@ -288,7 +288,7 @@ dd .geo{font-family:var(--mono);font-size:12px;color:var(--ink-3)}   /* 留档�
 .gmap .scrim{fill:#0B0E11;opacity:.28}
 .gmap .leg{fill:none;stroke-linecap:round;stroke-linejoin:round}
 .gmap .gdot{stroke:#0B0E11;stroke-width:2}
-.gmap .d1f{fill:var(--d1)}.gmap .d2f{fill:var(--d2)}.gmap .d3f{fill:var(--d3)}
+.gmap .d1f{fill:var(--d1)}.gmap .d2f{fill:var(--d2)}.gmap .d3f{fill:var(--d3)}.gmap .d4f{fill:var(--d4)}
 .gmap .base{stroke:#0B0E11;stroke-width:7;opacity:.55}
 .gmap .g1{stroke:var(--d1);stroke-width:3}
 .gmap .g2{stroke:var(--d2);stroke-width:3}

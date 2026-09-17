@@ -506,7 +506,7 @@ const FOODS=[
  flavor:"辣，11 岁小孩觉得很辣",env:"简易餐厅，门口登记排队",pay:"未核实到",
  scam:"低",scamNote:"标价；可用 GrabFood 外送，有时比堂食便宜",
  buzz:{"good":"2025–2026 评论：鸡肉嫩多汁、员工热情会解释。","bad":[["等","2026-05：出餐非常久"],["被高估","2025-09：不值这么贵、这么多等待"],["不像印尼沙爹","2025-07：更像辣烤鸡串，想吃花生酱沙爹的会失望"]]},
- avoid:"<b>9/27 周日不开。</b>不吃辣、带小孩的人。想吃传统花生酱沙爹的人。",
+ avoid:"<b>只休周日 —— 这次行程 9/28–10/1 没有周日，四天都能去。</b>不吃辣、带小孩的人。想吃传统花生酱沙爹的人。",
  wl:475884,
  srcs:[["Wanderlog 地点页","https://wanderlog.com/place/details/475884"],["价格与营业（detik）","https://www.detik.com/jogja/kuliner/d-6840072/sate-ratu-kuliner-terkenal-di-jogja-harga-lokasi-dan-jam-buka"]]
 },

@@ -73,6 +73,26 @@ const SPOTS=[
  srcs:[["行程与位置（二手）","https://borobudursunrise.com/tour/borobudur-sunrise-only-via-punthuk-setumbu-hill/"]]
 },
 {
+ n:"小鸡教堂（Bukit Rhema）",ln:"Bukit Rhema",c:"西北线（婆罗浮屠）",t:"打卡",tags:[],
+ img:2,
+ gq:"Bukit Rhema Gereja Ayam",pid:"ChIJhxeVEQSNei4Ra95dz6AbdSQ",cid:"2627036335128305259",geo:[-7.605709,110.180484],
+ g:4.8,gc:24430,
+ s:{view:8,culture:4,unique:8,value:9,quiet:4},
+ intro:"婆罗浮屠西北 4.3 km 山头上一座鸽子形状的混凝土建筑，1992 年起建、始终没完工，本名「万国祈祷屋」，因为外形被叫成小鸡教堂。7 层各有主题，爬到顶上的「皇冠」观景台能 360 度看河谷与 Menoreh 群山。2016 年电影《AADC2》取景后成了打卡点。",
+ price:25000,ticket:"{25000}（<b>本地与外国人同价</b>，身高 100 cm 以下免费）；吉普接驳 往返 {15000}／单程 {10000}；日出套餐 {150000}（含接驳、导览、餐饮）。票面含 7 层通行、导览（印尼语或英语）与一份炸木薯",src:"off",
+ book:"常规参观不需预约，现场或官网买票；日出套餐须提前预约（IG @bukitrhema、WhatsApp 0857-2577-9520 或 bukitrhema.com），最少 4 人",
+ hours:"每天 06:00–17:00（官网 2026-06 页面；2024 年 Kompas 写 07:00–17:45）；日出场 04:30–07:00",
+ dur:"45 分钟–1.5 小时 —— 只上皇冠看景 45 分钟够",
+ best:"上午 —— 光线好，皇冠观景台排队短",dist:"距市区 44 km，距婆罗浮屠 4.3 km",drive:65,
+ trans:["与婆罗浮屠同一条线，相距 4.3 km、约 15 分钟，包车顺路加一站","停车场到景区 200 米上坡、最陡约 40 度，可坐吉普接驳","离 Punthuk Setumbu 只有 500 米左右，可串在同一个早上"],
+ phys:"中 —— 200 米陡坡加 7 层楼梯，上皇冠的梯子又高又窄",
+ weather:"中等敏感：阴天看不到默拉皮与 Menoreh 群山的层次，雨天坡道湿滑",
+ scam:"低",scamNote:"明码标价，门票不分本地与外国人，官网可线上买",
+ pay:"现金；官网也可线上购票",dress:"已不作礼拜使用，无遮盖要求；坡道与窄梯需要好走的鞋",
+ avoid:"<b>它不是在用的教堂，也没有完工。</b>内部是水泥毛坯加壁画，冲着「教堂」或精致古迹来的人会失望 —— 卖点是造型加顶上的 360 度视野。皇冠的楼梯又高又窄，恐高或腿脚不便的人会吃力，旺季上午还要排队。逛完老实说只有 45 分钟的量，别指望它撑起半天。",
+ srcs:[["门票、开放时间与票面包含（官网 2026-06）","https://bukitrhema.com/id/harga-tiket-bukit-rhema-2026/"],["门票与日出套餐（二手 Kompas 2024-05）","https://travel.kompas.com/read/2024/05/14/150300727/harga-tiket-dan-jam-buka-gereja-ayam-bukit-rhema-di-borobudur"]]
+},
+{
  n:"Mendut 与 Pawon 双寺",ln:"Candi Mendut & Candi Pawon",c:"西北线（婆罗浮屠）",t:"古迹",tags:[],
  img:1,
  gq:["Mendut Temple", "Pawon Temple"],pid:["ChIJjx6WeOmNei4RF8UydX8QcuU", "ChIJwSv_xPGMei4Reyk-yMZSAYg"],cid:["16533295321643664663", "9800205277851429243"],geo:[[-7.604873,110.230080],[-7.606171,110.219582]],
@@ -127,7 +147,7 @@ const SPOTS=[
  phys:"低",weather:"开演前下雨改到室内剧场；开演超过 45 分钟后才下雨不退款（官方）。9 月末旱季尾，风险较低",
  scam:"中",scamNote:"票只含晚间演出，不含白天进庙 —— 不少人以为是联票；场外有转售高价票的",
  pay:"线上平台支付",dress:"晚间露天略凉，带薄外套；防蚊",
- avoid:"看不懂印度史诗又不打算做功课的人，两小时无对白舞剧会很煎熬。你在的三个晚上里，<b>只有 9/29 周二有演出</b>（露天场），9/27 周日和 9/28 周一都没有场次。",
+ avoid:"看不懂印度史诗又不打算做功课的人，两小时无对白舞剧会很煎熬。这次能用的三个晚上里，<b>只有 9/29 周二有场次</b>（露天场）：9/28 周一与 9/30 周三都没有；10/1 周四有场次，但那晚 18:50 已经起飞。而 9/29 是凌晨 02:30 起床看日出的那天，行程里已放弃这场。",
  srcs:[["官方售票页：排期、场地与雨天规则","https://ticket.injourneydestination.id/en/ramayana-ballet-prambanan/"],["票价（二手）","https://ambarrukmo.com/ramayana-ballet/"]]
 },
 {
