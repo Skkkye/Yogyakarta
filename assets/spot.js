@@ -9,7 +9,7 @@
   const root=document.getElementById("spot");
 
   if(!d){
-    document.title="没有这个景点 · 日惹景点核准清单";
+    document.title="没有这个景点 · 日惹景点清单";
     root.innerHTML=`<header class="pagehead">
         <p class="eyebrow"><a href="index.html">景点清单</a></p>
         <h1>没有这个景点</h1>
@@ -18,7 +18,7 @@
     return;
   }
 
-  document.title=`${d.n} · 日惹景点核准清单`;
+  document.title=`${d.n} · 日惹景点清单`;
   const related=SPOTS.filter(x=>x.c===d.c&&x!==d).sort((a,b)=>total(b)-total(a));
 
   root.innerHTML=`<header class="pagehead">

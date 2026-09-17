@@ -72,7 +72,6 @@ function render(){
   saveState();
 }
 
-$("total").textContent=FOODS.length;
 loadState();
 chipRow($("mealFilters"),FOOD_MEALS,state.meal);
 chipRow($("areaFilters"),FOOD_AREAS,state.area);
