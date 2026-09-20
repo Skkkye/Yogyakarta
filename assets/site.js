@@ -94,7 +94,7 @@ function watchMaps(root){
 const CHECK='<svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" fill="currentColor"/></svg>';
 
 const UI={
-  srcmark:src=>src==="off"?'<span class="srcmark off">官方</span>':'<span class="srcmark sec">二手</span>',
+  srcmark:src=>src==="off"?'<span class="srcmark off">官方</span>':src==="gmap"?'<span class="srcmark gmap">谷歌</span>':'<span class="srcmark sec">二手</span>',
 
   tagPills:d=>d.tags.map(t=>`<span class="pill tag ${t==="必去"?"pick":"soga"}">${t}</span>`).join(""),
 
@@ -176,6 +176,7 @@ const PARTS={
   /* <nav class="topnav" data-part="nav" data-current="list|food|plan|info"> */
   nav:el=>NAV.map(([k,t,h])=>`<a href="${h}"${k===el.dataset.current?' aria-current="true"':""}>${t}</a>`).join(""),
   srclegend:()=>'<b>来源标注</b>　<span class="srcmark off">官方</span> 景区官网 / 政府机构 / 官方票务平台。'+
+    '<span class="srcmark gmap">谷歌</span> 谷歌地图地点页上标的人均区间（2026-09-21 逐家打开核对）。'+
     '<span class="srcmark sec">二手</span> 旅行社、攻略站、媒体报道、网友分享 —— 价格与开放时间可能已变，到场前请复核。',
   /* 汇率框：改一次，各页通用 */
   fx:el=>{

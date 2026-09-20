@@ -15,10 +15,12 @@
   <header class="pagehead">
     <p class="eyebrow">2026-09-28 一 → 10-01 四 · 4 天 3 晚</p>
     <h1>日惹美食清单</h1>
+    <p class="lede"><span id="total"></span> 个品牌、<span id="brtotal"></span> 家分店。<b>本地菜写满</b>（人均、口碑、踩雷、照片），<b>外来与连锁精简收录</b>（评分、人均、营业、分店位置）—— 用「只看本地菜」一键过滤。同一品牌的多家分店并成一条，地图按钮每家一个。<b>找住处或某个景点附近的</b>：筛选面板第一行「附近」选起点和半径。</p>
     <ul class="facts">
-      <li>评分抓取 2026-09-15</li>
+      <li>评分抓取 2026-09-20</li>
       <li>评论取 Wanderlog 收录的 Google 评论</li>
-      <li>价格多为 2025 年二手资料</li>
+      <li>人均取自谷歌地图地点页，2026-09-21 逐家打开核对</li>
+      <li>车程为 OSRM 估算，不含拥堵</li>
     </ul>
   </header>
 
@@ -45,6 +47,7 @@
       <button class="chip toggler" id="filterToggle" type="button" aria-expanded="false" aria-controls="ctrlpanel">筛选<span class="badge" id="filterCount"></span></button>
       <select id="sortSel" aria-label="排序方式">
         <option value="total">我的总分（高→低）</option>
+        <option value="near">离起点最近（先选起点）</option>
         <option value="taste">味道</option>
         <option value="local">地道</option>
         <option value="value">性价比</option>
@@ -64,6 +67,20 @@
         <span class="label">餐段</span>
         <div id="mealFilters" class="rowline tight"></div>
       </div>
+      <div class="rowline">
+        <span class="label">附近</span>
+        <div class="rowline tight">
+          <select id="originSel" aria-label="起点"></select>
+          <select id="radiusSel" aria-label="半径">
+            <option value="0">半径不限</option>
+            <option value="1">1 km 内</option>
+            <option value="2">2 km 内</option>
+            <option value="3">3 km 内</option>
+            <option value="5">5 km 内</option>
+          </select>
+        </div>
+      </div>
+      <p class="note" id="nearNote"></p>
       <div class="rowline">
         <span class="label">位置</span>
         <div id="areaFilters" class="rowline tight"></div>
@@ -94,10 +111,11 @@
   <footer class="pagefoot">
     <p data-part="srclegend"></p>
     <p><b>评分口径</b>　五项各 1–10：味道、地道（离开日惹吃不到的程度）、性价比、环境卫生、好不好去（排队 + 交通 + 营业时段）。总分取平均，只用来排序。<b>必吃</b> = 日惹招牌菜且口碑稳定；<b>独特体验</b> = 吃的方式别处复制不了。</p>
-    <p><b>照片</b>　Google 地图用户上传、经 Wanderlog 转存，版权归原拍摄者，只作行程参考。</p>
+    <p><b>照片</b>　Google 地图用户上传：一部分经 Wanderlog 转存，一部分直接取自地图地点页。版权归原拍摄者，本页只作私人行程笔记。</p>
   </footer>
 
 </div>
+<script src="data/spots.js"></script>
 <script src="data/foods.js"></script>
 <script src="assets/site.js"></script>
 <script src="assets/food.js"></script>

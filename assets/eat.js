@@ -19,10 +19,13 @@
   }
 
   document.title=`${d.n} · 日惹美食清单`;
-  const related=FOODS.filter(x=>x.area===d.area&&x!==d).sort((a,b)=>foodTotal(b)-foodTotal(a));
+  /* 同片区 = 和本店任一分店落在同一个区域；主店所在区优先 */
+  const home=d.areas[0];
+  const related=FOODS.filter(x=>x!==d&&x.areas.some(a=>d.areas.includes(a)))
+    .sort((a,b)=>(b.areas[0]===home)-(a.areas[0]===home)||foodTotal(b)-foodTotal(a)).slice(0,12);
 
   root.innerHTML=`<header class="pagehead">
-      <p class="eyebrow"><a href="food.html">美食清单</a> / ${esc(d.area)}</p>
+      <p class="eyebrow"><a href="food.html">美食清单</a> / ${esc(d.areas.join(" · "))}</p>
       <div class="spottitle">
         <div class="titleline"><h1>${esc(d.n)}</h1><span class="local">${esc(d.ln)}</span></div>
         ${FUI.score(d)}
@@ -33,7 +36,7 @@
     ${related.length?`<section class="section" aria-labelledby="relHead">
       <div class="sechead">
         <p class="eyebrow">同一片区</p>
-        <h2 id="relHead">${esc(d.area)}的其他 ${related.length} 家</h2>
+        <h2 id="relHead">${esc(home)}一带的其他 ${related.length} 家</h2>
       </div>
       <ul class="list">${related.map(x=>FUI.card(x,"h3")).join("")}</ul>
     </section>`:""}`;
