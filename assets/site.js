@@ -18,9 +18,19 @@ const photoSrc=(d,i)=>`assets/img/${slugOf(d)}/${i}.jpg`;
 const thumbSrc=d=>`assets/img/${slugOf(d)}/thumb.jpg`;
 const scamClass=v=>v==="低"?"good":v==="中"?"warn":"risk";
 
-/* ---------- 汇率：各页共用一个值，存在本机浏览器里 ---------- */
-const FX_DEFAULT=12500, FX_KEY="jogja.fx";
-let fx=(()=>{ try{ const v=+localStorage.getItem(FX_KEY); return v>0?v:FX_DEFAULT; }catch(e){ return FX_DEFAULT; } })();
+/* ---------- 汇率：各页共用一个值，存在本机浏览器里 ----------
+   FX_DATE 是抓取日，键名带着它：换了汇率连它一起改，上次存在本机的旧值自动作废，
+   打开就是新汇率，不用再点「恢复实时汇率」 */
+const FX_DATE="2026-09-20";
+const FX_DEFAULT=13900, FX_KEY="jogja.fx."+FX_DATE, CNY_KEY="jogja.fxcny."+FX_DATE;
+function dropStaleFx(){
+  ["jogja.fx","jogja.fxcny"].forEach(k=>localStorage.removeItem(k));   // 旧版不带日期的键
+  for(let i=localStorage.length-1;i>=0;i--){
+    const k=localStorage.key(i);
+    if(/^jogja\.fx(cny)?\./.test(k)&&k!==FX_KEY&&k!==CNY_KEY) localStorage.removeItem(k);
+  }
+}
+let fx=(()=>{ try{ dropStaleFx(); const v=+localStorage.getItem(FX_KEY); return v>0?v:FX_DEFAULT; }catch(e){ return FX_DEFAULT; } })();
 const sgdNum=n=>{const v=n/fx;return v<1?v.toFixed(2):v<10?v.toFixed(1):String(Math.round(v));};
 /* 金额一律经过这里。data-idr 留原值，改汇率时只刷新 .sgd，不重绘页面（地图 iframe 不会重载） */
 const moneyHTML=n=>`<span class="money" data-idr="${n}">IDR ${money(n)} <span class="sgd">≈ S$${sgdNum(n)}</span></span>`;
@@ -171,7 +181,7 @@ const PARTS={
   fx:el=>{
     el.innerHTML=`<label class="label" for="fx">汇率 1 SGD =</label>
       <input type="number" id="fx" value="${fx}" min="1" step="50" aria-label="每新元兑印尼盾">
-      <span class="label">IDR — 预设 ${money(FX_DEFAULT)} 仅供粗算，出发前请自行核对当日汇率</span>`;
+      <span class="label">IDR — 预设 ${money(FX_DEFAULT)}（${FX_DATE} 实时报价），出发前请自行核对当日汇率</span>`;
     el.querySelector("input").oninput=e=>setFx(e.target.value);
   }
 };

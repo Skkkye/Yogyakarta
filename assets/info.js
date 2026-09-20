@@ -1,14 +1,15 @@
 /* =============================================================
    info.js —— 实用信息页 info.html
    · 汇率计算器：IDR ↔ SGD ↔ CNY。SGD 汇率就是全站那一个（site.js 的 fx / setFx），
-     改了景点、美食页的 S$ 也跟着变；CNY 汇率只在这一页用，另存一份
+     改了景点、美食页的 S$ 也跟着变；CNY 汇率只在这一页用，另存一份。
+     两个预设值都是 site.js 里 FX_DATE 当天的实时报价，打开即生效，按钮只用来撤销手改
    · 钞票速查表
    · 页面里写 <span data-money="500000"></span>，加载时换成 moneyHTML（带 S$ 换算）
    依赖：assets/site.js
    ============================================================= */
 
-const CNY_DEFAULT=2635, CNY_KEY="jogja.fxcny";
-const FX_REF={sgd:13900,cny:2635};   // 2026-09-15 Alpha Vantage 实时报价
+const CNY_DEFAULT=2650;   // CNY_KEY 在 site.js，和 SGD 汇率同一个日期后缀
+const FX_REF={sgd:FX_DEFAULT,cny:CNY_DEFAULT};   // 2026-09-20 Alpha Vantage 实时报价：13,902.86 / 2,648.46
 const NOTES=[1000,2000,5000,10000,20000,50000,100000];
 const QUICK=[["25rb",25000],["50rb",50000],["100rb",100000],["500rb",500000],["1jt",1000000],["2,5jt",2500000]];
 
