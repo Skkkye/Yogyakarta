@@ -38,7 +38,7 @@ const FOODS=[
 {
  n:"Beringharjo 门口拼凳 Pecel",ln:"Pecel \"Senggol\" Beringharjo",area:"市中心（Malioboro·王宫）",kind:"爪哇家常",meal:["早餐"],tags:[],veg:true,
  img:2,
- gq:"Pecel \"Senggol\" Beringharjo",pid:"ChIJdQ8TSIZXei4R-8BAQcwhwas",cid:"1169532737167114926",geo:[-7.798746,110.364432],
+ gq:"Pecel \"Senggol\" Beringharjo",pid:"ChIJdQ8TSIZXei4R-8BAQcwhwas",cid:"12376210412142641403",geo:[-7.798746,110.364432],
  g:4.6,gc:1331,ta:null,tac:null,
  s:{taste:7,local:9,value:9,clean:4,ease:9},
  intro:"Beringharjo 市场正门前几家摊子并排卖 pecel（烫青菜淋花生酱配饭），大家挤在一条长凳上吃，所以叫 senggol（蹭来蹭去）。纯素的底，加炸天贝、豆腐或蛋。",
@@ -114,7 +114,7 @@ const FOODS=[
 {
  n:"Handayani 黑汤 Brongkos",ln:"Warung Brongkos Handayani",area:"市中心（Malioboro·王宫）",kind:"爪哇家常",meal:["早餐","正餐"],tags:[],veg:false,
  img:4,
- gq:"Warung Brongkos Handayani",pid:"ChIJxWtbvYdXei4RUQmGKKy3T_E",cid:"16835872369413852106",geo:[-7.812644,110.363015],
+ gq:"Warung Brongkos Handayani",pid:"ChIJxWtbvYdXei4RUQmGKKy3T_E",cid:"17388318636342905169",geo:[-7.812644,110.363015],
  g:4.5,gc:2702,ta:4.2,tac:26,
  s:{taste:7,local:9,value:8,clean:5,ease:8},
  intro:"南广场旁的老摊，专卖 brongkos：用 kluwek（黑果）和椰奶炖牛肉、牛筋、豆腐、蛋和豇豆，汤是黑的。外地很难吃到的日惹菜。",
@@ -133,7 +133,7 @@ const FOODS=[
 {
  n:"Bale Raos 苏丹御膳",ln:"Bale Raos - The Sultan's Dishes",area:"市中心（Malioboro·王宫）",kind:"主题·景观餐厅",meal:["正餐"],tags:["独特体验"],veg:false,
  img:5,
- gq:"Bale Raos - The Sultan's Dishes",pid:"ChIJH03CYY1Xei4RTDTe65njvUk",cid:"1233611372280410683",geo:[-7.808489,110.363065],
+ gq:"Bale Raos - The Sultan's Dishes",pid:"ChIJH03CYY1Xei4RTDTe65njvUk",cid:"5313653385593762892",geo:[-7.808489,110.363065],
  g:4.5,gc:6462,ta:4,tac:475,
  s:{taste:6,local:8,value:6,clean:8,ease:8},
  intro:"王宫建筑群里的餐厅，菜单按历代苏丹（HB VII–X）喜欢的菜整理，配甘美兰音乐。吃的是宫廷史，不是街头味。",
@@ -209,7 +209,7 @@ const FOODS=[
 {
  n:"Bakpia Pathok 25 工厂店",ln:"Bakpia Pathok 25 Pabrik Jaya",area:"市中心（Malioboro·王宫）",kind:"伴手礼",meal:["小吃"],tags:[],veg:true,
  img:4,
- gq:"Bakpia Pathok 25 Pabrik Jaya",pid:"ChIJyfdsGY5Xei4R3Py08qQidaQ",cid:"2128223516688135932",geo:[-7.796631,110.358039],
+ gq:"Bakpia Pathok 25 Pabrik Jaya",pid:"ChIJyfdsGY5Xei4R3Py08qQidaQ",cid:"11850416086337256668",geo:[-7.796631,110.358039],
  g:4.6,gc:21166,ta:null,tac:null,
  s:{taste:7,local:8,value:7,clean:7,ease:7},
  intro:"日惹最有名的伴手礼 bakpia（绿豆馅小饼）的工厂门店，能看到生产线，有热的试吃。别的地方买到的是分销，这里新鲜。",
@@ -247,7 +247,7 @@ const FOODS=[
 {
  n:"Lik Man 炭火咖啡夜摊",ln:"Angkringan Kopi Jos Lik Man",area:"Tugu 以北·Kotabaru",kind:"街头小吃",meal:["夜宵","小吃"],tags:["独特体验"],veg:false,
  img:5,
- gq:"Angkringan Kopi Jos Lik Man",pid:"ChIJ2a1FhSVYei4R-Z5DQt4fzpI",cid:"11501134367121285794",geo:[-7.782273,110.365333],
+ gq:"Angkringan Kopi Jos Lik Man",pid:"ChIJ2a1FhSVYei4R-Z5DQt4fzpI",cid:"10578427614194802425",geo:[-7.782273,110.365333],
  g:4.5,gc:4068,ta:3.9,tac:55,
  s:{taste:6,local:10,value:9,clean:3,ease:7},
  intro:"日惹 angkringan（夜间推车小摊）的元祖之一，招牌 kopi joss：把烧红的木炭丢进咖啡里「滋」一声。配猫饭（sego kucing，一小团饭加点菜）和各种烤串，坐地席跟本地人一起吃。",
@@ -266,7 +266,7 @@ const FOODS=[
 {
  n:"Bu Sukardi 姜汤豆花",ln:"Wedang Tahu Bu Sukardi",area:"Tugu 以北·Kotabaru",kind:"甜品饮品",meal:["早餐","小吃"],tags:[],veg:true,
  img:2,
- gq:"Wedang Tahu Bu Sukardi",pid:"ChIJ_QJywztYei4RmI2ccARjmz0",cid:"10515019063734273777",geo:[-7.781711,110.362545],
+ gq:"Wedang Tahu Bu Sukardi",pid:"ChIJ_QJywztYei4RmI2ccARjmz0",cid:"4439250728424082840",geo:[-7.781711,110.362545],
  g:4.8,gc:1138,ta:null,tac:null,
  s:{taste:8,local:8,value:10,clean:6,ease:6},
  intro:"热姜汤椰糖豆花（wedang tahu，也叫 tahwa）。嫩豆花泡在很冲的姜汤里，早上或雨夜喝一碗整个人暖起来。在 Nasi Kuning Muna Cung 对面。",
@@ -304,7 +304,7 @@ const FOODS=[
 {
  n:"Raminten 之家",ln:"The House of Raminten",area:"Tugu 以北·Kotabaru",kind:"主题·景观餐厅",meal:["正餐","夜宵"],tags:[],veg:false,
  img:4,
- gq:"The House of Raminten",pid:"ChIJA0YH5DFYei4RA8aRjoBXkb8",cid:"17960905474794256542",geo:[-7.785164,110.371357],
+ gq:"The House of Raminten",pid:"ChIJA0YH5DFYei4RA8aRjoBXkb8",cid:"13803910542526629379",geo:[-7.785164,110.371357],
  g:4.5,gc:21331,ta:3.9,tac:1679,
  s:{taste:7,local:7,value:9,clean:6,ease:6},
  intro:"已故艺术家 Raminten 开的主题餐厅：焚香、供品、神像、甘美兰，服务员穿传统服装，菜单是一大本日惹家常菜。便宜、营业到午夜，适合第一次来日惹一口气吃很多样。",
@@ -323,7 +323,7 @@ const FOODS=[
 {
  n:"Bu Ageng 爪哇家宴",ln:"Warung Bu Ageng",area:"Prawirotaman·南城",kind:"爪哇家常",meal:["正餐"],tags:[],veg:false,
  img:4,
- gq:"Warung Bu Ageng",pid:"ChIJ06kiPb1Xei4RWxCwk5dvfIA",cid:"9594572098444434148",geo:[-7.818245,110.364189],
+ gq:"Warung Bu Ageng",pid:"ChIJ06kiPb1Xei4RWxCwk5dvfIA",cid:"9258397630775431259",geo:[-7.818245,110.364189],
  g:4.4,gc:3841,ta:3.8,tac:333,
  s:{taste:8,local:7,value:7,clean:8,ease:8},
  intro:"Prawirotaman 旁 Tirtodipuran 街的木构 joglo 餐厅，把爪哇家常菜做得干净讲究，调味偏向「国际口味也能接受」。游客友好，可以刷卡。",
@@ -342,7 +342,7 @@ const FOODS=[
 {
  n:"Kesuma 庭院餐厅",ln:"KESUMA Restaurant",area:"Prawirotaman·南城",kind:"主题·景观餐厅",meal:["正餐"],tags:[],veg:false,
  img:2,
- gq:"KESUMA Restaurant",pid:"ChIJOUWD0rxXei4Rk2MxMRpvLQg",cid:"7228048813105009859",geo:[-7.815841,110.368826],
+ gq:"KESUMA Restaurant",pid:"ChIJOUWD0rxXei4Rk2MxMRpvLQg",cid:"589249284540556179",geo:[-7.815841,110.368826],
  g:4.7,gc:477,ta:4.5,tac:587,
  s:{taste:8,local:6,value:7,clean:8,ease:6},
  intro:"藏在 Prawirotaman 小巷里的老宅庭院晚餐馆，TripAdvisor 日惹餐厅榜长期第一。员工英语好、辣度照顾外国人，适合当作「第一顿印尼菜」。",
@@ -361,7 +361,7 @@ const FOODS=[
 {
  n:"Tempo Gelato",ln:"Tempo Gelato Prawirotaman",area:"Prawirotaman·南城",kind:"甜品饮品",meal:["小吃"],tags:[],veg:true,
  img:4,
- gq:"Tempo Gelato Prawirotaman",pid:"ChIJVagQDKNXei4Rbq3VmaZFzLc",cid:"13971451923228735313",geo:[-7.819669,110.372544],
+ gq:"Tempo Gelato Prawirotaman",pid:"ChIJVagQDKNXei4Rbq3VmaZFzLc",cid:"13244037186037591406",geo:[-7.819669,110.372544],
  g:4.7,gc:25032,ta:4.5,tac:692,
  s:{taste:8,local:3,value:7,clean:9,ease:8},
  intro:"不是本地菜，是日惹最火的意式冰淇淋店：谷歌 2.5 万条评论。放进来是因为几乎每个游客行程都会路过，而且有罗勒、姜、辣味这种本地化口味。",
@@ -380,7 +380,7 @@ const FOODS=[
 {
  n:"Gudeg Pawon 厨房里吃",ln:"Gudeg Pawon",area:"Prawirotaman·南城",kind:"Gudeg",meal:["正餐","夜宵"],tags:["独特体验"],veg:false,
  img:5,
- gq:"Gudeg Pawon",pid:"ChIJUctHA3BXei4RPVz2KVNXC-0",cid:"17726443782365722577",geo:[-7.805677,110.390151],
+ gq:"Gudeg Pawon",pid:"ChIJUctHA3BXei4RPVz2KVNXC-0",cid:"17080842026430651453",geo:[-7.805677,110.390151],
  g:4.5,gc:4422,ta:4.2,tac:117,
  s:{taste:8,local:10,value:8,clean:5,ease:5},
  intro:"pawon 是厨房。排队走进被柴火熏黑的老厨房，阿伯当面把 gudeg、krecek、鸡、蛋一样样舀到你盘里，端出去自己找位子，吃完再付钱。",
@@ -399,7 +399,7 @@ const FOODS=[
 {
  n:"Mbah Gito 木屋爪哇面",ln:"Bakmi Jowo Mbah Gito",area:"Prawirotaman·南城",kind:"汤·面",meal:["正餐","夜宵"],tags:["必吃"],veg:false,
  img:4,
- gq:"Bakmi Jowo Mbah Gito",pid:"ChIJp9y7L3JXei4R78mbg0sW2KQ",cid:"13219601640208482425",geo:[-7.813263,110.397149],
+ gq:"Bakmi Jowo Mbah Gito",pid:"ChIJp9y7L3JXei4R78mbg0sW2KQ",cid:"11878268530776066543",geo:[-7.813263,110.397149],
  g:4.4,gc:16672,ta:4.1,tac:278,
  s:{taste:8,local:8,value:7,clean:7,ease:7},
  intro:"Kotagede 方向的 bakmi jowo（爪哇面）名店，整栋用原木和竹子搭成，灯笼昏黄。面用走地鸡和鸭蛋煮，汤面的汤因为打了蛋而浓稠。比 Pak Pele 好坐、好等。",
@@ -418,7 +418,7 @@ const FOODS=[
 {
  n:"Bu Tumini 浓汁鸡肉面",ln:"Mie Ayam Ibu Tumini Sari Rasa Jati Ayu",area:"Prawirotaman·南城",kind:"汤·面",meal:["正餐"],tags:[],veg:false,
  img:5,
- gq:"Mie Ayam Ibu Tumini Sari Rasa Jati Ayu",pid:"ChIJd8huLB1Xei4RkoMN5zAVTKc",cid:"8031631546928132772",geo:[-7.833781,110.390695],
+ gq:"Mie Ayam Ibu Tumini Sari Rasa Jati Ayu",pid:"ChIJd8huLB1Xei4RkoMN5zAVTKc",cid:"12055033602343011218",geo:[-7.833781,110.390695],
  g:4.5,gc:15411,ta:4,tac:102,
  s:{taste:8,local:8,value:10,clean:5,ease:7},
  intro:"1990 年代起的 mie ayam（鸡肉面）名店，和一般清汤版不同：粗面淋上浓稠、微甜、像咖喱的棕色鸡肉酱。便宜、份量大，可点 jumbo。",
@@ -437,7 +437,7 @@ const FOODS=[
 {
  n:"Yu Djum 本店干式 Gudeg",ln:"Gudeg Yu Djum Pusat",area:"北城（UGM·Condongcatur）",kind:"Gudeg",meal:["早餐","正餐"],tags:[],veg:false,
  img:3,
- gq:"Gudeg Yu Djum Pusat",pid:"ChIJhbz9P61Zei4REA0BJmJXiD0",cid:"10527708997043419962",geo:[-7.765386,110.380328],
+ gq:"Gudeg Yu Djum Pusat",pid:"ChIJhbz9P61Zei4REA0BJmJXiD0",cid:"4433889912202267920",geo:[-7.765386,110.380328],
  g:4.6,gc:6333,ta:4,tac:1270,
  s:{taste:8,local:9,value:7,clean:6,ease:7},
  intro:"日惹最有名的 gudeg 品牌本店，走的是「干式」路线：收汁更浓、更甜、耐放，所以也是带回国的首选（竹篮、陶罐、真空包装）。店在只容一辆车的小巷民宅里。",
@@ -456,7 +456,7 @@ const FOODS=[
 {
  n:"Gudeg Sagan 湿式",ln:"Gudeg Sagan",area:"北城（UGM·Condongcatur）",kind:"Gudeg",meal:["正餐","夜宵"],tags:[],veg:false,
  img:5,
- gq:"Gudeg Sagan",pid:"ChIJteEkQlRZei4R2SGA1sRmVzY",cid:"8332100204651085040",geo:[-7.777865,110.379646],
+ gq:"Gudeg Sagan",pid:"ChIJteEkQlRZei4R2SGA1sRmVzY",cid:"3915711396620280281",geo:[-7.777865,110.379646],
  g:4.6,gc:10405,ta:4.2,tac:326,
  s:{taste:8,local:8,value:8,clean:7,ease:7},
  intro:"和 Yu Djum 的干式相对的「湿式」gudeg：汤汁多、偏咸香。大食堂，座位多、出餐快、晚上有乐队，营业到深夜。",
@@ -494,7 +494,7 @@ const FOODS=[
 {
  n:"Sate Ratu 辣味红沙爹",ln:"Sate Ratu",area:"北城（UGM·Condongcatur）",kind:"沙爹烤物",meal:["正餐"],tags:[],veg:false,
  img:4,
- gq:"Sate Ratu",pid:"ChIJrbub8_ZYei4RNInQLcwq9Nk",cid:"11703330370670726254",geo:[-7.735923,110.399271],
+ gq:"Sate Ratu",pid:"ChIJrbub8_ZYei4RNInQLcwq9Nk",cid:"15705224856978098484",geo:[-7.735923,110.399271],
  g:4.6,gc:12324,ta:4.9,tac:397,
  s:{taste:8,local:6,value:8,clean:7,ease:6},
  intro:"TripAdvisor 上评分 4.9 的鸡肉沙爹店，只做鸡。招牌 sate merah 是龙目岛式红辣酱腌烤，不配花生酱；店家自己说起初是为外国人的口味设计的。",
@@ -513,7 +513,7 @@ const FOODS=[
 {
  n:"Kopi Klotok 稻田早饭",ln:"Waroeng Kopi Klotok",area:"北线（默拉皮）",kind:"爪哇家常",meal:["早餐","正餐"],tags:["必吃"],veg:true,
  img:5,
- gq:"Waroeng Kopi Klotok",pid:"ChIJYR3fo4Beei4RXBjxQ2NTAjw",cid:"10580672405887309745",geo:[-7.670343,110.421306],
+ gq:"Waroeng Kopi Klotok",pid:"ChIJYR3fo4Beei4RXBjxQ2NTAjw",cid:"4324110278035839068",geo:[-7.670343,110.421306],
  g:4.5,gc:40446,ta:4.1,tac:388,
  s:{taste:7,local:9,value:10,clean:5,ease:5},
  intro:"去默拉皮路上的稻田老宅，谷歌 4 万条评论。自己进厨房拿饭和 lodeh（椰汁炖菜），配炸香蕉、脆蛋和手冲 kopi klotok，吃完凭良心报账付钱。",
@@ -532,7 +532,7 @@ const FOODS=[
 {
  n:"Mbah Carik 糯米糕配甜天贝",ln:"Warung Jadah Tempe Mbah Carik",area:"北线（默拉皮）",kind:"伴手礼",meal:["小吃"],tags:[],veg:true,
  img:4,
- gq:"Warung Jadah Tempe Mbah Carik",pid:"ChIJU47cybFeei4RcT08xXrAvBA",cid:"11066355299079962793",geo:[-7.680766,110.418809],
+ gq:"Warung Jadah Tempe Mbah Carik",pid:"ChIJU47cybFeei4RcT08xXrAvBA",cid:"1206050433756052849",geo:[-7.680766,110.418809],
  g:4.6,gc:2069,ta:4.1,tac:64,
  s:{taste:7,local:9,value:8,clean:6,ease:7},
  intro:"Kaliurang 路 15 公里处的老宅小铺，卖 jadah tempe：一块糯米糕夹一片椰糖卤天贝或豆腐，甜咸软糯。不加防腐剂，放两天，可带走当点心。",
@@ -551,7 +551,7 @@ const FOODS=[
 {
  n:"Jejamuran 全蘑菇餐厅",ln:"Jejamuran",area:"西北线（婆罗浮屠）",kind:"主题·景观餐厅",meal:["正餐"],tags:[],veg:true,
  img:5,
- gq:"Jejamuran",pid:"ChIJAQAAAEtfei4R4TTriEWCkbk",cid:"17188410659040616004",geo:[-7.705379,110.361158],
+ gq:"Jejamuran",pid:"ChIJAQAAAEtfei4R4TTriEWCkbk",cid:"13371612003801183457",geo:[-7.705379,110.361158],
  g:4.6,gc:28209,ta:4.3,tac:1922,
  s:{taste:7,local:6,value:8,clean:6,ease:7},
  intro:"城北 Sleman 的蘑菇主题大餐厅，几十种蘑菇做成沙爹、rendang、天妇罗、奶油汤。素食者在日惹最好的选择，谷歌 2.8 万条评论。去婆罗浮屠的路上可以停。",
@@ -570,7 +570,7 @@ const FOODS=[
 {
  n:"Borobudur 辣炖 Beong 鱼",ln:"Mangut Beong Asli Borobudur 2",area:"西北线（婆罗浮屠）",kind:"爪哇家常",meal:["正餐"],tags:[],veg:false,
  img:3,
- gq:"Mangut Beong Asli Borobudur 2",pid:"ChIJi1SS-gWNei4RGtak14GArDM",cid:"135227899262282539",geo:[-7.599723,110.19441],
+ gq:"Mangut Beong Asli Borobudur 2",pid:"ChIJi1SS-gWNei4RGtak14GArDM",cid:"3723492287085598234",geo:[-7.599723,110.19441],
  g:4.5,gc:893,ta:4,tac:12,
  s:{taste:7,local:9,value:6,clean:7,ease:7},
  intro:"婆罗浮屠附近的地方菜：beong 是 Progo 河特有的鲶鱼，做成 mangut（辣椰汁烟熏鱼）。自助取饭和蔬菜，鱼按条点。登顶后午餐的顺路选择。",
@@ -608,7 +608,7 @@ const FOODS=[
 {
  n:"Abhayagiri 普兰巴南景观餐厅",ln:"ABHAYAGIRI - Venue and Dining",area:"东北线（普兰巴南）",kind:"主题·景观餐厅",meal:["正餐"],tags:[],veg:false,
  img:5,
- gq:"ABHAYAGIRI - Venue and Dining",pid:"ChIJv5YUr-paei4RagQ99PgviB0",cid:"12028827112193364897",geo:[-7.768612,110.496665],
+ gq:"ABHAYAGIRI - Venue and Dining",pid:"ChIJv5YUr-paei4RagQ99PgviB0",cid:"2128003570228593770",geo:[-7.768612,110.496665],
  g:4.5,gc:6022,ta:4.1,tac:507,
  s:{taste:7,local:5,value:4,clean:9,ease:5},
  intro:"Ratu Boko 附近山坡上 Sumberwatu 度假村的餐厅，天气好时远眺普兰巴南和默拉皮火山。价格是这份清单的天花板，买的是日落和景观位。",
@@ -627,7 +627,7 @@ const FOODS=[
 {
  n:"Pak Pong 铁签羊肉沙爹",ln:"Sate Klathak Pak Pong",area:"南郊（Bantul）",kind:"沙爹烤物",meal:["正餐","夜宵"],tags:["必吃"],veg:false,
  img:4,
- gq:"Sate Klathak Pak Pong",pid:"ChIJlT6bSoVWei4RLred2B_55ts",cid:"7252270450982893033",geo:[-7.871546,110.387444],
+ gq:"Sate Klathak Pak Pong",pid:"ChIJlT6bSoVWei4RLred2B_55ts",cid:"15845626254123185966",geo:[-7.871546,110.387444],
  g:4.3,gc:30109,ta:4,tac:419,
  s:{taste:7,local:10,value:8,clean:5,ease:4},
  intro:"日惹独有的 sate klathak：大块羊肉只撒盐，穿在自行车辐条改成的铁签上炭烤，铁签导热让里面也熟透，配一碗咖喱汤（gulai）。谷歌 3 万条评论，在城南 Bantul。",
@@ -646,7 +646,7 @@ const FOODS=[
 {
  n:"Mbok Marto 柴灶厨房烟熏鲶鱼",ln:"Mangut Lele Dapur Asli Mbok Marto Ijoyo",area:"南郊（Bantul）",kind:"爪哇家常",meal:["正餐"],tags:["独特体验"],veg:false,
  img:5,
- gq:"Mangut Lele Dapur Asli Mbok Marto Ijoyo",pid:"ChIJZz7mZpFXei4RL1ZTtN1fbq4",cid:"6318070535239969629",geo:[-7.8542,110.352994],
+ gq:"Mangut Lele Dapur Asli Mbok Marto Ijoyo",pid:"ChIJZz7mZpFXei4RL1ZTtN1fbq4",cid:"12569089015855404591",geo:[-7.8542,110.352994],
  g:4.5,gc:7313,ta:4.3,tac:83,
  s:{taste:8,local:10,value:9,clean:4,ease:5},
  intro:"Sewon 村里的民宅，一进门就被带进柴火厨房，从一锅锅菜里自己挑。招牌 mangut lele：烟熏鲶鱼泡辣椰浆，套餐饭菜可续。像去外婆家吃饭。",
@@ -665,7 +665,7 @@ const FOODS=[
 {
  n:"Mbah Cemplung 爪哇炸走地鸡",ln:"Ayam Goreng Jawa Mbah Cemplung",area:"南郊（Bantul）",kind:"爪哇家常",meal:["正餐"],tags:[],veg:false,
  img:2,
- gq:"Ayam Goreng Jawa Mbah Cemplung",pid:"ChIJs362pzlWei4R3vQTQelpUFQ",cid:"16839515185657166646",geo:[-7.838983,110.334305],
+ gq:"Ayam Goreng Jawa Mbah Cemplung",pid:"ChIJs362pzlWei4R3vQTQelpUFQ",cid:"6075472347862922462",geo:[-7.838983,110.334305],
  g:4.4,gc:5756,ta:4.2,tac:162,
  s:{taste:7,local:9,value:5,clean:4,ease:5},
  intro:"Bantul 乡间的老牌炸走地鸡，先用姜黄香料煮再柴火炸，整只大到被误认成鸭。多人分食的菜。",
@@ -684,7 +684,7 @@ const FOODS=[
 {
  n:"Soto Kadipiro 老牌鸡汤饭",ln:"Warung Soto Kadipiro Asli",area:"市中心（Malioboro·王宫）",kind:"汤·面",meal:["早餐","正餐"],tags:[],veg:false,
  img:4,
- gq:"Warung Soto Kadipiro Asli",pid:"ChIJZQla5vZXei4RI3NK57n0_sU",cid:"10570993418678585415",geo:[-7.800681,110.346219],
+ gq:"Warung Soto Kadipiro Asli",pid:"ChIJZQla5vZXei4RI3NK57n0_sU",cid:"14267109748842853155",geo:[-7.800681,110.346219],
  g:4.5,gc:7285,ta:4,tac:252,
  s:{taste:7,local:9,value:7,clean:6,ease:8},
  intro:"城西 Jl. Wates 上的老字号 soto ayam（清汤鸡肉饭），老式大堂，配 bacem 豆腐天贝、内脏串、花生脆饼，还有本地汽水 limun。",
@@ -703,7 +703,7 @@ const FOODS=[
 {
  n:"Yu Tum 木薯糕与炸蚱蜢",ln:"Gathot Thiwul Yu Tum",area:"南线（Gunungkidul）",kind:"伴手礼",meal:["小吃"],tags:[],veg:false,
  img:3,
- gq:"Gathot Thiwul Yu Tum",pid:"ChIJR8twjFuzey4RoUYEZyMMk3Y",cid:"11401217142692271623",geo:[-7.960872,110.609955],
+ gq:"Gathot Thiwul Yu Tum",pid:"ChIJR8twjFuzey4RoUYEZyMMk3Y",cid:"8544186264243685025",geo:[-7.960872,110.609955],
  g:4.4,gc:1433,ta:null,tac:null,
  s:{taste:6,local:10,value:8,clean:7,ease:7},
  intro:"Gunungkidul 石灰岩地不长稻，传统上用木薯做主食：gathot、thiwul 就是木薯糕。Wonosari 这家老品牌门店还卖炸蚱蜢（walang goreng），去 Jomblang、Pindul 路上的伴手礼站。",
