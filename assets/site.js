@@ -69,6 +69,10 @@ const placesOf=d=>{
 };
 const mapQuery=p=>p.gq||p.name+" Yogyakarta";
 const mapUrl=p=>"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(mapQuery(p))+(p.pid?"&query_place_id="+p.pid:"");
+/* 导航链接：点开就是谷歌地图的路线规划，不是介绍卡。
+   destination_place_id 钉死终点那一条；mode 默认步行，下车／接车点写 "driving" */
+const navUrl=p=>"https://www.google.com/maps/dir/?api=1&destination="+encodeURIComponent(p.gq||p.n)
+  +(p.pid?"&destination_place_id="+p.pid:"")+"&travelmode="+(p.mode||"walking");
 const mapEmbed=p=>"https://maps.google.com/maps?"+(p.cid?"cid="+p.cid:"q="+encodeURIComponent(mapQuery(p)))+"&z=14&output=embed";
 const geoText=d=>{
   const ps=placesOf(d).filter(p=>p.geo);
@@ -141,6 +145,29 @@ const UI={
     return `<div class="media${n<2?" single":""}"><div class="shots">${shots}</div><div class="mapwrap">${frame}${btn}</div></div>`;
   },
 
+  /* 街区步行动线：适用于「没有大门、只能靠走」的景点（Kotagede、以后的 Malioboro / Prawirotaman）
+     d.walk = {h 小标题, note 一句话说明, sum 路线长度与耗时, url 整条路线的步行导航, stops:[…]}
+     stop   = {n 名称, ln 原名, m 距上一站米数, stay 建议停留, open 开放时间,
+               tip 为什么值得停, off 不开的日子（画成虚线并标红）, pin 下车／接车点, gq/pid 导航用, mode}
+     每站一个「导航到这里」，顶上一个整条路线 —— 两种都直接落进谷歌地图的路线规划 */
+  walk:w=>`<div class="walk">
+      <b class="h">${esc(w.h)}</b>
+      <p class="wnote">${rich(w.note)}</p>
+      <a class="mapbtn walkall" href="${esc(w.url)}" target="_blank" rel="noopener">
+        <span class="mapbtn-i" aria-hidden="true">⇢</span>
+        <span><b>用谷歌步行导航打开整条路线</b><small>${esc(w.sum)}</small></span>
+      </a>
+      <ol class="walkstops">${w.stops.map(s=>`<li${s.off?' class="off"':s.pin?' class="pin"':""}>
+          ${s.m!=null?`<span class="gap"><span class="num">${s.m}</span> m</span>`:'<span class="gap start">起</span>'}
+          <div class="s">
+            <p class="sline"><b>${esc(s.n)}</b>${s.ln?`<span class="local">${esc(s.ln)}</span>`:""}${s.stay?`<span class="pill">${esc(s.stay)}</span>`:""}${s.off?`<span class="pill risk">${esc(s.off)}</span>`:""}</p>
+            ${s.open?`<p class="open">${esc(s.open)}</p>`:""}
+            ${s.tip?`<p class="tip">${rich(s.tip)}</p>`:""}
+            ${s.pid?`<a class="nav" href="${navUrl(s)}" target="_blank" rel="noopener">导航到这里 ↗</a>`:""}
+          </div>
+        </li>`).join("")}</ol>
+    </div>`,
+
   /* 口碑块：good 一段文字，bad 是 [小标题, 文字] 数组 */
   buzz:b=>`<div class="callout buzz"><b class="h">口碑：赞与吐槽</b><ul>
       <li><b>赞：</b>${rich(b.good)}</li>
@@ -168,6 +195,7 @@ const UI={
       ${UI.media(d)}
       <div class="bars">${bars}</div>
       <dl class="fields">${fields}</dl>
+      ${d.walk?UI.walk(d.walk):""}
       ${d.pick?`<div class="callout"><b class="h">${esc(d.pick.h)}</b>${rich(d.pick.t)}</div>`:""}
       ${d.buzz?UI.buzz(d.buzz):""}
       <div class="callout soga"><b class="h">什么人会觉得踩雷</b>${rich(d.avoid)}</div>

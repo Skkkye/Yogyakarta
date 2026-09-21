@@ -269,6 +269,39 @@ dd .geo{font-family:var(--mono);font-size:12px;color:var(--ink-3)}   /* 留档�
 .callout.buzz li+li{margin-top:5px}
 .callout.buzz ul ul{margin-top:3px;list-style:circle}
 
+/* 街区步行动线（UI.walk）：左边一根竖线串起各站，站与站之间标出米数。
+   .pin＝下车／接车点（实心方块），.off＝当天不开的点（虚线圈＋整站压暗） */
+.walk{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--radius);padding:14px}
+.walk .h{display:block;font-weight:700;font-size:12.5px;letter-spacing:.02em;color:var(--indigo)}
+.walk .wnote{margin:5px 0 11px;font-size:13px;color:var(--ink-2);line-height:1.65}
+.walk .walkall{margin-bottom:14px}
+.walkstops{list-style:none;margin:0;padding:0}
+.walkstops li{position:relative;padding:0 0 16px 26px}
+/* 竖线：从圆点下缘拉到下一站，最后一站不画。
+   圆点对齐站名那一行（top:20px），不是上面的米数 —— 米数属于「上一站到这一站」那段路，
+   正好落在竖线旁边，读起来是「走 156 m ●到这一站」 */
+.walkstops li::before{content:"";position:absolute;left:5px;top:0;bottom:0;width:1px;background:var(--line)}
+.walkstops li:first-child::before{top:20px}
+.walkstops li:last-child{padding-bottom:0}
+.walkstops li:last-child::before{bottom:auto;height:20px}
+/* 圆点 */
+.walkstops li::after{content:"";position:absolute;left:0;top:20px;width:11px;height:11px;border-radius:50%;
+  border:2px solid var(--indigo);background:var(--ground);box-sizing:border-box}
+.walkstops li.pin::after{border-radius:var(--r-xs);background:var(--pick-soft);border-color:var(--pick-soft)}
+.walkstops li.off::after{border-style:dashed;border-color:var(--ink-3)}
+.walkstops li.off .s{opacity:.62}
+.walkstops li.off::before{background:repeating-linear-gradient(var(--line) 0 3px,transparent 3px 6px)}
+/* 距上一站：小字贴在站名上方 */
+.walk .gap{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--ink-3);margin-bottom:2px}
+.walk .gap.start{color:var(--pick-soft)}
+.walk .sline{margin:0;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px;font-size:14px}
+.walk .sline .local{font-size:12px;color:var(--ink-3)}
+.walk .open{margin:3px 0 0;font-family:var(--mono);font-size:11.5px;color:var(--ink-2)}
+.walk .tip{margin:4px 0 0;font-size:13px;color:var(--ink-2);line-height:1.6}
+.walk .nav{display:inline-block;margin-top:5px;font-size:12px;color:var(--indigo);text-decoration:none;
+  border-bottom:1px solid rgba(var(--ink-rgb),.35)}
+.walk .nav:hover{border-bottom-color:var(--indigo)}
+
 .linkrow{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:12.5px;align-items:center}
 
 /* 页脚 */
@@ -364,6 +397,11 @@ dd .geo{font-family:var(--mono);font-size:12px;color:var(--ink-3)}   /* 留档�
 .tl > .t:first-of-type,.tl > .e:first-of-type{border-top:0}
 .tl .sub{display:block;font-size:12.5px;color:var(--ink-2);line-height:1.55;margin-top:2px}
 .tl em{font-style:normal;color:var(--risk);font-weight:500}
+/* 时刻表里的导航链接：下车点／整条步行路线／接车点，点开直接落进谷歌地图的路线规划 */
+.tlnav{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}
+.tlnav a{font-family:var(--mono);font-size:11.5px;line-height:1.5;padding:3px 8px;border-radius:var(--r-sm);
+  background:var(--surf);border:1px solid var(--line-soft);color:var(--ink-2);text-decoration:none;white-space:nowrap}
+.tlnav a:hover{border-color:var(--indigo);color:var(--ink)}
 /* 时刻表配图：只给当天的主要站点，断开成片的文字。图裁 16:9，宽度收窄，
    不让它在 980px 的版心里长成一张大图 */
 .tl .tlshot{margin:8px 0 3px;max-width:340px;aspect-ratio:16/9;
