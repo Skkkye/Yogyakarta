@@ -3,7 +3,9 @@
    字段说明见 项目说明书.md §11。
 
    · 一个品牌一个条目，分店写在 br 数组里（第一家是主店，地图嵌的是它）。
-     areas / near / drive 由 br 汇总，构建时算好，页面直接用。
+     areas / near 是所有分店的并集；drive 取的是**主店**（br[0]）的车程，不是最近那家 —— 
+     清单页「车程」排序用的就是这个值。「附近」那套（foodKm / 距离 pill）另算，
+     取的是离起点最近的一家的直线距离，两个口径本来就不是一回事，别混。
    · img = 用几张图，对应 assets/food/<slug>/1.jpg…；slug 由 ln 生成。
    · local:false 表示外来／连锁；lite:true 表示精简收录（无口碑与踩雷块）。
    · 评分与营业时间抓取自 2026-09-20 的谷歌地图与 Wanderlog 快照；
@@ -1430,7 +1432,7 @@ const FOODS=[
  srcs:[]
 },
 {
- n:"Bu Tjitro 1925 瓦罐 Gudeg",ln:"Gudeg Bu Tjitro 1925",kind:"Gudeg",meal:["正餐","伴手礼"],tags:[],veg:false,local:true,
+ n:"Bu Tjitro 1925 瓦罐 Gudeg",ln:"Gudeg Bu Tjitro 1925",kind:"Gudeg",meal:["正餐"],tags:[],veg:false,local:true,
  img:3,gp:1,
  br:[
   {n:"Gudeg Bu Tjitro 1925",area:"东北商圈（Ambarrukmo·Pakuwon）",pid:"ChIJWaQyHF5Xei4R4H0Jvgnr3zo",cid:"7242673124574423580",geo:[-7.798471,110.402577],dist:"距 Titik Nol 4.6 km",drive:8}],

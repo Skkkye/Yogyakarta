@@ -33,14 +33,6 @@ function loadState(){
   }catch(e){}
 }
 
-function chipRow(host,items,set){
-  host.innerHTML=items.map(v=>`<button class="chip" type="button" aria-pressed="${set.has(v)}">${CHECK}${esc(v)}</button>`).join("");
-  host.querySelectorAll(".chip").forEach((b,i)=>{
-    const v=items[i];
-    b.onclick=()=>{ set.has(v)?set.delete(v):set.add(v); b.setAttribute("aria-pressed",String(set.has(v))); render(); };
-  });
-}
-
 function render(){
   const q=state.q.toLowerCase();
   const rows=SPOTS.filter(d=>{
@@ -71,23 +63,14 @@ function render(){
 }
 
 loadState();
-chipRow($("corrFilters"),CORRIDORS,state.corr);
-chipRow($("typeFilters"),TYPES,state.type);
-chipRow($("tagFilters"),TAGS,state.tag);
+chipRow($("corrFilters"),CORRIDORS,state.corr,render);
+chipRow($("typeFilters"),TYPES,state.type,render);
+chipRow($("tagFilters"),TAGS,state.tag,render);
 $("sortSel").value=state.sort;
 $("q").value=state.q;
 $("lowScam").setAttribute("aria-pressed",String(state.lowScam));
 
-/* 筛选面板与三条警示：手机上默认收起，宽屏默认展开 */
-const wide=window.matchMedia("(min-width:640px)").matches;
-function setPanel(open){
-  $("ctrlpanel").hidden=!open;
-  $("filterToggle").setAttribute("aria-expanded",String(open));
-}
-setPanel(wide);
-document.querySelectorAll("details.alert").forEach(el=>{ el.open=wide; });
-
-$("filterToggle").onclick=()=>setPanel($("ctrlpanel").hidden);
+setupPanel();
 $("clearAll").onclick=()=>{
   state.corr.clear();state.type.clear();state.tag.clear();state.lowScam=false;state.q="";
   document.querySelectorAll("#ctrlpanel .chip[aria-pressed]").forEach(b=>b.setAttribute("aria-pressed","false"));

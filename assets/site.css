@@ -298,6 +298,13 @@ dd .geo{font-family:var(--mono);font-size:12px;color:var(--ink-3)}   /* 留档�
 .toggler[aria-expanded="true"]{border-color:var(--indigo);color:var(--indigo)}
 .toggler .badge{font-family:var(--mono);font-size:11px;margin-left:5px;opacity:.85}
 .count{font-family:var(--mono);font-size:12px;color:var(--ink-3);margin-left:auto;white-space:nowrap}
+/* 面板底部的收起钮：面板一长，顶上那个「筛选」钮就滚远了，末尾再给一个出口 */
+.panelclose{font:inherit;font-size:12.5px;cursor:pointer;width:100%;
+  display:flex;align-items:center;justify-content:center;gap:5px;
+  background:transparent;color:var(--ink-3);border:0;border-top:1px dashed var(--line);
+  padding:12px 0;margin-top:1px}
+.panelclose:hover{color:var(--ink)}
+.panelclose svg{width:16px;height:16px;flex:none}
 
 /* §4.2 详情页 spot.html */
 .spottitle{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:10px 24px}
@@ -305,38 +312,31 @@ dd .geo{font-family:var(--mono);font-size:12px;color:var(--ink-3)}   /* 留档�
 
 /* §4.3 行程方案页 index.html */
 .plan{padding:18px;display:flex;flex-direction:column;gap:16px;margin-top:14px}
-.plan.rec{border-color:var(--pick-soft);box-shadow:var(--lift)}
-.planhead{display:flex;flex-direction:column;gap:6px}
-.tagrow{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
-.claim{color:var(--ink-2);font-size:14px;max-width:60ch}
 
 /* 行程示意图 */
 .mapfig{margin:0;display:flex;flex-direction:column;gap:10px}
 .basemapdefs{position:absolute;width:0;height:0;overflow:hidden}
 .gmap{display:block;width:100%;max-width:100%;height:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--ground)}
-.gmap .scrim{fill:#0B0E11;opacity:.28}
+.gmap .scrim{fill:var(--ground);opacity:.28}
 .gmap .leg{fill:none;stroke-linecap:round;stroke-linejoin:round}
-.gmap .gdot{stroke:#0B0E11;stroke-width:2}
+.gmap .gdot{stroke:var(--ground);stroke-width:2}
 .gmap .d1f{fill:var(--d1)}.gmap .d2f{fill:var(--d2)}.gmap .d3f{fill:var(--d3)}.gmap .d4f{fill:var(--d4)}
-.gmap .base{stroke:#0B0E11;stroke-width:7;opacity:.55}
+.gmap .base{stroke:var(--ground);stroke-width:7;opacity:.55}
 .gmap .g1{stroke:var(--d1);stroke-width:3}
 .gmap .g2{stroke:var(--d2);stroke-width:3}
 .gmap .g3{stroke:var(--d3);stroke-width:3}
 .gmap .g4{stroke:var(--d4);stroke-width:3;stroke-dasharray:9 7}
-.gmap .gnode{fill:#0B0E11;stroke-width:3}
+.gmap .gnode{fill:var(--ground);stroke-width:3}
 .gmap .n1{stroke:var(--d1)}.gmap .n2{stroke:var(--d2)}.gmap .n3{stroke:var(--d3)}.gmap .gx{stroke:var(--d4)}
 .gmap .gnum{font-family:var(--mono);font-size:13px;font-weight:500;text-anchor:middle}
 .gmap .n1t{fill:var(--d1)}.gmap .n2t{fill:var(--d2)}.gmap .n3t{fill:var(--d3)}
-.gmap .ghub{fill:#0B0E11;stroke:var(--ink);stroke-width:3}
+.gmap .ghub{fill:var(--ground);stroke:var(--ink);stroke-width:3}
 .gmap .ghub2{fill:var(--ink)}
-.gmap .gskip{fill:#0B0E11;stroke:var(--ink-3);stroke-width:2}
 .gmap .lead{stroke:var(--ink-3);stroke-width:1;opacity:.7}
 .gmap .glbl{font-family:var(--sans);font-size:15px;font-weight:700;fill:var(--ink);
-  paint-order:stroke;stroke:#0B0E11;stroke-width:4;stroke-linejoin:round}
+  paint-order:stroke;stroke:var(--ground);stroke-width:4;stroke-linejoin:round}
 .gmap .gsub{font-family:var(--mono);font-size:12.5px;fill:var(--ink-2);
-  paint-order:stroke;stroke:#0B0E11;stroke-width:4;stroke-linejoin:round}
-.gmap .gskiplbl{font-family:var(--sans);font-size:13px;fill:var(--ink-3);
-  paint-order:stroke;stroke:#0B0E11;stroke-width:3;stroke-linejoin:round}
+  paint-order:stroke;stroke:var(--ground);stroke-width:4;stroke-linejoin:round}
 .gmap .gattr{font-family:var(--sans);font-size:10.5px;fill:var(--ink-3);opacity:.8}
 .glegend{display:flex;flex-wrap:wrap;gap:12px}
 .gkey{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--ink-2)}
@@ -373,7 +373,6 @@ dd .geo{font-family:var(--mono);font-size:12px;color:var(--ink-3)}   /* 留档�
 /* 取舍 */
 .ledger{display:grid;gap:10px;grid-template-columns:1fr 1fr}
 .col{background:var(--surf-low);border-radius:var(--r-sm);padding:11px 13px}
-.plan.rec .col{background:rgba(var(--ink-rgb),.05)}
 .col h3{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin-bottom:5px}
 .col ul{margin:0;padding-left:16px;font-size:13.5px;line-height:1.62}
 .col.get h3{color:var(--good)}
@@ -382,7 +381,6 @@ dd .geo{font-family:var(--mono);font-size:12px;color:var(--ink-3)}   /* 留档�
 .cost b{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:500;color:var(--ink)}
 .scroll + .cost{margin-top:10px}
 .verdict{border-left:3px solid var(--line);padding:2px 0 2px 13px;font-size:13.5px;color:var(--ink-2)}
-.plan.rec .verdict{border-left-color:var(--pick-soft)}
 
 /* 对照表 */
 .scroll{overflow-x:auto}
@@ -392,7 +390,6 @@ thead th{background:var(--surf-high);font-size:12px;font-weight:700;white-space:
 tbody th{font-weight:500;color:var(--ink-2);white-space:nowrap}
 tbody tr:last-child th,tbody tr:last-child td{border-bottom:0}
 td.n{font-family:var(--mono);font-variant-numeric:tabular-nums}
-th.rec{color:var(--pick-soft)}
 
 /* 订票清单 */
 .steps{display:flex;flex-direction:column;gap:10px;counter-reset:s}
@@ -401,7 +398,6 @@ th.rec{color:var(--pick-soft)}
   color:var(--pick);background:var(--pick-soft);border-radius:50%;width:24px;height:24px;display:grid;place-items:center;margin-top:1px}
 .step h3{font-family:var(--sans);font-size:14px;font-weight:700}
 .step p{font-size:13.5px;color:var(--ink-2);margin-top:3px}
-.step .leadin{font-weight:500;color:var(--ink);margin-top:6px}
 .step .q{margin:6px 0 0;padding-left:16px;font-size:13px;color:var(--ink-2);line-height:1.6}
 
 @media (max-width:600px){

@@ -175,6 +175,32 @@ const UI={
   }
 };
 
+/* ---------- 清单页共用（spots.html / food.html）----------
+   两页的筛选面板结构相同：同一套 chip、同一套开合。写在这里，改一次两页都生效。
+   页面脚本只要在自己的 render 准备好之后调 setupPanel()。 */
+
+/* 一排可多选的 chip：items 是选项，set 是选中集合，onchange 在切换后调用 */
+function chipRow(host,items,set,onchange){
+  host.innerHTML=items.map(v=>`<button class="chip" type="button" aria-pressed="${set.has(v)}">${CHECK}${esc(v)}</button>`).join("");
+  host.querySelectorAll(".chip").forEach((b,i)=>{
+    const v=items[i];
+    b.onclick=()=>{ set.has(v)?set.delete(v):set.add(v); b.setAttribute("aria-pressed",String(set.has(v))); onchange(); };
+  });
+}
+
+/* 筛选面板：手机默认收起、宽屏默认展开；顶上的「筛选」钮切换，面板末尾的箭头收起。
+   收起后焦点回到「筛选」钮，键盘操作不会掉到页面开头 */
+function setupPanel(){
+  const wide=window.matchMedia("(min-width:640px)").matches;
+  const el=id=>document.getElementById(id);
+  const panel=el("ctrlpanel"), toggle=el("filterToggle"), closer=el("panelClose");
+  const show=open=>{ panel.hidden=!open; toggle.setAttribute("aria-expanded",String(open)); };
+  show(wide);
+  document.querySelectorAll("details.alert").forEach(el=>{ el.open=wide; });
+  toggle.onclick=()=>show(panel.hidden);
+  if(closer) closer.onclick=()=>{ show(false); toggle.focus(); };
+}
+
 /* ---------- PARTS：<x data-part="名字"> 自动填充 ---------- */
 const NAV=[["plan","行程方案","index.html"],["food","美食清单","food.html"],["list","景点清单","spots.html"],["info","实用信息","info.html"]];
 const PARTS={
@@ -187,7 +213,7 @@ const PARTS={
   fx:el=>{
     el.innerHTML=`<label class="label" for="fx">汇率 1 SGD =</label>
       <input type="number" id="fx" value="${fx}" min="1" step="50" aria-label="每新元兑印尼盾">
-      <span class="label">IDR — 预设 ${money(FX_DEFAULT)}（${FX_DATE} 实时报价），出发前请自行核对当日汇率</span>`;
+      <span class="label">IDR</span>`;
     el.querySelector("input").oninput=e=>setFx(e.target.value);
   }
 };

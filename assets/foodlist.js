@@ -4,7 +4,6 @@
    ============================================================= */
 
 const $=id=>document.getElementById(id);
-const scamRank={"低":0,"中":1,"高":2};
 /* 「条件」一行：一个开关一条判断。9/28 是这次行程唯一的周一 */
 const FLAGS=[
   ["只看本地菜",d=>d.local],
@@ -55,14 +54,6 @@ function loadState(){
   }catch(e){}
 }
 
-function chipRow(host,items,set,after){
-  host.innerHTML=items.map(v=>`<button class="chip" type="button" aria-pressed="${set.has(v)}">${CHECK}${esc(v)}</button>`).join("");
-  host.querySelectorAll(".chip").forEach((b,i)=>{
-    const v=items[i];
-    b.onclick=()=>{ set.has(v)?set.delete(v):set.add(v); b.setAttribute("aria-pressed",String(set.has(v))); if(after)after(); render(); };
-  });
-}
-
 /* ---------- 多选下拉 ----------
    餐段 12 个、位置 12 个、品类 14 个平铺出来，面板得滚半天。
    收进下拉里：按钮上写「位置 2」，菜单里还是原来那排 chip，勾选逻辑一点没变。
@@ -77,7 +68,7 @@ function dropdown(host,label,items,set){
     `<div class="dd-menu" hidden><div class="ddchips rowline tight"></div><button class="chip dd-clear" type="button">清空${esc(label)}</button></div>`;
   const btn=wrap.querySelector(".dd-btn"), menu=wrap.querySelector(".dd-menu");
   const sync=()=>{ wrap.querySelector(".badge").textContent=set.size?" "+set.size:""; btn.setAttribute("aria-pressed",String(set.size>0)); };
-  chipRow(wrap.querySelector(".ddchips"),items,set,sync);
+  chipRow(wrap.querySelector(".ddchips"),items,set,()=>{sync();render();});
   btn.onclick=()=>{
     const willOpen=menu.hidden; closeDD(wrap);
     menu.hidden=!willOpen; btn.setAttribute("aria-expanded",String(willOpen));
@@ -129,16 +120,12 @@ function render(){
   saveState();
 }
 
-/* 页首两个计数：品牌数与分店数 */
-if($("total")) $("total").textContent=FOODS.length;
-if($("brtotal")) $("brtotal").textContent=FOODS.reduce((a,d)=>a+d.br.length,0);
-
 loadState();
 dropdown($("pickRow"),"餐段",FOOD_MEALS,state.meal);
 dropdown($("pickRow"),"位置",FOOD_AREAS,state.area);
 dropdown($("pickRow"),"品类",FOOD_KINDS,state.kind);
-chipRow($("tagFilters"),FOOD_TAGS,state.tag);
-chipRow($("flagFilters"),FLAGS.map(([k])=>k),state.flag);
+chipRow($("tagFilters"),FOOD_TAGS,state.tag,render);
+chipRow($("flagFilters"),FLAGS.map(([k])=>k),state.flag,render);
 
 /* 起点下拉：按景点自己的线路分组，住处放最前 */
 (function(){
@@ -152,15 +139,7 @@ chipRow($("flagFilters"),FLAGS.map(([k])=>k),state.flag);
 $("sortSel").value=state.sort;
 $("q").value=state.q;
 
-const wide=window.matchMedia("(min-width:640px)").matches;
-function setPanel(open){
-  $("ctrlpanel").hidden=!open;
-  $("filterToggle").setAttribute("aria-expanded",String(open));
-}
-setPanel(wide);
-document.querySelectorAll("details.alert").forEach(el=>{ el.open=wide; });
-
-$("filterToggle").onclick=()=>setPanel($("ctrlpanel").hidden);
+setupPanel();
 $("clearAll").onclick=()=>{
   ["meal","area","kind","tag","flag"].forEach(k=>state[k].clear());
   state.q=""; state.origin=""; state.radius=0;

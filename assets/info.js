@@ -8,6 +8,7 @@
    依赖：assets/site.js
    ============================================================= */
 
+const $=id=>document.getElementById(id);
 const CNY_DEFAULT=2650;   // CNY_KEY 在 site.js，和 SGD 汇率同一个日期后缀
 const FX_REF={sgd:FX_DEFAULT,cny:CNY_DEFAULT};   // 2026-09-20 Alpha Vantage 实时报价：13,902.86 / 2,648.46
 const NOTES=[1000,2000,5000,10000,20000,50000,100000];
@@ -16,7 +17,6 @@ const QUICK=[["25rb",25000],["50rb",50000],["100rb",100000],["500rb",500000],["1
 let cny=(()=>{ try{ const v=+localStorage.getItem(CNY_KEY); return v>0?v:CNY_DEFAULT; }catch(e){ return CNY_DEFAULT; } })();
 let lastIdr=null;
 
-const $=id=>document.getElementById(id);
 const inIdr=$("inIdr"), inSgd=$("inSgd"), inCny=$("inCny"), rateSgd=$("rateSgd"), rateCny=$("rateCny");
 
 /* 印尼盾：认 50rb / 50k / 1,2jt / 1.2jt；纯数字里的 . 和 , 都当千分位 */

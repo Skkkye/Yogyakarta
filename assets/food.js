@@ -5,7 +5,7 @@
      mapUrl / mapEmbed / watchMaps / CHECK / UI.srcmark / UI.buzz / scamClass 来自 site.js。
    · 一个品牌一个条目，分店写在 br 数组里（长度 ≥ 1，第一家是主店）：
      br:[{n:"分店名", area:"区域", pid, cid, geo:[lat,lng], dist, drive, near:[景点 slug]}]
-     地区、顺路景点、车程在 data/foods.js 里已由 br 汇总成 areas / near / drive。
+     地区、顺路景点在 data/foods.js 里已汇总成 areas / near；drive 是主店车程（见 foods.js 头部）。
    · FUI.*  美食的 HTML 片段。版面结构照搬景点的 UI，改的只是字段。
    ============================================================= */
 
@@ -104,7 +104,7 @@ const FUI={
       ["营业时间",esc(d.hours)],
       ["什么时候去",esc(d.best)],
       ["餐段",esc(d.meal.join(" / "))+(d.veg?' · <span class="pill txt good">素食友好</span>':"")+(d.local?"":' · <span class="pill txt">外来／连锁</span>')],
-      ["位置与车程",`${d.areas.map(esc).join("、")} · ${esc(d.br[0].dist)} · 约 ${d.drive} 分钟${d.br.length>1?`（最近的一家：${esc(d.br[0].n)}）`:""}<br><small class="geo">车程为路网估算，不含拥堵；坐标 ${geo}</small>`],
+      ["位置与车程",`${d.areas.map(esc).join("、")} · ${esc(d.br[0].dist)} · 约 ${d.drive} 分钟${d.br.length>1?`（分店：${esc(d.br[0].n)}）`:""}<br><small class="geo">车程为路网估算，不含拥堵；坐标 ${geo}</small>`],
       ...(near?[["顺路景点",near]]:[]),
       ["口味提示",esc(d.flavor)],
       ["环境与卫生",esc(d.env)],
