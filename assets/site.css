@@ -108,7 +108,19 @@ code{font-family:var(--mono);font-size:.9em}
 .srcmark{font-family:var(--mono);font-size:10.5px;padding:1px 5px;border-radius:var(--r-xs);margin-left:5px;vertical-align:1px;white-space:nowrap}
 .srcmark.off{background:var(--good-soft);color:var(--good)}
 .srcmark.sec{background:var(--surface-2);color:var(--ink-3);border:1px solid var(--line-soft)}
-.srcmark.gmap{background:var(--soga-soft);color:var(--soga)}
+/* 类名别叫 gmap —— plan.html 的行程地图 svg 用的就是 .gmap（display:block;width:100%），
+   撞上之后这枚角标会被撑成一整条横杠 */
+.srcmark.google{background:var(--soga-soft);color:var(--soga)}
+/* 详情页「人均」：主行 + 二手资料小字 */
+.costmain{display:inline}
+/* 详情页字段里角标在句首时，边距换到右边。限定在 .fields 里面 ——
+   info.html 有一批句尾角标，靠 :first-child 一刀切会误伤 */
+.costmain .srcmark:first-child,
+dl.fields dd > .srcmark:first-child{margin-left:0;margin-right:6px}
+.costsub{display:block;margin-top:4px;font-size:12.5px;color:var(--ink-3);line-height:1.6}
+.costsub b{font-weight:500;color:var(--ink-3);margin-right:6px;
+  font-family:var(--mono);font-size:10.5px;padding:1px 5px;border-radius:var(--r-xs);
+  background:var(--surface-2);border:1px solid var(--line-soft)}
 
 /* 金额：由 site.js 的 moneyHTML 生成，改汇率时只刷新 .sgd */
 .money{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
@@ -271,6 +283,16 @@ dd .geo{font-family:var(--mono);font-size:12px;color:var(--ink-3)}   /* 留档�
 .ctrlbar input[type="search"]{min-width:130px;flex:1 1 150px;max-width:250px}
 .ctrlpanel{display:grid;gap:9px;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)}
 .ctrlpanel .note{margin:-4px 0 0;font-size:12px;color:var(--ink-3);line-height:1.5}
+/* 多选下拉：触发钮沿用 chip 的样子，菜单里装的还是 chip */
+.dd{position:relative}
+.dd-btn .caret{font-size:10px;opacity:.7;margin-left:1px}
+.dd-btn .badge{font-family:var(--mono);font-size:11px;opacity:.85}
+.dd-menu{position:absolute;z-index:30;top:calc(100% + 6px);left:0;
+  min-width:210px;max-width:min(80vw,340px);max-height:min(58vh,360px);overflow:auto;
+  display:flex;flex-direction:column;gap:8px;padding:10px;
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);box-shadow:var(--lift)}
+.dd-menu.flip{left:auto;right:0}
+.dd-menu .dd-clear{align-self:flex-start;font-size:12px;color:var(--ink-3)}
 .toggler{font-weight:500}
 .toggler[aria-expanded="true"]{border-color:var(--indigo);color:var(--indigo)}
 .toggler .badge{font-family:var(--mono);font-size:11px;margin-left:5px;opacity:.85}

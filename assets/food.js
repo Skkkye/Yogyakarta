@@ -43,7 +43,8 @@ const FUI={
     d.areas.map(a=>`<span class="pill txt ink">${esc(a)}</span>`).join("")+
     `<span class="pill txt">${esc(d.kind)}</span>`+
     (d.br.length>1?`<span class="pill txt">${d.br.length} 家分店</span>`:"")+
-    `<span class="pill">${d.price==null?"谷歌未标人均":"人均 "+moneyHTML(d.price)}</span>`+
+    /* pill 直接照抄 cost 里的区间；d.price 是区间中点，只拿来排序，不给人看 */
+    `<span class="pill">${d.price==null?"谷歌未标人均":"人均 "+rich(d.cost)}</span>`+
     `<span class="pill">${openText(d)}</span>`+
     d.off.map(x=>`<span class="pill txt warn">${x}休</span>`).join("")+
     `<span class="pill ${scamClass(d.scam)}">踩坑${d.scam}</span>`,
@@ -95,8 +96,10 @@ const FUI={
     const near=FUI.nearLinks(d.near);
     const geo=d.br.map(b=>(d.br.length>1?esc(b.n)+" ":"")+b.geo.map(v=>v.toFixed(6)).join(", ")).join(" ｜ ");
     const fields=[
-      /* 人均写「无」时不挂来源角标 —— 没有数字就没有来源 */
-      ["人均",/^无/.test(d.cost)?rich(d.cost):rich(d.cost)+UI.srcmark(d.src)],
+      /* 人均：第一行是谷歌地图标的区间（写「无」时不挂角标，没有数字就没有来源），
+         从评论／媒体推来的旧价格降成第二行的小字，两者不再挤在一句话里 */
+      ["人均",`<span class="costmain">${/^无/.test(d.cost)?"":UI.srcmark(d.src)}${rich(d.cost)}</span>`+
+        (d.cost2?`<span class="costsub"><b>二手资料</b>${rich(d.cost2)}</span>`:"")],
       ["招牌必点",esc(d.dish)],
       ["营业时间",esc(d.hours)],
       ["什么时候去",esc(d.best)],

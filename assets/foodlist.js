@@ -55,13 +55,41 @@ function loadState(){
   }catch(e){}
 }
 
-function chipRow(host,items,set){
+function chipRow(host,items,set,after){
   host.innerHTML=items.map(v=>`<button class="chip" type="button" aria-pressed="${set.has(v)}">${CHECK}${esc(v)}</button>`).join("");
   host.querySelectorAll(".chip").forEach((b,i)=>{
     const v=items[i];
-    b.onclick=()=>{ set.has(v)?set.delete(v):set.add(v); b.setAttribute("aria-pressed",String(set.has(v))); render(); };
+    b.onclick=()=>{ set.has(v)?set.delete(v):set.add(v); b.setAttribute("aria-pressed",String(set.has(v))); if(after)after(); render(); };
   });
 }
+
+/* ---------- 多选下拉 ----------
+   餐段 12 个、位置 12 个、品类 14 个平铺出来，面板得滚半天。
+   收进下拉里：按钮上写「位置 2」，菜单里还是原来那排 chip，勾选逻辑一点没变。
+   同一时间只开一个；点别处或 Esc 关掉。 */
+const DDS=[];
+function closeDD(except){
+  for(const d of DDS) if(d.wrap!==except){ d.menu.hidden=true; d.btn.setAttribute("aria-expanded","false"); }
+}
+function dropdown(host,label,items,set){
+  const wrap=document.createElement("div"); wrap.className="dd";
+  wrap.innerHTML=`<button class="chip dd-btn" type="button" aria-expanded="false" aria-pressed="false">${esc(label)}<span class="badge"></span><span class="caret" aria-hidden="true">▾</span></button>`+
+    `<div class="dd-menu" hidden><div class="ddchips rowline tight"></div><button class="chip dd-clear" type="button">清空${esc(label)}</button></div>`;
+  const btn=wrap.querySelector(".dd-btn"), menu=wrap.querySelector(".dd-menu");
+  const sync=()=>{ wrap.querySelector(".badge").textContent=set.size?" "+set.size:""; btn.setAttribute("aria-pressed",String(set.size>0)); };
+  chipRow(wrap.querySelector(".ddchips"),items,set,sync);
+  btn.onclick=()=>{
+    const willOpen=menu.hidden; closeDD(wrap);
+    menu.hidden=!willOpen; btn.setAttribute("aria-expanded",String(willOpen));
+    menu.classList.remove("flip");
+    /* 贴着右边缘时菜单改成右对齐，免得溢出屏幕 */
+    if(willOpen&&menu.getBoundingClientRect().right>innerWidth-8) menu.classList.add("flip");
+  };
+  wrap.querySelector(".dd-clear").onclick=()=>{ set.clear(); wrap.querySelectorAll(".ddchips .chip").forEach(b=>b.setAttribute("aria-pressed","false")); sync(); render(); };
+  host.appendChild(wrap); DDS.push({wrap,btn,menu,sync}); sync();
+}
+document.addEventListener("click",e=>{ if(!e.target.closest(".dd")) closeDD(null); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeDD(null); });
 
 function render(){
   const q=state.q.toLowerCase();
@@ -106,9 +134,9 @@ if($("total")) $("total").textContent=FOODS.length;
 if($("brtotal")) $("brtotal").textContent=FOODS.reduce((a,d)=>a+d.br.length,0);
 
 loadState();
-chipRow($("mealFilters"),FOOD_MEALS,state.meal);
-chipRow($("areaFilters"),FOOD_AREAS,state.area);
-chipRow($("kindFilters"),FOOD_KINDS,state.kind);
+dropdown($("pickRow"),"餐段",FOOD_MEALS,state.meal);
+dropdown($("pickRow"),"位置",FOOD_AREAS,state.area);
+dropdown($("pickRow"),"品类",FOOD_KINDS,state.kind);
 chipRow($("tagFilters"),FOOD_TAGS,state.tag);
 chipRow($("flagFilters"),FLAGS.map(([k])=>k),state.flag);
 
@@ -139,6 +167,7 @@ $("clearAll").onclick=()=>{
   $("originSel").value=""; $("radiusSel").value="0";
   if(state.sort==="near"){ state.sort="total"; $("sortSel").value="total"; }
   document.querySelectorAll("#ctrlpanel .chip[aria-pressed]").forEach(b=>b.setAttribute("aria-pressed","false"));
+  closeDD(null); DDS.forEach(d=>d.sync());
   $("q").value="";
   render();
 };

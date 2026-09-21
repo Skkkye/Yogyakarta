@@ -15,7 +15,7 @@
   <header class="pagehead">
     <p class="eyebrow">2026-09-28 一 → 10-01 四 · 4 天 3 晚</p>
     <h1>日惹美食清单</h1>
-    <p class="lede"><span id="total"></span> 个品牌、<span id="brtotal"></span> 家分店。<b>本地菜写满</b>（人均、口碑、踩雷、照片），<b>外来与连锁精简收录</b>（评分、人均、营业、分店位置）—— 用「只看本地菜」一键过滤。同一品牌的多家分店并成一条，地图按钮每家一个。<b>找住处或某个景点附近的</b>：筛选面板第一行「附近」选起点和半径。</p>
+    <p class="lede"><span id="total"></span> 个品牌、<span id="brtotal"></span> 家分店。<b>本地菜写满</b>（人均、口碑、踩雷、照片），<b>外来与连锁精简收录</b>（评分、人均、营业、分店位置）—— 用「只看本地菜」一键过滤。同一品牌的多家分店并成一条，地图按钮每家一个。<b>找住处或某个景点附近的</b>：筛选面板里「附近」那行选起点和半径。</p>
     <ul class="facts">
       <li>评分抓取 2026-09-20</li>
       <li>评论取 Wanderlog 收录的 Google 评论</li>
@@ -63,9 +63,10 @@
       <span class="count" id="count"></span>
     </div>
     <div class="ctrlpanel" id="ctrlpanel" hidden>
+      <!-- 餐段 / 位置 / 品类：三个多选下拉，选项由 foodlist.js 塞进去 -->
       <div class="rowline">
-        <span class="label">餐段</span>
-        <div id="mealFilters" class="rowline tight"></div>
+        <span class="label">分类</span>
+        <div id="pickRow" class="rowline tight"></div>
       </div>
       <div class="rowline">
         <span class="label">附近</span>
@@ -81,14 +82,6 @@
         </div>
       </div>
       <p class="note" id="nearNote"></p>
-      <div class="rowline">
-        <span class="label">位置</span>
-        <div id="areaFilters" class="rowline tight"></div>
-      </div>
-      <div class="rowline">
-        <span class="label">品类</span>
-        <div id="kindFilters" class="rowline tight"></div>
-      </div>
       <div class="rowline">
         <span class="label">标记</span>
         <div id="tagFilters" class="rowline tight"></div>

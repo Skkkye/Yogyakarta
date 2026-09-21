@@ -34,15 +34,19 @@ let fx=(()=>{ try{ dropStaleFx(); const v=+localStorage.getItem(FX_KEY); return 
 const sgdNum=n=>{const v=n/fx;return v<1?v.toFixed(2):v<10?v.toFixed(1):String(Math.round(v));};
 /* 金额一律经过这里。data-idr 留原值，改汇率时只刷新 .sgd，不重绘页面（地图 iframe 不会重载） */
 const moneyHTML=n=>`<span class="money" data-idr="${n}">IDR ${money(n)} <span class="sgd">≈ S$${sgdNum(n)}</span></span>`;
+/* 区间：两端只写一次 IDR、一次 S$ —— 「IDR 25,000–50,000 ≈ S$1.8–3.6」
+   比把两个 moneyHTML 拼起来（IDR … ≈ S$… – IDR … ≈ S$…）短一半，也好读 */
+const moneyRangeHTML=(a,b)=>`<span class="money" data-idr="${a}" data-idr2="${b}">IDR ${money(a)}–${money(b)} <span class="sgd">≈ S$${sgdNum(a)}–${sgdNum(b)}</span></span>`;
 function setFx(v){
   fx=Math.max(1,+v||FX_DEFAULT);
   try{ localStorage.setItem(FX_KEY,String(fx)); }catch(e){}
   document.querySelectorAll(".money[data-idr]").forEach(el=>{
-    el.querySelector(".sgd").textContent="≈ S$"+sgdNum(+el.dataset.idr);
+    const a=+el.dataset.idr, b=el.dataset.idr2?+el.dataset.idr2:null;
+    el.querySelector(".sgd").textContent="≈ S$"+sgdNum(a)+(b!=null?"–"+sgdNum(b):"");
   });
 }
-/* 数据里的富文本：{12345} -> 金额；只还原 <b> 和 <br>，其余标签一律转义 */
-const rich=s=>esc(s).replace(/\{(\d+)\}/g,(_,n)=>moneyHTML(+n))
+/* 数据里的富文本：{12345} -> 金额，{25000-50000} -> 金额区间；只还原 <b> 和 <br>，其余标签一律转义 */
+const rich=s=>esc(s).replace(/\{(\d+)-(\d+)\}/g,(_,a,b)=>moneyRangeHTML(+a,+b)).replace(/\{(\d+)\}/g,(_,n)=>moneyHTML(+n))
   .replace(/&lt;b&gt;/g,"<b>").replace(/&lt;\/b&gt;/g,"</b>").replace(/&lt;br&gt;/g,"<br>");
 
 /* ---------- 地图 ----------
@@ -94,7 +98,7 @@ function watchMaps(root){
 const CHECK='<svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" fill="currentColor"/></svg>';
 
 const UI={
-  srcmark:src=>src==="off"?'<span class="srcmark off">官方</span>':src==="gmap"?'<span class="srcmark gmap">谷歌</span>':'<span class="srcmark sec">二手</span>',
+  srcmark:src=>src==="off"?'<span class="srcmark off">官方</span>':src==="gmap"?'<span class="srcmark google">谷歌</span>':'<span class="srcmark sec">二手</span>',
 
   tagPills:d=>d.tags.map(t=>`<span class="pill tag ${t==="必去"?"pick":"soga"}">${t}</span>`).join(""),
 
@@ -146,7 +150,8 @@ const UI={
   detail:d=>{
     const bars=SCORE_KEYS.map(([k,l])=>`<div class="bar"><div class="lbl"><span>${l}</span><b>${d.s[k]}</b></div><div class="track"><div class="fill" style="width:${d.s[k]*10}%"></div></div></div>`).join("");
     const fields=[
-      ["门票",rich(d.ticket)+UI.srcmark(d.src)],
+      /* 来源角标放句首，和美食详情页的「人均」一个口径 */
+      ["门票",UI.srcmark(d.src)+rich(d.ticket)],
       ["预约要求",rich(d.book)+(d.url?` · <a href="${esc(d.url)}" target="_blank" rel="noopener">订票入口</a>`:"")],
       ["开放时间",esc(d.hours)],
       ["建议停留",esc(d.dur)],
@@ -176,7 +181,7 @@ const PARTS={
   /* <nav class="topnav" data-part="nav" data-current="list|food|plan|info"> */
   nav:el=>NAV.map(([k,t,h])=>`<a href="${h}"${k===el.dataset.current?' aria-current="true"':""}>${t}</a>`).join(""),
   srclegend:()=>'<b>来源标注</b>　<span class="srcmark off">官方</span> 景区官网 / 政府机构 / 官方票务平台。'+
-    '<span class="srcmark gmap">谷歌</span> 谷歌地图地点页上标的人均区间（2026-09-21 逐家打开核对）。'+
+    '<span class="srcmark google">谷歌</span> 谷歌地图地点页上标的人均区间（2026-09-21 逐家打开核对）。'+
     '<span class="srcmark sec">二手</span> 旅行社、攻略站、媒体报道、网友分享 —— 价格与开放时间可能已变，到场前请复核。',
   /* 汇率框：改一次，各页通用 */
   fx:el=>{
