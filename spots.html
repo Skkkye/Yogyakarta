@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>日惹景点清单</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="topnav" data-part="nav" data-current="list" aria-label="站内导航"></nav>
+
+  <header class="pagehead">
+    <p class="eyebrow">2026-09-28 一 → 10-01 四 · 4 天 3 晚</p>
+    <h1>日惹景点清单</h1>
+    <ul class="facts">
+      <li>新加坡出发</li>
+      <li>核实 2026-09-10（默拉皮夜间 09-11，营业信息 09-14）</li>
+      <li>日出约 05:35</li>
+      <li>日落约 17:40</li>
+    </ul>
+  </header>
+
+  <section class="alerts" aria-label="出发前必须处理的事">
+    <details class="alert risk">
+      <summary><span class="tag">火山</span>
+        <h3>默拉皮处于 Siaga 三级警戒（四级制的第三级）</h3></summary>
+      <p>BPPTKG 9 月 14 日报告：仍为 Siaga，9/13 熔岩流 <span class="num">17</span> 次、最远 <span class="num">2 km</span>，进 Kali Sat／Putih／Krasak（西南）。官方危险区：<span class="num">Boyong 河 5 km</span>、<span class="num">Bedog / Krasak / Bebeng 河 7 km</span>（西南），<span class="num">Woro 河 3 km</span>、<span class="num">Gendol 河 5 km</span>（东南）。登顶徒步禁止。吉普 Lava Tour 的 Kaliadem 一线就在 Gendol 河谷，运营商仍在营业，但线路贴着东南危险区 —— 订前问清现在还去不去 Kaliadem 掩体，风险由你自己判断。出发前请复查 magma.esdm.go.id。</p>
+    </details>
+    <details class="alert warn">
+      <summary><span class="tag">限额</span>
+        <h3>婆罗浮屠日出是抢名额，现在离出发 11 天</h3></summary>
+      <p>官方日出与日落体验各限 <span class="num">100</span> 人/天；日出据二手资料须于前一日 <span class="num">15:00</span> 前订妥并提供护照。登顶结构 2025 年 7 月起每天开放（含周一），官方没有公布每日限额 —— 旧版写的「每日 1200 人」已撤下。全部在 <a href="https://ticket.injourneydestination.id/en/" target="_blank" rel="noopener">ticket.injourneydestination.id</a> 订（旧域名 borobudurpark 仍能打开）。旺季建议提前 1–2 周。</p>
+    </details>
+    <details class="alert note">
+      <summary><span class="tag">周一</span>
+        <h3>9/28 是周一，也是落地当天</h3></summary>
+      <p>日惹王宫与宫廷表演闭馆、普兰巴南主庭院关闭、Sonobudoyo、Vredeburg、默拉皮博物馆、Ullen Sentalu 闭馆。水城、Kotagede 和婆罗浮屠登顶照常开 —— 登顶 2025 年 7 月起不再周一关闭。落地当天只排周一照开的点，王宫留到 10/1 周四、普兰巴南留到 9/29 周二。</p>
+    </details>
+  </section>
+
+  <div class="controls">
+    <div class="ctrlbar">
+      <button class="chip toggler" id="filterToggle" type="button" aria-expanded="false" aria-controls="ctrlpanel">筛选<span class="badge" id="filterCount"></span></button>
+      <select id="sortSel" aria-label="排序方式">
+        <option value="total">我的总分（高→低）</option>
+        <option value="google">谷歌评分（高→低）</option>
+        <option value="gcount">谷歌评论数（多→少）</option>
+        <option value="value">性价比</option>
+        <option value="quiet">清静度</option>
+        <option value="unique">体验独特性</option>
+        <option value="drive">车程（近→远）</option>
+        <option value="price">票价（低→高）</option>
+        <option value="scam">宰客风险（低→高）</option>
+      </select>
+      <input type="search" id="q" placeholder="搜名称 / 关键词" aria-label="搜索">
+      <span class="count" id="count"></span>
+    </div>
+    <div class="ctrlpanel" id="ctrlpanel" hidden>
+      <div class="rowline">
+        <span class="label">线路</span>
+        <div id="corrFilters" class="rowline tight"></div>
+      </div>
+      <div class="rowline">
+        <span class="label">类型</span>
+        <div id="typeFilters" class="rowline tight"></div>
+      </div>
+      <div class="rowline">
+        <span class="label">标记</span>
+        <div id="tagFilters" class="rowline tight"></div>
+      </div>
+      <div class="rowline">
+        <button class="chip" id="lowScam" type="button" aria-pressed="false"><svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" fill="currentColor"/></svg>只看低宰客风险</button>
+        <button class="chip" id="clearAll" type="button">清空筛选</button>
+      </div>
+      <div class="rowline" data-part="fx"></div>
+    </div>
+  </div>
+
+  <!-- 卡片由 assets/list.js 用 UI.card 生成，点卡片进 spot.html?id=<slug> -->
+  <ul class="list" id="list"></ul>
+  <p class="empty" id="empty" hidden>没有符合条件的项目，放宽筛选试试。</p>
+
+  <footer class="pagefoot">
+    <p data-part="srclegend"></p>
+    <p><b>2026 年 9 月与 10 月印尼都没有公共假期</b>，9/28–10/1 不撞本地长假，四天全是工作日；但 9/28 周一有一批景点闭馆。</p>
+  </footer>
+
+</div>
+<script src="data/spots.js"></script>
+<script src="assets/site.js"></script>
+<script src="assets/list.js"></script>
+</body></html>

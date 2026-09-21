@@ -17,7 +17,7 @@ const FLAGS=[
 const state={meal:new Set(),area:new Set(),kind:new Set(),tag:new Set(),flag:new Set(),q:"",sort:"total",origin:"",radius:0};
 
 /* 「附近」的起点：只列这次真的会停留的地方 —— 住处 + 行程里那 10 个点，
-   顺序和分组按 plan.html 的 D1–D4（景点清单里另外那 20 多个这趟不去，列出来只会碍事）。
+   顺序和分组按行程方案页（index.html）的 D1–D4（景点清单里另外那 20 多个这趟不去，列出来只会碍事）。
    坐标从 spots.js 按 slug 取，多点景点（Mendut 那种）取第一处。改行程就改这张表。 */
 const HOME={k:"hotel",n:"酒店",full:"酒店 Marriott（北环路·Pakuwon 旁）",geo:[-7.761629,110.398477],grp:"住处"};
 const PLAN=[

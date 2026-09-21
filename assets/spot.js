@@ -11,7 +11,7 @@
   if(!d){
     document.title="没有这个景点 · 日惹景点清单";
     root.innerHTML=`<header class="pagehead">
-        <p class="eyebrow"><a href="index.html">景点清单</a></p>
+        <p class="eyebrow"><a href="spots.html">景点清单</a></p>
         <h1>没有这个景点</h1>
         <p class="lede">地址里的 id「${esc(id)}」对不上任何景点，可能是景点改过名。回清单里找找。</p>
       </header>`;
@@ -22,7 +22,7 @@
   const related=SPOTS.filter(x=>x.c===d.c&&x!==d).sort((a,b)=>total(b)-total(a));
 
   root.innerHTML=`<header class="pagehead">
-      <p class="eyebrow"><a href="index.html">景点清单</a> / ${esc(d.c)}</p>
+      <p class="eyebrow"><a href="spots.html">景点清单</a> / ${esc(d.c)}</p>
       <div class="spottitle">
         <div class="titleline"><h1>${esc(d.n)}</h1><span class="local">${esc(d.ln)}</span></div>
         ${UI.score(d)}

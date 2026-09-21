@@ -26,7 +26,8 @@
   --warn:#F0B90B; --warn-soft:#2B2410;
   --risk:#F6465D; --risk-soft:#2B1A1E;
   /* Binance Yellow：CTA 色，填充用、字压黑。只准出现在：
-     必去／必吃（卡片左条与角标，必吃是美食清单里的同一个角色）、选中的筛选 chip、导航当前页、推荐方案、订票步骤序号 */
+     必去／必吃（卡片左条与角标，必吃是美食清单里的同一个角色）、选中的筛选 chip、导航当前页、推荐方案、订票步骤序号、
+     行程时刻表的 D1–D4 日期标签 */
   --pick:#181A20; --pick-soft:#FCD535;
   --lift:0 1px 2px rgba(0,0,0,.5);
   --surf-low:#1E2329; --surf:#2B3139; --surf-high:#333A44;
@@ -108,7 +109,7 @@ code{font-family:var(--mono);font-size:.9em}
 .srcmark{font-family:var(--mono);font-size:10.5px;padding:1px 5px;border-radius:var(--r-xs);margin-left:5px;vertical-align:1px;white-space:nowrap}
 .srcmark.off{background:var(--good-soft);color:var(--good)}
 .srcmark.sec{background:var(--surface-2);color:var(--ink-3);border:1px solid var(--line-soft)}
-/* 类名别叫 gmap —— plan.html 的行程地图 svg 用的就是 .gmap（display:block;width:100%），
+/* 类名别叫 gmap —— 行程方案页的行程地图 svg 用的就是 .gmap（display:block;width:100%），
    撞上之后这枚角标会被撑成一整条横杠 */
 .srcmark.google{background:var(--soga-soft);color:var(--soga)}
 /* 详情页「人均」：主行 + 二手资料小字 */
@@ -277,7 +278,7 @@ dd .geo{font-family:var(--mono);font-size:12px;color:var(--ink-3)}   /* 留档�
 
 /* ---------- §4 页面布局 ---------- */
 
-/* §4.1 清单页 index.html */
+/* §4.1 清单页 spots.html */
 .controls{position:sticky;top:0;z-index:20;background:var(--ground);padding-block:10px;margin-top:20px;margin-bottom:4px;border-bottom:1px solid var(--line-soft)}
 .ctrlbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .ctrlbar input[type="search"]{min-width:130px;flex:1 1 150px;max-width:250px}
@@ -302,7 +303,7 @@ dd .geo{font-family:var(--mono);font-size:12px;color:var(--ink-3)}   /* 留档�
 .spottitle{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:10px 24px}
 .spottitle .local{font-size:12.5px}
 
-/* §4.3 行程方案页 plan.html */
+/* §4.3 行程方案页 index.html */
 .plan{padding:18px;display:flex;flex-direction:column;gap:16px;margin-top:14px}
 .plan.rec{border-color:var(--pick-soft);box-shadow:var(--lift)}
 .planhead{display:flex;flex-direction:column;gap:6px}
@@ -354,7 +355,7 @@ dd .geo{font-family:var(--mono);font-size:12px;color:var(--ink-3)}   /* 留档�
 .day{display:flex;flex-direction:column;gap:2px}
 .daylabel{display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;margin-bottom:6px}
 .daylabel .d{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:12.5px;font-weight:500;
-  color:var(--ink);background:var(--surf-high);border-radius:var(--r-sm);padding:2px 8px}
+  color:var(--pick);background:var(--pick-soft);border-radius:var(--r-sm);padding:2px 8px}
 .daylabel .note{font-size:12.5px;color:var(--ink-3)}
 .tl{display:grid;grid-template-columns:86px 1fr;gap:0 12px}
 .tl > .t{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:12.5px;color:var(--ink-3);

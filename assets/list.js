@@ -1,9 +1,9 @@
 /* =============================================================
-   list.js —— 景点清单页（index.html）：筛选、排序、搜索
+   list.js —— 景点清单页（spots.html）：筛选、排序、搜索
    卡片长什么样由 site.js 的 UI.card 决定，这里不拼卡片 HTML。
    ============================================================= */
 
-/* 旧链接 index.html#<slug>（原来的浮窗深链）转到详情页 */
+/* 旧链接 spots.html#<slug>（原来的浮窗深链）转到详情页 */
 (function(){
   const s=decodeURIComponent(location.hash.slice(1));
   const d=s&&spotBySlug(s);

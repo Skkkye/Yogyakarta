@@ -4,8 +4,8 @@
    · UI.*    景点相关的 HTML 片段。只要一个片段会出现在两个地方
              （清单卡片 / 详情页 / 以后的新页面），就写在这里，页面脚本只负责拼装。
    · PARTS   页面里写 <x data-part="名字">，加载时自动填充：站内导航、来源图例、汇率框。
-             plan.html 不加载景点数据，也能用 PARTS。
-   依赖：data/spots.js 要先于本文件加载（plan.html 除外，它不调 UI）。
+             行程方案页（index.html）不加载景点数据，也能用 PARTS。
+   依赖：data/spots.js 要先于本文件加载（行程方案页 index.html 除外，它不调 UI）。
    ============================================================= */
 
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -176,7 +176,7 @@ const UI={
 };
 
 /* ---------- PARTS：<x data-part="名字"> 自动填充 ---------- */
-const NAV=[["list","景点清单","index.html"],["food","美食清单","food.html"],["plan","行程方案","plan.html"],["info","实用信息","info.html"]];
+const NAV=[["plan","行程方案","index.html"],["food","美食清单","food.html"],["list","景点清单","spots.html"],["info","实用信息","info.html"]];
 const PARTS={
   /* <nav class="topnav" data-part="nav" data-current="list|food|plan|info"> */
   nav:el=>NAV.map(([k,t,h])=>`<a href="${h}"${k===el.dataset.current?' aria-current="true"':""}>${t}</a>`).join(""),
