@@ -15,7 +15,7 @@
 const FOOD_MEALS=["早餐","正餐","小吃","夜宵"];
 const FOOD_AREAS=["市中心（Malioboro·王宫）","Tugu 以北·Kotabaru","Prawirotaman·南城","东城（Kotagede·Banguntapan）","北城（UGM·Condongcatur）","东北商圈（Ambarrukmo·Pakuwon）","西郊（Wates 路·Godean）","北线（默拉皮）","西北线（婆罗浮屠）","东北线（普兰巴南）","南郊（Bantul）","南线（Gunungkidul）"];
 const FOOD_KINDS=["Gudeg","汤·面","沙爹烤物","爪哇家常","印尼他乡菜","街头小吃","甜品饮品","伴手礼","主题·景观餐厅","日式","中式·港式","亚洲其他","西餐·咖啡","连锁快餐"];
-const FOOD_TAGS=["必吃","独特体验"];
+const FOOD_TAGS=["必吃","想吃的","独特体验"];
 const FOOD_SCORE_KEYS=[["taste","味道"],["local","地道"],["value","性价比"],["clean","环境卫生"],["ease","好不好去"]];
 
 const FOODS=[
@@ -346,7 +346,7 @@ const FOODS=[
  srcs:[]
 },
 {
- n:"水城小院咖啡馆",ln:"Water Castle Cafe",kind:"主题·景观餐厅",meal:["正餐","小吃"],tags:[],veg:true,local:true,
+ n:"水城小院咖啡馆",ln:"Water Castle Cafe",kind:"主题·景观餐厅",meal:["正餐","小吃"],tags:["想吃的"],veg:true,local:true,
  img:3,
  br:[
   {n:"Water Castle Cafe",area:"市中心（Malioboro·王宫）",pid:"ChIJzfDAL5JXei4RB_2bokRgwJ0",cid:"11367191307385306375",geo:[-7.808702,110.359995],dist:"距 Titik Nol 1.2 km",drive:2}],
@@ -725,7 +725,7 @@ const FOODS=[
  srcs:[["Wanderlog 地点页","https://wanderlog.com/place/details/81070"],["日惹旅游局介绍","https://visitingjogja.jogjaprov.go.id/31308/jangan-lupakan-mampir-angkringan-lik-man-saat-di-jogja/"]]
 },
 {
- n:"Raminten 之家",ln:"The House of Raminten",kind:"主题·景观餐厅",meal:["正餐","夜宵"],tags:[],veg:false,local:true,
+ n:"Raminten 之家",ln:"The House of Raminten",kind:"主题·景观餐厅",meal:["正餐","夜宵"],tags:["想吃的"],veg:false,local:true,
  img:4,
  br:[
   {n:"The House of Raminten",area:"Tugu 以北·Kotabaru",pid:"ChIJA0YH5DFYei4RA8aRjoBXkb8",cid:"13803910542526629379",geo:[-7.785164,110.371357],dist:"距 Titik Nol 2.7 km",drive:5}],
@@ -918,7 +918,7 @@ const FOODS=[
  srcs:[["Wanderlog 地点页","https://wanderlog.com/place/details/2681266"],["TripAdvisor","https://www.tripadvisor.com/Restaurant_Review-g14782503-d1723531-Reviews-Kesuma_Restaurant-Yogyakarta_Yogyakarta_Region_Java.html"]]
 },
 {
- n:"Tempo Gelato",ln:"Tempo Gelato Prawirotaman",kind:"甜品饮品",meal:["小吃"],tags:[],veg:true,local:true,
+ n:"Tempo Gelato",ln:"Tempo Gelato Prawirotaman",kind:"甜品饮品",meal:["小吃"],tags:["想吃的"],veg:true,local:true,
  img:4,
  br:[
   {n:"Tempo Gelato Prawirotaman",area:"Prawirotaman·南城",pid:"ChIJVagQDKNXei4Rbq3VmaZFzLc",cid:"13244037186037591406",geo:[-7.819669,110.372544],dist:"距 Titik Nol 3 km",drive:4},
@@ -1887,5 +1887,101 @@ const FOODS=[
  buzz:{"good":"地道 Gunungkidul 特产、停车方便、洗手间干净。","bad":[["评论很旧","最新文字评论是 2022 年"],["碳水炸弹","2017：好吃但全是淀粉"]]},
  avoid:"不去南线的人。",
  srcs:[["Wanderlog 地点页","https://wanderlog.com/place/details/13288034"]]
+}
+,
+{
+ n:"Simetri 自烘焙咖啡",ln:"Simetri Coffee Roaster",kind:"西餐·咖啡",meal:["早餐","小吃"],tags:["想吃的"],veg:false,local:true,
+ img:3,gp:1,
+ br:[
+  {n:"Simetri Coffee Roaster",area:"Tugu 以北·Kotabaru",pid:"ChIJazZHGDJYei4RHo5AP0qXHC0",cid:"3250639376199224862",geo:[-7.784344,110.374093],dist:"距 Titik Nol 3.1 km",drive:5}],
+ areas:["Tugu 以北·Kotabaru"],near:["jalan-malioboro"],drive:5,
+ g:4.6,gc:2290,ta:null,tac:null,
+ s:{taste:8,local:3,value:6,clean:9,ease:7},
+ intro:"Kotabaru 荷兰时期老城区 Sabirin 路上的自烘焙咖啡馆，独栋带院子，半露天和室内都有座，本地人拿来上自习和远程办公。经典拼配与果香拼配两种豆，单份双份同价。",
+ dish:"Flat white（经典拼配）、Ice creamy latte、脆皮鸡华夫",
+ price:37500,cost:"{25000-50000}",src:"gmap",
+ hours:"周一至周五 07:15–22:45；周六日 09:00–22:45",ot:715,ct:2245,off:[],
+ best:"早上开门后最安静；傍晚起是本地人办公和聊天的时段",
+ flavor:"西式；经典拼配做牛奶咖啡稳，果香拼配偏亮",env:"Kotabaru 独栋院落，半露天木地板区加室内座，位子多、插座多",pay:"未核实到",
+ scam:"低",scamNote:"标价菜单",
+ buzz:{"good":"2022–2025 评论：「在日惹（连带雅加达）喝过最好的 flat white」、豆子讲解细、空间宽敞适合待着、菜单一半以上都不错。","bad":[["不是日惹味","精品咖啡馆，和日惹本地菜没关系"],["食物一般","2022 评论：咖啡好，配餐只能算还行"],["下午人多","靠 Kotabaru，学生和办公的人会占位"]]},
+ avoid:"只想吃日惹地方菜的人。要安静独处的人（下午座位紧张）。",
+ srcs:[]
+},
+{
+ n:"TUKU 椰糖奶咖",ln:"TUKU - Kotabaru",kind:"西餐·咖啡",meal:["早餐","小吃"],tags:["想吃的"],veg:false,local:false,
+ img:3,gp:1,
+ br:[
+  {n:"TUKU - Kotabaru",area:"Tugu 以北·Kotabaru",pid:"ChIJ223VXQBZei4RXmLZPqcLSEQ",cid:"4920195405844144734",geo:[-7.785597,110.373975],dist:"距 Titik Nol 2.9 km",drive:5}],
+ areas:["Tugu 以北·Kotabaru"],near:["jalan-malioboro"],drive:5,
+ g:4.6,gc:1997,ta:null,tac:null,
+ s:{taste:7,local:4,value:7,clean:8,ease:8},
+ intro:"雅加达起家的国民咖啡连锁 Toko Kopi Tuku，招牌是 Es Kopi Susu Tetangga（椰糖冰奶咖）。日惹这家开在 Kotabaru 的老宅里，和 ROEMI 冰淇淋同址，是这个品牌少见的「有院子可以坐」的店。",
+ dish:"Es Kopi Susu Tetangga（KST 椰糖冰奶咖）",
+ price:37500,cost:"{25000-50000}",src:"gmap",
+ hours:"每天 07:00–21:00（周五 11:30–12:30 礼拜暂停）",ot:700,ct:2100,off:[],
+ best:"避开 11:30–12:30 的午间高峰，那段排队最长",
+ flavor:"椰糖甜、奶重，咖啡味不冲",env:"老宅改的店面，室内外都有座；门口有免费凉水",pay:"未核实到",
+ scam:"低",scamNote:"连锁标价，扫码点单",
+ buzz:{"good":"2025–2026 评论：KST 是招牌、出杯快、店员即使高峰也有礼貌、老宅氛围好、位置在 Kotabaru 很顺路。","bad":[["排队","周五中午 11:30–12:30 队能排到门口"],["不如雅加达","2025-03 评论：同样的 KST 和 KHT，日惹这家味道差一截"],["Jajan Pasar 没味","2025-06 二星：传统点心和 Susu Aren 都寡淡"]]},
+ avoid:"不吃甜的人 —— 招牌就是椰糖奶咖。想喝单品手冲的人（隔壁 Simetri 更合适）。",
+ srcs:[]
+},
+{
+ n:"Gandhok 炭火爪哇面",ln:"Bakmi Gandhok Kadipaten",kind:"汤·面",meal:["正餐","夜宵"],tags:["想吃的"],veg:false,local:true,
+ img:3,gp:1,
+ br:[
+  {n:"Bakmi Gandhok Kadipaten",area:"市中心（Malioboro·王宫）",pid:"ChIJvQE-A5NXei4RvPl57gzTK5c",cid:"10893032176219716028",geo:[-7.809467,110.357075],dist:"距 Titik Nol 1.6 km",drive:3}],
+ areas:["市中心（Malioboro·王宫）"],near:["taman-sari-water-castle","pasar-ngasem","alun-alun-kidul-masangin","keraton-ngayogyakarta","museum-sonobudoyo"],drive:3,
+ g:4.5,gc:2168,ta:null,tac:null,
+ s:{taste:9,local:9,value:8,clean:7,ease:7},
+ intro:"水城背后 Kadipaten 老城区的炭火爪哇面，摊子架在 Gandhok Coffee 的院子后面，一口锅一份现炒。汤底带虾味，配走地鸡和自家腌的酸黄瓜。从水城走过去四百米。",
+ dish:"Bakmi godog（汤面）／bakmi nyemek（半汤）／magelangan（面炒饭）；可加鸭蛋",
+ price:37500,cost:"{25000-50000}",src:"gmap",
+ hours:"每天 16:00–22:00",ot:1600,ct:2200,off:[],
+ best:"一开门（16:00）或平日晚上；节假日等位会很久",
+ flavor:"汤底浓、带虾鲜，可点辣度；酸黄瓜解腻",env:"咖啡馆后院，露天棚下，地面干净",pay:"未核实到",
+ scam:"低",scamNote:"标价菜单；摊子在咖啡馆后面，不是同一家，别走错",
+ buzz:{"good":"2025–2026 评论：「汤头有虾味，别家吃不到」、bakmi godog 香、走地鸡嫩、连着两天去吃、magelangan 和 godog 是两道要点的菜。","bad":[["等很久","2025-05：公共假日排队长、上菜慢，饿着来会难受"],["停车难","摩托好停，汽车位很少"],["旺季服务掉链子","2025-01 二星：平时很好，旺季那次体验差很多"]]},
+ avoid:"赶时间的人 —— 一锅一份，本来就慢。要吹空调坐下的人。",
+ srcs:[]
+},
+{
+ n:"Tanamera 单一产地咖啡",ln:"Tanamera Coffee Yogyakarta",kind:"西餐·咖啡",meal:["早餐","小吃","正餐"],tags:["想吃的"],veg:false,local:false,
+ img:3,gp:1,
+ br:[
+  {n:"Tanamera Coffee Yogyakarta",area:"Tugu 以北·Kotabaru",pid:"ChIJs8XAjjBYei4RQSlH4u0mChw",cid:"2020470185974507841",geo:[-7.782578,110.367608],dist:"距 Titik Nol 3.8 km",drive:5}],
+ areas:["Tugu 以北·Kotabaru"],near:["jalan-malioboro"],drive:5,
+ g:4.6,gc:1309,ta:null,tac:null,
+ s:{taste:8,local:3,value:5,clean:9,ease:8},
+ intro:"印尼自己的精品咖啡品牌（雅加达起家，只用印尼产区豆），日惹这家在 Tugu 纪念碑北边的 Sudirman 路上，室内外都有座，也做正经的西式简餐。",
+ dish:"拿铁（拉花每次不一样）、抹茶拿铁、Dragon bowl",
+ price:62500,cost:"{25000-100000}",src:"gmap",
+ hours:"每天 08:00–22:00",ot:800,ct:2200,off:[],
+ best:"上午人少；离 Tugu 近，可以和拍 Tugu 排在一起",
+ flavor:"印尼单一产地豆，奶咖厚；抹茶拿铁评价最高",env:"室内外都有座，干净，停车方便",pay:"未核实到",
+ scam:"低",scamNote:"标价菜单；人均区间跨度大，点简餐会明显贵一截",
+ buzz:{"good":"2024–2026 评论：拿铁和抹茶拿铁都出色、座位舒服不挤、离 Tugu 和酒店区都近、店员友好。","bad":[["贵","人均区间上探到 10 万，点餐比只喝咖啡贵不少"],["素食少","2023 评论：希望多些素食选项"],["氛围看人","2025 评论：环境「不是我的菜」"]]},
+ avoid:"想吃日惹地方菜的人。预算有限的人 —— 同一条路上有更便宜的咖啡馆。",
+ srcs:[]
+},
+{
+ n:"Suwatu 山崖景观餐厅",ln:"SUWATU by Mil&Bay",kind:"主题·景观餐厅",meal:["早餐","正餐"],tags:["想吃的"],veg:false,local:true,
+ img:3,gp:1,
+ br:[
+  {n:"SUWATU by Mil&Bay",area:"东北线（普兰巴南）",pid:"ChIJ44Z41oxbei4RreZjcoyErEY",cid:"5092591017398625965",geo:[-7.768084,110.494066],dist:"距 Titik Nol 20.0 km",drive:22}],
+ areas:["东北线（普兰巴南）"],near:["kraton-ratu-boko","candi-prambanan","candi-ijo","tebing-breksi"],drive:22,
+ g:4.6,gc:1980,ta:null,tac:null,
+ s:{taste:6,local:6,value:5,clean:9,ease:5},
+ intro:"Ratu Boko 那座山丘上的白色木构餐厅（和 Abhayagiri 是邻居），露台正对普兰巴南平原和默拉皮山，晚上看得到日惹城的灯。做的是印尼菜，部分时段是自助，晚间有甘美兰与爪哇舞表演。",
+ dish:"炸物拼盘、粉红姜汁饮（装瓶那款）、椰糖珍多布丁",
+ price:112500,cost:"{50000-175000}",src:"gmap",
+ hours:"周四至周一 07:00–21:00；周二、周三休息",ot:700,ct:2100,off:["周二","周三"],
+ best:"日落前一小时上山占露台位；和 Ratu Boko 日落排在同一天",
+ flavor:"印尼菜为主，没有西餐选项；口味评价不如景观",env:"山顶白色木构，露台全露天，半户外区遮阳有限",pay:"未核实到",
+ scam:"低",scamNote:"标价；自助是按人头收费，到场先问清当天是点单还是自助",
+ buzz:{"good":"2025–2026 评论：景色「开阔到让人愣住」、日落与夜景值回票价、甘美兰和爪哇舞表演、瓶装粉红姜汁饮和意式浓缩都好、炸物拼盘值得点。","bad":[["自助不值","2025-02 一星：15 万一位，菜全是凉的，水准和路边摊差不多"],["上菜慢","2025-04：九个人，从第一道到最后一道等了 30 分钟"],["菜单窄","2025-07：选择不多且全是印尼菜，没有西式选项"],["半户外不遮阳","2025-07：以为有荫，实际得晒着吃"]]},
+ avoid:"冲着菜品水准来的人 —— 这里卖的是景。周二、周三来的人（休息）。怕晒的人中午别来。",
+ srcs:[]
 }
 ];

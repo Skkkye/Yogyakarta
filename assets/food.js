@@ -9,6 +9,8 @@
    · FUI.*  美食的 HTML 片段。版面结构照搬景点的 UI，改的只是字段。
    ============================================================= */
 
+/* 黄色角标 + 卡片左黄边的标记（必吃＝我们判定的招牌，想吃的＝用户自己点名） */
+const FOOD_PICK_TAGS=["必吃","想吃的"];
 const foodTotal=d=>Math.round(FOOD_SCORE_KEYS.reduce((a,[k])=>a+d.s[k],0)/FOOD_SCORE_KEYS.length*10)/10;
 const foodBySlug=s=>FOODS.find(d=>slugOf(d)===s);
 const foodHref=d=>"eat.html?id="+slugOf(d);
@@ -36,7 +38,7 @@ const nearBranch=(d,o)=>d.br.reduce((m,b)=>kmBetween(o.geo,b.geo)<kmBetween(o.ge
 const kmText=v=>v<1?Math.round(v*1000)+" m":v.toFixed(1)+" km";
 
 const FUI={
-  tagPills:d=>d.tags.map(t=>`<span class="pill tag ${t==="必吃"?"pick":"soga"}">${t}</span>`).join(""),
+  tagPills:d=>d.tags.map(t=>`<span class="pill tag ${FOOD_PICK_TAGS.includes(t)?"pick":"soga"}">${t}</span>`).join(""),
 
   metaPills:d=>FUI.tagPills(d)+
     (FOOD_ORIGIN?`<span class="pill txt ink">${esc(FOOD_ORIGIN.n)} ${kmText(foodKm(d,FOOD_ORIGIN))}${d.br.length>1?"（最近一家）":""}</span>`:"")+
@@ -54,7 +56,7 @@ const FUI={
       <span class="tot" aria-label="我的总分 ${foodTotal(d)} / 10"><span class="n">${foodTotal(d)}</span><span class="d">/10</span></span>
     </span>`,
 
-  card:(d,h="h2")=>`<li class="panel card${d.tags.includes("必吃")?" must":""}">
+  card:(d,h="h2")=>`<li class="panel card${d.tags.some(t=>FOOD_PICK_TAGS.includes(t))?" must":""}">
     <a class="head" href="${foodHref(d)}">
       ${d.img?`<img class="thumb" src="${foodThumb(d)}" alt="" width="74" height="74" loading="lazy" decoding="async">`:'<span class="thumb noimg" aria-hidden="true">—</span>'}
       <div class="headmain">
