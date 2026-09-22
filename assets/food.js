@@ -102,18 +102,18 @@ const FUI={
          从评论／媒体推来的旧价格降成第二行的小字，两者不再挤在一句话里 */
       ["人均",`<span class="costmain">${/^无/.test(d.cost)?"":UI.srcmark(d.src)}${rich(d.cost)}</span>`+
         (d.cost2?`<span class="costsub"><b>二手资料</b>${rich(d.cost2)}</span>`:"")],
-      ["招牌必点",esc(d.dish)],
-      ["营业时间",esc(d.hours)],
-      ["什么时候去",esc(d.best)],
+      ["招牌必点",rich(d.dish)],
+      ["营业时间",rich(d.hours)],
+      ["什么时候去",rich(d.best)],
       ["餐段",esc(d.meal.join(" / "))+(d.veg?' · <span class="pill txt good">素食友好</span>':"")+(d.local?"":' · <span class="pill txt">外来／连锁</span>')],
       ["位置与车程",`${d.areas.map(esc).join("、")} · ${esc(d.br[0].dist)} · 约 ${d.drive} 分钟${d.br.length>1?`（分店：${esc(d.br[0].n)}）`:""}<br><small class="geo">车程为路网估算，不含拥堵；坐标 ${geo}</small>`],
       ...(near?[["顺路景点",near]]:[]),
-      ["口味提示",esc(d.flavor)],
-      ["环境与卫生",esc(d.env)],
-      ["支付",esc(d.pay)],
+      ["口味提示",rich(d.flavor)],
+      ["环境与卫生",rich(d.env)],
+      ["支付",rich(d.pay)],
       ["踩坑风险",`<span class="pill ${scamClass(d.scam)}">${d.scam}风险</span> ${rich(d.scamNote)}`]
     ].map(([k,v])=>`<div><dt>${k}</dt><dd>${v}</dd></div>`).join("");
-    return `<p class="lede">${esc(d.intro)}</p>
+    return `<p class="lede">${rich(d.intro)}</p>
       ${FUI.media(d)}
       ${FUI.branches(d)}
       <div class="bars">${bars}</div>

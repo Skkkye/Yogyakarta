@@ -180,18 +180,18 @@ const UI={
       /* 来源角标放句首，和美食详情页的「人均」一个口径 */
       ["门票",UI.srcmark(d.src)+rich(d.ticket)],
       ["预约要求",rich(d.book)+(d.url?` · <a href="${esc(d.url)}" target="_blank" rel="noopener">订票入口</a>`:"")],
-      ["开放时间",esc(d.hours)],
-      ["建议停留",esc(d.dur)],
-      ["最佳时段",esc(d.best)],
-      ["位置与车程",`${esc(d.dist)} · 单程约 ${d.drive} 分钟`+(geoText(d)?`<br><small class="geo">坐标 ${geoText(d)}</small>`:"")],
+      ["开放时间",rich(d.hours)],
+      ["建议停留",rich(d.dur)],
+      ["最佳时段",rich(d.best)],
+      ["位置与车程",`${rich(d.dist)} · 单程约 ${d.drive} 分钟`+(geoText(d)?`<br><small class="geo">坐标 ${geoText(d)}</small>`:"")],
       ["交通方式",d.trans.map(rich).join("<br>")],
-      ["体力强度",esc(d.phys)],
+      ["体力强度",rich(d.phys)],
       ["天气敏感度",rich(d.weather)],
       ["宰客与踩坑",`<span class="pill ${scamClass(d.scam)}">${d.scam}风险</span> ${rich(d.scamNote)}`],
-      ["支付方式",esc(d.pay)],
-      ["着装与礼仪",esc(d.dress)]
+      ["支付方式",rich(d.pay)],
+      ["着装与礼仪",rich(d.dress)]
     ].map(([k,v])=>`<div><dt>${k}</dt><dd>${v}</dd></div>`).join("");
-    return `<p class="lede">${esc(d.intro)}</p>
+    return `<p class="lede">${rich(d.intro)}</p>
       ${UI.media(d)}
       <div class="bars">${bars}</div>
       <dl class="fields">${fields}</dl>

@@ -459,9 +459,10 @@ const SPOTS=[
       tip:"顺路 5 分钟。传说是马打兰开国君主的座石，看点不大，但就在接车点回头 260 m 的路上。"},
      {n:"清真寺停车场",ln:"Parkiran Mobil Masjid Gedhe",m:260,pin:1,mode:"driving",
       gq:"Parkiran Mobil Masjid Gedhe Mataram Kotagede",pid:"ChIJN-P6eNRXei4RhxMW3AgkJXI",
-      tip:"<b>接车点。</b>就在王陵旁边，司机可以停这儿等；上车直接往东北出城，接得上普兰巴南／Abhayagiri 方向。"}
+      tip:"<b>接车点。</b>就在王陵旁边，司机可以停这儿等；上车直接往东北出城，接得上普兰巴南／Suwatu 方向。"}
    ]
  },
+ pick:{h:"这趟 9/28 周一下午到，拿得到什么",t:"行程把这一站排在 <b>13:45–15:10</b>，周一这个时段有两处是关的，去之前先认下账：<br><b>王陵去不了。</b>周一只开 10:00–13:00，13:45 到已经锁门 —— 而它恰好是整个街区文化厚度最高的一处。想要就得把 Kotagede 整段提到上午，但那样水城（09:00–15:00）就塞不下。<br><b>Intro Living 博物馆周一全天闭</b>，动线里第一站直接跳过，从 Ansor\'s Silver 起步。<br><b>照常开的：</b>银器作坊（每天 09:00–17:00，HS Silver 后场看打银是这一站的重点）、Masjid Gedhe（08:00–18:00）、Between Two Gates 老巷（无门禁）、老市场（下午只是个安静的菜场，早市才是看点）。<br><b>Kipo Bu Djito</b> 周一开到 15:00，但常常中午前就卖完 —— 扑空了到老市场的甜点摊也有。<br>所以这一站这趟拿到的是<b>银器街与老巷</b>，85 分钟够走完；王陵与博物馆留给下次。"},
  avoid:"这里没有「大景点」，全靠走街和进作坊聊天。赶时间或不喜欢慢逛的人会觉得空；也买不到便宜货 —— 真银就是真银的价。<br><b>周二、周三来，王陵是关的</b>，而那恰好是整个街区最值得看的部分，剩下的就只是一条银器街加几条老巷。不肯在 30 度天里套一身爪哇传统服，也一样进不去。Kipo 老店常常中午前售罄，Sate Karang 要 17:00 才开、白天顺不到。谷歌上这个街区没有统一 POI，页面上的 4.6 是老市场那条的分数，不是街区的。",
  srcs:[["开放时间·评分·坐标：谷歌地图各 POI 条目，2026-09-21 逐个读取","https://www.google.com/maps/search/?api=1&query=Kotagede%20Traditional%20Market&query_place_id=ChIJ91ts-xhXei4Rd0ZCh55R6os"],["一日动线·停车费·传统服装规定（二手）","https://visit-jogja.com/wisata-kotagede-jogja-sejarah-perak-mataram/"],["王陵着装规定与开放日（二手）","https://www.merdeka.com/trending/berkunjung-ke-makam-raja-mataram-di-kotagede-peziarah-wajib-pakai-baju-adat-jawa.html"],["Jogja Good Guide 步行团路线与集合点（二手）","https://jogjagoodguide.wordpress.com/category/walking-tour-routes/"],["背包客栈：一小时逛完的实测、Kipo 老店售罄（繁中一手）","https://www.backpackers.com.tw/forum/showthread.php?t=10640825"],["工艺与购物（二手）","https://www.indonesia.travel/us/en/travel-ideas/culture/5-handicraft-shopping-spots-in-yogyakarta"]]
 },
