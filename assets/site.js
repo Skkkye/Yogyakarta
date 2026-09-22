@@ -121,7 +121,7 @@ const UI={
 
   /* 景点卡片：整张是指向详情页的链接。h 是标题层级，嵌在别的段落里时传 "h3" */
   card:(d,h="h2")=>`<li class="panel card${d.tags.includes("必去")?" must":""}">
-    <a class="head" href="${spotHref(d)}">
+    <a class="head" href="${spotHref(d)}" target="_blank" rel="noopener">
       ${d.img?`<img class="thumb" src="${thumbSrc(d)}" alt="" width="74" height="74" loading="lazy" decoding="async">`:'<span class="thumb noimg" aria-hidden="true">—</span>'}
       <div class="headmain">
         <div class="titleline"><${h} class="name">${esc(d.n)}</${h}><span class="local">${esc(d.ln)}</span></div>

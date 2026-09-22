@@ -57,7 +57,7 @@ const FUI={
     </span>`,
 
   card:(d,h="h2")=>`<li class="panel card${d.tags.some(t=>FOOD_PICK_TAGS.includes(t))?" must":""}">
-    <a class="head" href="${foodHref(d)}">
+    <a class="head" href="${foodHref(d)}" target="_blank" rel="noopener">
       ${d.img?`<img class="thumb" src="${foodThumb(d)}" alt="" width="74" height="74" loading="lazy" decoding="async">`:'<span class="thumb noimg" aria-hidden="true">—</span>'}
       <div class="headmain">
         <div class="titleline"><${h} class="name">${esc(d.n)}</${h}><span class="local">${esc(d.ln)}</span></div>
@@ -90,7 +90,7 @@ const FUI={
   /* near 里是景点 slug；详情页加载了 spots.js 时显示成链接 */
   nearLinks:list=>{
     if(typeof SPOTS==="undefined"||!list||!list.length) return "";
-    return list.map(s=>{const x=SPOTS.find(y=>slugOf(y)===s);return x?`<a href="${spotHref(x)}">${esc(x.n)}</a>`:"";}).filter(Boolean).join("、");
+    return list.map(s=>{const x=SPOTS.find(y=>slugOf(y)===s);return x?`<a href="${spotHref(x)}" target="_blank" rel="noopener">${esc(x.n)}</a>`:"";}).filter(Boolean).join("、");
   },
 
   detail:d=>{
