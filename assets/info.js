@@ -69,7 +69,11 @@ $("useRef").addEventListener("click",()=>{
   rates();
 });
 
-document.querySelectorAll("[data-money]").forEach(el=>{ el.outerHTML=moneyHTML(+el.dataset.money); });
+/* <span data-money="5000"> → 金额；再带 data-money2 就是区间，走 moneyRangeHTML
+   （两个单独的 data-money 拼不出区间：会渲染成「IDR a ≈ S$x–IDR b ≈ S$y」） */
+document.querySelectorAll("[data-money]").forEach(el=>{
+  el.outerHTML=el.dataset.money2?moneyRangeHTML(+el.dataset.money,+el.dataset.money2):moneyHTML(+el.dataset.money);
+});
 rates();
 
 /* 隐藏入口：双击「时差」卡片进时差换算页，不加任何提示或 UI 变化 */
