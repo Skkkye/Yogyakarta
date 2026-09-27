@@ -304,16 +304,16 @@ const SPOTS=[
  gq:"Jl. Malioboro",pid:"ChIJxQZh-iVYei4RMxHtpSHFpD4",cid:"4513949474840449331",geo:[-7.793753,110.365708],
  g:4.8,gc:8983,
  s:{view:4,culture:6,unique:5,value:9,quiet:1},
- intro:"日惹的主街，近年做了步行化改造。白天是纪念品摊和蜡染店，晚上整条街是本地人的夜生活 —— 街头艺人、露天座、灯。逛街的起点，也是全城骗局密度最高的一段路。",
+ intro:"日惹的主街。2022 年 2 月起，原本摆满人行道的摊贩全部迁进 Teras Malioboro —— 人行道空了出来，想逛摊子得进馆。街道每天 17:00–22:00 禁机动车，2026 年 11 月起计划全面步行化。傍晚灯亮、街头艺人出来，整条街是本地人的夜生活。",
  price:0,ticket:"免费",src:"sec",
- book:"不需预约",hours:"街道全天，夜间最热闹",
+ book:"不需预约",hours:"街道全天，夜间最热闹；<b>每天 17:00–22:00 禁机动车</b>（2025 年 10 月起，此前 18:00–21:00）。摊子在 Teras Malioboro 1 约 06:00–23:30、Ketandan 约 07:00–22:00。<b>每 35 天一次的 Selasa Wage，摊贩与店铺全天休市做 Reresik 大扫除 —— 这趟的 9/29 正是 Selasa Wage</b>",
  dur:"1–2 小时",best:"傍晚 17:00 后凉快、灯亮、人气足",dist:"市中心",drive:5,
  trans:["Trans Jogja 多条线经过","步行即可；becak 与 andong 需先议价"],
  phys:"低 —— 走路多，人挤",weather:"低敏感，多处有顶棚",
- scam:"高",scamNote:"蜡染画廊骗局主场；becak 司机常以「先带你看个地方」为名拉去提成店铺；街边摊不议价必被抬价",
+ scam:"中",scamNote:"蜡染画廊骗局：陌生人搭讪、问你从哪来，接着说「展览只有今天」，带进没招牌的小画廊卖高价假蜡染 —— 一律不跟。becak／andong 先议价，不要答应「先带你看个地方」。2026 年 3 月更新的安全指南把这条骗局列为高风险，但把 Malioboro 整体评为 5.5/10、城里几个问题区域之一，不是最糟的那个",
  pay:"现金为主，大店可电子支付",dress:"无特殊要求；注意随身财物",
- avoid:"讨厌讨价还价、讨厌被搭讪的人在这里会持续不适 —— 平均每几分钟就有一次兜售。只想买伴手礼的话，Hamzah Batik 的固定价和 Kotagede 的银器店会舒服得多。",
- srcs:[["骗局与街况（二手）","https://guideyourtravel.com/the-batik-art-gallery-scams-in-yogyakarta-what-every-tourist-falls-for/"]]
+ avoid:"冲着「夜市」来的会落空 —— 街面上已经没有摊了，全在 Teras Malioboro 馆内，街道本身只是一条宽阔的散步道加两侧店铺。想买蜡染又不愿被搭讪：Hamzah Batik 固定价、Beringharjo 可砍价，都比跟陌生人走进巷子稳妥。",
+ srcs:[["Teras Malioboro 官方：摊贩 2022-02 迁入","https://terasmalioboro.jogjaprov.go.id/latar-belakang/"],["日惹市政府：Selasa Wage 仍在执行（2024-02）","https://warta.jogjakota.go.id/detail/index/32142"],["每天 17:00–22:00 禁机动车（二手 detik，2025-10）","https://www.detik.com/jogja/plesir/d-8166646/malioboro-bebas-kendaraan-kini-berlaku-5-jam-sehari-catat-waktunya"],["蜡染画廊骗局手法（二手）","https://guideyourtravel.com/the-batik-art-gallery-scams-in-yogyakarta-what-every-tourist-falls-for/"]]
 },
 {
  n:"Beringharjo 市场",ln:"Pasar Beringharjo",c:"市区线",t:"逛街",tags:[],
