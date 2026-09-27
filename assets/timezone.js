@@ -105,9 +105,10 @@ axisRow.innerHTML=`<span class="tzrow-label"></span><div class="tzaxis-track" id
 document.getElementById("tzAxis").appendChild(axisRow);
 [0,3,6,9,12,15,18,21,24].forEach(h=>{
   const tick=document.createElement("span");
-  tick.className="tzaxis-tick";
+  tick.className="tzaxis-tick"+(h%6!==0?" minor":"");
   tick.style.left=(h/24*100)+"%";
-  tick.textContent=(h===24?24:h)+"时";
+  tick.style.transform=h===0?"translateX(0)":h===24?"translateX(-100%)":"translateX(-50%)";
+  tick.textContent=h+"时";
   document.getElementById("tzAxisTrack").appendChild(tick);
 });
 

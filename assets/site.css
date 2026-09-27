@@ -566,18 +566,18 @@ table.tt td{white-space:normal;word-spacing:.2em;line-height:1.8}
 .tzbtn.dark{background:var(--ink);color:var(--ground)}
 .tzbtn.warn{background:var(--warn);color:var(--ground)}
 
-/* 24 小时时间轴：谁醒着——粗胶囊条 + 竖线圆点标此刻，3 小时一格刻度，底部图例 */
+/* 24 小时时间轴：谁醒着——胶囊条 + 竖线圆点标此刻，3 小时一格刻度，底部图例 */
 .tztimebox{padding:18px;display:grid;gap:16px}
 .tztrack-row{display:flex;align-items:center;gap:12px}
-.tzrow-label{width:80px;flex:none;font-size:13.5px;font-weight:700;color:var(--ink-2)}
+.tzrow-label{width:80px;flex:none;font-size:13.5px;font-weight:700;color:var(--ink-2);white-space:nowrap}
 .tzline-wrap{position:relative;flex:1;min-width:0}
-.tzline{height:32px;border-radius:16px;overflow:hidden;display:flex;border:1px solid var(--line-soft)}
+.tzline{height:20px;border-radius:10px;overflow:hidden;display:flex;border:1px solid var(--line-soft)}
 .tzline .seg{flex:1 0 0}
 .tzline-wrap .now{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--indigo)}
 .tzline-wrap .now::after{content:"";position:absolute;top:-4px;left:50%;transform:translateX(-50%);
-  width:8px;height:8px;border-radius:50%;background:var(--indigo);box-shadow:0 0 0 2px var(--surface)}
-.tzaxis-track{position:relative;flex:1;min-width:0;height:14px}
-.tzaxis-tick{position:absolute;transform:translateX(-50%);font-family:var(--mono);font-size:10px;color:var(--ink-3)}
+  width:7px;height:7px;border-radius:50%;background:var(--indigo);box-shadow:0 0 0 2px var(--surface)}
+.tzaxis-track{position:relative;flex:1;min-width:0;height:16px;margin-top:2px}
+.tzaxis-tick{position:absolute;top:0;font-family:var(--mono);font-size:11.5px;font-weight:500;color:var(--ink-2);white-space:nowrap}
 .tzlegend{display:flex;flex-wrap:wrap;gap:16px;padding-left:92px}
 .tzlegend span{display:inline-flex;flex:none;align-items:center;gap:6px;font-size:12px;color:var(--ink-2);white-space:nowrap}
 .tzlegend i{width:12px;height:12px;border-radius:4px;flex:none;font-style:normal}
@@ -587,4 +587,5 @@ table.tt td{white-space:normal;word-spacing:.2em;line-height:1.8}
 @media (max-width:520px){
   .tzrow-label{width:56px;font-size:12px}
   .tzlegend{padding-left:68px}
+  .tzaxis-tick.minor{display:none}
 }
