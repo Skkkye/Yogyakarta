@@ -71,3 +71,7 @@ $("useRef").addEventListener("click",()=>{
 
 document.querySelectorAll("[data-money]").forEach(el=>{ el.outerHTML=moneyHTML(+el.dataset.money); });
 rates();
+
+/* 隐藏入口：双击「时差」卡片进时差换算页，不加任何提示或 UI 变化 */
+const tzEgg=document.querySelector("[data-tz-egg]");
+if(tzEgg) tzEgg.addEventListener("dblclick",()=>{ location.href="timezone.html"; });

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>时差换算</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="topnav" data-part="nav" data-current=""></nav>
+
+  <header class="pagehead">
+    <p class="eyebrow">上海 · 日惹 · 巴黎 · 雷克雅未克</p>
+    <h1>时差换算</h1>
+    <p class="lede">在任意一栏填时间，其余三地自动换算；巴黎跟着夏令时走，其余三地全年不变。</p>
+  </header>
+
+  <section class="section" id="convert">
+    <div class="sechead">
+      <p class="eyebrow">现在</p>
+      <h2>四地对照</h2>
+    </div>
+    <div class="rowline"><button class="chip" id="nowBtn" type="button">跳到此刻</button></div>
+    <div class="tzgrid" id="tzGrid"></div>
+  </section>
+
+  <section class="section" id="pins">
+    <div class="sechead">
+      <p class="eyebrow">存住，不用每次输</p>
+      <h2>常用时间</h2>
+    </div>
+    <p class="hint">比如存一条「上海 14:00」，下次打开照样按当天日期重新算，夏令时也跟着自动换。</p>
+    <div class="panel tzpinbox">
+      <div class="tzpinform">
+        <input type="text" id="pinLabel" placeholder="备注（选填），比如「周会」">
+        <button class="chip" id="pinBtn" type="button">存住当前时间</button>
+      </div>
+      <div class="tzpins" id="pinList"></div>
+    </div>
+  </section>
+
+  <section class="section" id="awake">
+    <div class="sechead">
+      <p class="eyebrow">排会议前先看一眼</p>
+      <h2>谁醒着</h2>
+    </div>
+    <p class="hint">按 <b>06:00–20:00</b> 算白天；横条是同一个 24 小时窗口里的 UTC 时刻，竖线是此刻。</p>
+    <div class="panel tztimebox">
+      <div id="tzTimeline"></div>
+      <div id="tzAxis"></div>
+    </div>
+  </section>
+
+  <footer class="pagefoot">
+    <p>日惹和雅加达同用西印尼时间（WIB，UTC+7）；冰岛、印尼全年不设夏令时，巴黎在 CET／CEST 间切换。</p>
+  </footer>
+
+</div>
+<script src="assets/site.js"></script>
+<script src="assets/timezone.js"></script>
+</body></html>
