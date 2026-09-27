@@ -23,7 +23,7 @@
       <p class="eyebrow">现在</p>
       <h2>四地对照</h2>
     </div>
-    <div class="rowline"><button class="chip" id="nowBtn" type="button">跳到此刻</button></div>
+    <div class="rowline"><button class="tzbtn dark" id="nowBtn" type="button">跳到此刻</button></div>
     <div class="tzgrid" id="tzGrid"></div>
   </section>
 
@@ -36,7 +36,7 @@
     <div class="panel tzpinbox">
       <div class="tzpinform">
         <input type="text" id="pinLabel" placeholder="备注（选填），比如「周会」">
-        <button class="chip" id="pinBtn" type="button">存住当前时间</button>
+        <button class="tzbtn warn" id="pinBtn" type="button">存住当前时间</button>
       </div>
       <div class="tzpins" id="pinList"></div>
     </div>
@@ -51,6 +51,11 @@
     <div class="panel tztimebox">
       <div id="tzTimeline"></div>
       <div id="tzAxis"></div>
+      <div class="tzlegend">
+        <span class="tzday"><i></i>白天</span>
+        <span class="tzdusk"><i></i>晨昏</span>
+        <span class="tznight"><i></i>夜间</span>
+      </div>
     </div>
   </section>
 

@@ -67,7 +67,7 @@ CITIES.forEach(c=>{
   card.innerHTML=`
     <div class="city-row">
       <div><div class="city">${c.name}</div><div class="country">${c.country}</div></div>
-      <span class="pill ink" data-role="badge"></span>
+      <span class="pill warn" data-role="badge"></span>
     </div>
     <input class="fxin" type="datetime-local" data-id="${c.id}">
     <div class="tzrow"><span class="tzdot" data-role="dot"></span><span data-role="weekday"></span></div>
@@ -103,7 +103,7 @@ const axisRow=document.createElement("div");
 axisRow.className="tztrack-row";
 axisRow.innerHTML=`<span class="tzrow-label"></span><div class="tzaxis-track" id="tzAxisTrack"></div>`;
 document.getElementById("tzAxis").appendChild(axisRow);
-[0,6,12,18,24].forEach(h=>{
+[0,3,6,9,12,15,18,21,24].forEach(h=>{
   const tick=document.createElement("span");
   tick.className="tzaxis-tick";
   tick.style.left=(h/24*100)+"%";
@@ -123,8 +123,8 @@ function render(){
     el.badge.textContent=getAbbrev(refDate,c.tz);
     const localHour=+p.hour+(+p.minute)/60;
     const isDay=localHour>=6&&localHour<20;
-    el.dot.className="tzdot "+(isDay?"day":"night");
-    el.weekday.textContent=WD_ZH[WD_IDX[p.weekday]]+" "+p.month+"/"+p.day;
+    el.dot.className="tzdot "+(isDay?"tzdot-day":"tzdot-night");
+    el.weekday.textContent=WD_ZH[WD_IDX[p.weekday]]+" · "+p.year+"-"+p.month+"-"+p.day;
 
     const offset=getOffsetMinutes(refDate,c.tz);
     const track=trackEls[c.id];

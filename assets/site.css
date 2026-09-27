@@ -533,40 +533,58 @@ table.tt td{white-space:normal;word-spacing:.2em;line-height:1.8}
 
 /* §4.6 时差换算 timezone.html（未挂进导航，从 info.html 的时差卡片双击进入）
    四地卡片复用 .fxin 做输入框；日／夜用 --warn 系借色，不占 --pick（那个色只留给必去/选中/D1-D4） */
-.tzgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
-.tzcard{padding:15px;display:grid;gap:10px}
+.tzgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:12px}
+.tzcard{padding:18px;display:grid;gap:12px}
 .tzcard .city-row{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
-.tzcard .city{font-size:16px;font-weight:700}
+.tzcard .city{font-size:18px;font-weight:700}
 .tzcard .country{font-size:11.5px;color:var(--ink-3);margin-top:2px}
-.tzcard input[type="datetime-local"]{width:100%;font-size:15px;padding:9px 10px}
-.tzrow{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--ink-3)}
-.tzdot{width:7px;height:7px;border-radius:50%;flex:none}
-.tzdot.day{background:var(--warn)}
-.tzdot.night{background:var(--ink-3)}
+.tzcard input[type="datetime-local"]{width:100%;font-size:19px;font-weight:600;padding:10px 12px}
+.tzrow{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--ink-2)}
+.tzdot{width:8px;height:8px;border-radius:50%;flex:none}
+.tzdot-day{background:var(--warn)}
+.tzdot-night{background:var(--ink-3)}
 
 /* 常用时间：面板 + 存表单 + 已存清单 */
-.tzpinbox{padding:16px;display:grid;gap:14px}
-.tzpinform{display:flex;gap:8px;flex-wrap:wrap}
+.tzpinbox{padding:18px;display:grid;gap:16px}
+.tzpinform{display:flex;gap:10px;flex-wrap:wrap}
 .tzpinform input[type="text"]{flex:1 1 220px;font:inherit;font-size:13.5px;background:var(--surface-2);color:var(--ink);
-  border:1px solid var(--line);border-radius:var(--r-sm);padding:8px 12px}
+  border:1px solid var(--line);border-radius:var(--r-sm);padding:10px 13px}
 .tzpinform input[type="text"]:focus{border-color:var(--ink-3);outline:none}
 .tzpins{display:flex;flex-direction:column;gap:10px}
-.tzpin{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;padding:13px 15px}
-.tzpin .pin-title{font-weight:700;font-size:13.5px;margin-bottom:7px}
+.tzpin{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;padding:14px 16px}
+.tzpin .pin-title{font-weight:700;font-size:13.5px;margin-bottom:8px}
 .tzpin .chips{display:flex;flex-wrap:wrap;gap:6px}
 .tzpin .actions{display:flex;gap:8px;flex:none}
 .tzpin .actions button{font:inherit;font-size:12px;cursor:pointer;background:transparent;color:var(--ink-2);
   border:1px solid var(--line);border-radius:var(--r-sm);padding:6px 12px}
 .tzpin .actions button:hover{background:rgba(var(--ink-rgb),.06);color:var(--ink)}
 
-/* 24 小时时间轴：谁醒着 */
-.tztimebox{padding:16px;display:grid;gap:10px}
-.tztrack-row{display:flex;align-items:center;gap:10px}
-.tztrack-row + .tztrack-row{margin-top:2px}
-.tzrow-label{width:64px;flex:none;font-size:12.5px;font-weight:600;color:var(--ink-2)}
+/* 实心 CTA：跳到此刻＝反色（浅底深字），存住当前时间＝借 --warn（这页的「白天」色） */
+.tzbtn{font:inherit;font-weight:700;font-size:13px;border:none;border-radius:999px;padding:11px 22px;cursor:pointer;white-space:nowrap;transition:opacity .15s ease}
+.tzbtn:hover{opacity:.88}
+.tzbtn:active{opacity:.72}
+.tzbtn.dark{background:var(--ink);color:var(--ground)}
+.tzbtn.warn{background:var(--warn);color:var(--ground)}
+
+/* 24 小时时间轴：谁醒着——粗胶囊条 + 竖线圆点标此刻，3 小时一格刻度，底部图例 */
+.tztimebox{padding:18px;display:grid;gap:16px}
+.tztrack-row{display:flex;align-items:center;gap:12px}
+.tzrow-label{width:80px;flex:none;font-size:13.5px;font-weight:700;color:var(--ink-2)}
 .tzline-wrap{position:relative;flex:1;min-width:0}
-.tzline{height:22px;border-radius:6px;overflow:hidden;display:flex;border:1px solid var(--line-soft)}
+.tzline{height:32px;border-radius:16px;overflow:hidden;display:flex;border:1px solid var(--line-soft)}
 .tzline .seg{flex:1 0 0}
-.tzline-wrap .now{position:absolute;top:-2px;bottom:-2px;width:2px;background:var(--indigo)}
+.tzline-wrap .now{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--indigo)}
+.tzline-wrap .now::after{content:"";position:absolute;top:-4px;left:50%;transform:translateX(-50%);
+  width:8px;height:8px;border-radius:50%;background:var(--indigo);box-shadow:0 0 0 2px var(--surface)}
 .tzaxis-track{position:relative;flex:1;min-width:0;height:14px}
 .tzaxis-tick{position:absolute;transform:translateX(-50%);font-family:var(--mono);font-size:10px;color:var(--ink-3)}
+.tzlegend{display:flex;flex-wrap:wrap;gap:16px;padding-left:92px}
+.tzlegend span{display:inline-flex;flex:none;align-items:center;gap:6px;font-size:12px;color:var(--ink-2);white-space:nowrap}
+.tzlegend i{width:12px;height:12px;border-radius:4px;flex:none;font-style:normal}
+.tzlegend .tzday i{background:var(--warn)}
+.tzlegend .tzdusk i{background:var(--warn-soft);border:1px solid var(--line-soft)}
+.tzlegend .tznight i{background:var(--surface-2);border:1px solid var(--line-soft)}
+@media (max-width:520px){
+  .tzrow-label{width:56px;font-size:12px}
+  .tzlegend{padding-left:68px}
+}
