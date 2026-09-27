@@ -272,8 +272,17 @@ dd .geo{font-family:var(--mono);font-size:12px;color:var(--ink-3)}   /* 留档�
 /* 街区步行动线（UI.walk）：左边一根竖线串起各站，站与站之间标出米数。
    .pin＝下车／接车点（实心方块），.off＝当天不开的点（虚线圈＋整站压暗） */
 .walk{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--radius);padding:14px}
+/* 标题行就是开合把手：小标题 + 路线长度，右端一个 ▾。整行可点，所以给足 44px 的高度 */
+.walk > summary{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;cursor:pointer;list-style:none;
+  padding-block:11px;margin-block:-7px}
+.walk > summary::-webkit-details-marker{display:none}
+.walk > summary::after{content:"▾";margin-left:auto;color:var(--ink-3);font-size:12px;transition:transform .18s}
+.walk[open] > summary::after{transform:rotate(180deg)}
+.walk > summary:hover .h{color:var(--ink)}
 .walk .h{display:block;font-weight:700;font-size:12.5px;letter-spacing:.02em;color:var(--indigo)}
-.walk .wnote{margin:5px 0 11px;font-size:13px;color:var(--ink-2);line-height:1.65}
+.walk .wsum{font-family:var(--mono);font-size:11.5px;color:var(--ink-3)}
+.walk[open] .wsum{display:none}
+.walk .wnote{margin:9px 0 11px;font-size:13px;color:var(--ink-2);line-height:1.65}
 .walk .walkall{margin-bottom:14px}
 .walkstops{list-style:none;margin:0;padding:0}
 .walkstops li{position:relative;padding:0 0 16px 26px}
@@ -415,6 +424,8 @@ dd .geo{font-family:var(--mono);font-size:12px;color:var(--ink-3)}   /* 留档�
 .tl .tlshot{margin:8px 0 3px;max-width:340px;aspect-ratio:16/9;
   border-radius:var(--r-sm);overflow:hidden;background:var(--surface-2)}
 .tl .tlshot img{width:100%;height:100%;object-fit:cover;display:block}
+/* 时刻表里嵌的街区步行动线：跟配图一样收窄，默认收起时只占一行 */
+.tl .walk{margin:8px 0 3px;max-width:560px}
 
 /* 取舍 */
 .ledger{display:grid;gap:10px;grid-template-columns:1fr 1fr}
@@ -457,6 +468,9 @@ td.n{font-family:var(--mono);font-variant-numeric:tabular-nums}
   .daynav a b{margin-right:3px}
   .tl > .t{font-size:12px}
   .tl .tlshot{max-width:none}
+  /* 窄屏里时刻表那一列本来就只剩 260 px，步行动线卡收一档内边距 */
+  .tl .walk{max-width:none;padding:11px}
+  .tl .walkstops li{padding-left:22px}
   .ledger{grid-template-columns:1fr}
   .plan{padding:15px}
 }

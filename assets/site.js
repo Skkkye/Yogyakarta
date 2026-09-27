@@ -3,9 +3,10 @@
 
    · UI.*    景点相关的 HTML 片段。只要一个片段会出现在两个地方
              （清单卡片 / 详情页 / 以后的新页面），就写在这里，页面脚本只负责拼装。
-   · PARTS   页面里写 <x data-part="名字">，加载时自动填充：站内导航、来源图例、汇率框。
-             行程方案页（index.html）不加载景点数据，也能用 PARTS。
-   依赖：data/spots.js 要先于本文件加载（行程方案页 index.html 除外，它不调 UI）。
+   · PARTS   页面里写 <x data-part="名字">，加载时自动填充：站内导航、来源图例、汇率框、
+             街区步行动线。没有景点数据的页面，walk 那一格自动留空。
+   依赖：data/spots.js 要先于本文件加载 —— 行程方案页（index.html）为了 data-part="walk"
+        也加载了它。
    ============================================================= */
 
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -149,9 +150,11 @@ const UI={
      d.walk = {h 小标题, note 一句话说明, sum 路线长度与耗时, url 整条路线的步行导航, stops:[…]}
      stop   = {n 名称, ln 原名, m 距上一站米数, stay 建议停留, open 开放时间,
                tip 为什么值得停, off 不开的日子（画成虚线并标红）, pin 下车／接车点, gq/pid 导航用, mode}
-     每站一个「导航到这里」，顶上一个整条路线 —— 两种都直接落进谷歌地图的路线规划 */
-  walk:w=>`<div class="walk">
-      <b class="h">${esc(w.h)}</b>
+     每站一个「导航到这里」，顶上一个整条路线 —— 两种都直接落进谷歌地图的路线规划。
+     卡片是 <details>：景点详情页默认展开（那是那一页的主角），
+     行程页塞进时刻表里的那份默认收起，open=false */
+  walk:(w,open=true)=>`<details class="walk"${open?" open":""}>
+      <summary><b class="h">${esc(w.h)}</b><span class="wsum">${esc(w.sum)}</span></summary>
       <p class="wnote">${rich(w.note)}</p>
       <a class="mapbtn walkall" href="${esc(w.url)}" target="_blank" rel="noopener">
         <span class="mapbtn-i" aria-hidden="true">⇢</span>
@@ -166,7 +169,7 @@ const UI={
             ${s.pid?`<a class="nav" href="${navUrl(s)}" target="_blank" rel="noopener">导航到这里 ↗</a>`:""}
           </div>
         </li>`).join("")}</ol>
-    </div>`,
+    </details>`,
 
   /* 口碑块：good 一段文字，bad 是 [小标题, 文字] 数组 */
   buzz:b=>`<div class="callout buzz"><b class="h">口碑：赞与吐槽</b><ul>
@@ -237,6 +240,13 @@ const PARTS={
   srclegend:()=>'<b>来源标注</b>　<span class="srcmark off">官方</span> 景区官网 / 政府机构 / 官方票务平台。'+
     '<span class="srcmark google">谷歌</span> 谷歌地图地点页上标的人均区间（2026-09-21 逐家打开核对）。'+
     '<span class="srcmark sec">二手</span> 旅行社、攻略站、媒体报道、网友分享 —— 价格与开放时间可能已变，到场前请复核。',
+  /* 街区步行动线：<div data-part="walk" data-slug="<景点 slug>">
+     行程页把景点清单里那张卡原样搬过来，默认收起。没加载 spots.js 的页面自动留空 */
+  walk:el=>{
+    if(typeof SPOTS==="undefined") return "";
+    const d=spotBySlug(el.dataset.slug);
+    return d&&d.walk?UI.walk(d.walk,false):"";
+  },
   /* 汇率框：改一次，各页通用 */
   fx:el=>{
     el.innerHTML=`<label class="label" for="fx">汇率 1 SGD =</label>
