@@ -445,6 +445,9 @@ td.n{font-family:var(--mono);font-variant-numeric:tabular-nums}
 .step h3{font-family:var(--sans);font-size:14px;font-weight:700}
 .step p{font-size:13.5px;color:var(--ink-2);margin-top:3px}
 .step .q{margin:6px 0 0;padding-left:16px;font-size:13px;color:var(--ink-2);line-height:1.6}
+/* 订票步骤里贴给司机／客服的原文块，彼此和正文之间要留口气 */
+.step .callout{margin-top:9px}
+.step .callout + p{margin-top:9px}
 
 @media (max-width:600px){
   .tl{grid-template-columns:38px 1fr;gap:0 12px}
