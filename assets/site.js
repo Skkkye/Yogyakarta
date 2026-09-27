@@ -171,6 +171,32 @@ const UI={
         </li>`).join("")}</ol>
     </details>`,
 
+  /* 背景讲解：适用于「看不懂就等于没看」的古迹（婆罗浮屠、普兰巴南）
+     d.story = {h 小标题, sum 折叠时的一行摘要, note 导言,
+                shape / build / time / layers：都是 [[小标题, 正文]…]，渲染成 dl.fields
+                tables:[[表名, [表头…], [[行…]…]]…] 真正的表格数据（浮雕分配、手印对照）
+                tips 参观实操, myth 要破的常见说法}
+     和 UI.walk 一样是 <details>，详情页默认展开 */
+  story:(w,open=true)=>{
+    const fields=(t,rows)=>rows?`<b class="sub">${esc(t)}</b><dl class="fields">${
+      rows.map(([k,v])=>`<div><dt>${rich(k)}</dt><dd>${rich(v)}</dd></div>`).join("")}</dl>`:"";
+    const table=([t,head,rows])=>`<b class="sub">${esc(t)}</b><div class="scroll"><table>
+        <thead><tr>${head.map(h=>`<th scope="col">${esc(h)}</th>`).join("")}</tr></thead>
+        <tbody>${rows.map(r=>`<tr><th scope="row">${rich(r[0])}</th>${
+          r.slice(1).map(c=>`<td>${rich(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+    return `<details class="story"${open?" open":""}>
+      <summary><b class="h">${esc(w.h)}</b><span class="wsum">${esc(w.sum)}</span></summary>
+      <p class="wnote">${rich(w.note)}</p>
+      ${fields("塔的形状代表什么",w.shape)}
+      ${fields("来历",w.time)}
+      ${fields("一层一层在看什么",w.layers)}
+      ${(w.tables||[]).map(table).join("")}
+      ${fields("怎么垒起来的",w.build)}
+      ${w.tips?`<b class="sub">走的时候</b><p class="wnote">${rich(w.tips)}</p>`:""}
+      ${w.myth?`<div class="callout soga"><b class="h">顺便破一个常听到的说法</b>${rich(w.myth)}</div>`:""}
+    </details>`;
+  },
+
   /* 口碑块：good 一段文字，bad 是 [小标题, 文字] 数组 */
   buzz:b=>`<div class="callout buzz"><b class="h">口碑：赞与吐槽</b><ul>
       <li><b>赞：</b>${rich(b.good)}</li>
@@ -198,6 +224,7 @@ const UI={
       ${UI.media(d)}
       <div class="bars">${bars}</div>
       <dl class="fields">${fields}</dl>
+      ${d.story?UI.story(d.story):""}
       ${d.walk?UI.walk(d.walk):""}
       ${d.pick?`<div class="callout"><b class="h">${esc(d.pick.h)}</b>${rich(d.pick.t)}</div>`:""}
       ${d.buzz?UI.buzz(d.buzz):""}

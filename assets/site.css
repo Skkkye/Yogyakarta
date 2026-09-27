@@ -256,7 +256,7 @@ input[type="number"]{width:84px;font-family:var(--mono)}
 
 /* 核准字段 */
 dl.fields{margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:13px 22px}
-dl.fields > div{display:grid;gap:2px;min-width:0}
+dl.fields > div{display:grid;gap:2px;min-width:0;align-content:start}   /* 不顶对齐的话，同行里短字段的 dd 会被撑开的行高推下去 */
 dd{margin:0;font-size:13.5px;color:var(--ink);overflow-wrap:anywhere}
 dd .geo{font-family:var(--mono);font-size:12px;color:var(--ink-3)}   /* 留档坐标，只作参考 */
 
@@ -271,18 +271,23 @@ dd .geo{font-family:var(--mono);font-size:12px;color:var(--ink-3)}   /* 留档�
 
 /* 街区步行动线（UI.walk）：左边一根竖线串起各站，站与站之间标出米数。
    .pin＝下车／接车点（实心方块），.off＝当天不开的点（虚线圈＋整站压暗） */
-.walk{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--radius);padding:14px}
-/* 标题行就是开合把手：小标题 + 路线长度，右端一个 ▾。整行可点，所以给足 44px 的高度 */
-.walk > summary{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;cursor:pointer;list-style:none;
+/* 可折叠卡片的外壳与把手，UI.walk 与 UI.story 共用 */
+.walk,.story{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--radius);padding:14px}
+/* 标题行就是开合把手：小标题 + 一句摘要，右端一个 ▾。整行可点，所以给足 44px 的高度 */
+.walk > summary,.story > summary{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;cursor:pointer;list-style:none;
   padding-block:11px;margin-block:-7px}
-.walk > summary::-webkit-details-marker{display:none}
-.walk > summary::after{content:"▾";margin-left:auto;color:var(--ink-3);font-size:12px;transition:transform .18s}
-.walk[open] > summary::after{transform:rotate(180deg)}
-.walk > summary:hover .h{color:var(--ink)}
-.walk .h{display:block;font-weight:700;font-size:12.5px;letter-spacing:.02em;color:var(--indigo)}
-.walk .wsum{font-family:var(--mono);font-size:11.5px;color:var(--ink-3)}
-.walk[open] .wsum{display:none}
-.walk .wnote{margin:9px 0 11px;font-size:13px;color:var(--ink-2);line-height:1.65}
+.walk > summary::-webkit-details-marker,.story > summary::-webkit-details-marker{display:none}
+.walk > summary::after,.story > summary::after{content:"▾";margin-left:auto;color:var(--ink-3);font-size:12px;transition:transform .18s}
+.walk[open] > summary::after,.story[open] > summary::after{transform:rotate(180deg)}
+.walk > summary:hover .h,.story > summary:hover .h{color:var(--ink)}
+.walk .h,.story .h{display:block;font-weight:700;font-size:12.5px;letter-spacing:.02em;color:var(--indigo)}
+.walk .wsum,.story .wsum{font-family:var(--mono);font-size:11.5px;color:var(--ink-3)}
+.walk[open] .wsum,.story[open] .wsum{display:none}
+.walk .wnote,.story .wnote{margin:9px 0 11px;font-size:13px;color:var(--ink-2);line-height:1.65}
+/* §4.2 的 .fields 在这里复用来排「年代→发生了什么」和「层→看什么」 */
+.story .fields{margin-top:2px}
+.story .sub{display:block;margin:14px 0 6px;font-size:12px;font-weight:700;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--ink-3)}
 .walk .walkall{margin-bottom:14px}
 .walkstops{list-style:none;margin:0;padding:0}
 .walkstops li{position:relative;padding:0 0 16px 26px}
