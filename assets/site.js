@@ -99,6 +99,14 @@ function watchMaps(root){
   });
 }
 
+/* ---------- 讲解插图 ----------
+   UI.story 用 figLayers / figMudra 按 key 取用。样式在 site.css 的 .fig，
+   颜色全部走 token，没有写死的色值 */
+const FIGS={
+  "borobudur-section":`<figure class="fig"><svg viewBox="0 0 320 244" role="img" aria-label="婆罗浮屠剖面示意：最下是被封住的基座，中间五层方台，上面三层圆台，顶上一座封闭大塔"><rect class="kamadhatu" x="50" y="206" width="200" height="22" rx="1"/><rect class="rupadhatu" x="59" y="191" width="182" height="14" rx="1"/><rect class="rupadhatu" x="68" y="176" width="164" height="14" rx="1"/><rect class="rupadhatu" x="77" y="161" width="146" height="14" rx="1"/><rect class="rupadhatu" x="86" y="146" width="128" height="14" rx="1"/><rect class="rupadhatu" x="95" y="131" width="110" height="14" rx="1"/><rect class="arupadhatu" x="104" y="119" width="92" height="11" rx="1"/><rect class="arupadhatu" x="112" y="107" width="76" height="11" rx="1"/><rect class="arupadhatu" x="120" y="95" width="60" height="11" rx="1"/><path class="top" d="M136 95 q0 -27 14 -27 q14 0 14 27 z"/><line class="brace" x1="150" y1="68" x2="150" y2="60"/><line class="brace" x1="256" y1="207" x2="256" y2="227"/><text class="big" x="264" y="216">欲界</text><text class="sm" x="264" y="226">KAMADHATU</text><line class="brace" x1="256" y1="132" x2="256" y2="204"/><text class="big" x="264" y="163">色界</text><text class="sm" x="264" y="173">RUPADHATU</text><line class="brace" x1="256" y1="62" x2="256" y2="129"/><text class="big" x="264" y="92">无色界</text><text class="sm" x="264" y="102">ARUPADHATU</text><text class="sm" x="44" y="221" text-anchor="end">封住</text><text class="sm" x="52" y="170" text-anchor="end">浮雕</text><text class="sm" x="98" y="112" text-anchor="end">镂空</text><text class="sm" x="128" y="78" text-anchor="end">空</text></svg><figcaption>虚线＝看不到（基座被石台封住）；实心＝有浮雕，1,460 幅叙事全在这五层；空心＝镂空小塔，看得见看不清；顶上金色那座是封闭的，里面空着。</figcaption></figure>`,
+  "borobudur-mudra":`<figure class="fig"><svg viewBox="0 0 320 236" role="img" aria-label="婆罗浮屠佛像手印的方位对照：东触地印、南与愿印、西禅定印、北施无畏印，中心是第五层说法印与圆台转法轮印"><path class="arc" d="M272 168 A 18 18 0 0 1 272 204"/><path d="M264 204 l10 -5 l0 10 z" fill="var(--pick-soft)"/><text class="sm" x="272" y="221" text-anchor="middle">顺时针</text><rect class="plan" x="115" y="85" width="90" height="90" rx="2"/><text class="sm" x="160" y="106" text-anchor="middle">第五层 · 四面</text><text class="big" x="160" y="120" text-anchor="middle">说法印</text><line x1="127" y1="130" x2="193" y2="130" stroke="var(--line)" stroke-width="1"/><text class="sm" x="160" y="147" text-anchor="middle">圆台 72 座小塔</text><text class="big" x="160" y="161" text-anchor="middle">转法轮印</text><text class="big" x="160" y="60" text-anchor="middle">北 · 施无畏印</text><text class="sm" x="160" y="72" text-anchor="middle">不空成就佛</text><text class="big" x="160" y="202" text-anchor="middle">南 · 与愿印</text><text class="sm" x="160" y="214" text-anchor="middle">宝生佛</text><text class="big" x="212" y="126">东 · 触地印</text><text class="sm" x="212" y="138">阿閦佛 · 从这里进</text><text class="big" x="108" y="126" text-anchor="end">西 · 禅定印</text><text class="sm" x="108" y="138" text-anchor="end">阿弥陀佛</text></svg><figcaption>方形回廊的俯视图。五层方台的佛龛按朝向换手印，对应五方佛；<b>从东面进、顺时针绕</b> —— 逆着走，五方佛的次序和浮雕的故事都是倒放的。</figcaption></figure>`
+};
+
 /* ---------- 组件 ---------- */
 const CHECK='<svg class="ck" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" fill="currentColor"/></svg>';
 
@@ -189,8 +197,10 @@ const UI={
       <p class="wnote">${rich(w.note)}</p>
       ${fields("塔的形状代表什么",w.shape)}
       ${fields("来历",w.time)}
+      ${w.figLayers?FIGS[w.figLayers]||"":""}
       ${fields("一层一层在看什么",w.layers)}
       ${(w.tables||[]).map(table).join("")}
+      ${w.figMudra?FIGS[w.figMudra]||"":""}
       ${fields("怎么垒起来的",w.build)}
       ${w.tips?`<b class="sub">走的时候</b><p class="wnote">${rich(w.tips)}</p>`:""}
       ${w.myth?`<div class="callout soga"><b class="h">顺便破一个常听到的说法</b>${rich(w.myth)}</div>`:""}
