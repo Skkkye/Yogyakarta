@@ -100,7 +100,7 @@ const SPOTS=[
  gq:"Manohara - BCC",pid:"ChIJtSRLeO2Mei4RMT9Yz1doDy0",cid:"3246928582707527473",geo:[-7.609210,110.207049],
  g:null,gc:null,
  s:{view:10,culture:9,unique:10,value:3,quiet:8},
- intro:"04:00 在 Manohara 文化中心登记，04:30 摸黑登上第九层，在塔顶待到 07:00，再下来吃早餐。全程跟团、一名导游最多带 15 人。全日惹最贵的单项体验，也是唯一能在开园前独占塔顶的方式 —— 每天只有 100 个人。",
+ intro:"<b>集合点是 Manohara Borobudur Cultural Center（7 号门），不是塔下。</b>04:00 登记，04:30 摸黑登上第九层，在塔顶待到 07:00，再下来吃早餐。全程跟团、一名导游最多带 15 人。全日惹最贵的单项体验，也是唯一能在开园前独占塔顶的方式 —— 每天只有 100 个人。",
  price:1000000,ticket:"国际游客 {1000000}／本地游客 {750000}，含手电、Upanat 草鞋、导游与 Manohara 早餐；10 岁以下 {650000} 为二手资料",src:"off",
  book:"必须预约，每日限 100 人。<b>票面条款：最晚出发前 2 天 24:00 WIB 买票</b>，购票须附护照，不可退、只能单次入场、只在所选日期有效",
  url:"https://ticket.injourneydestination.id/en/borobudur-sunrise/",
